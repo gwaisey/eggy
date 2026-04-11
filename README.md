@@ -26,6 +26,12 @@ Eggy follows a **Feature-First** directory structure to ensure high cohesion and
 - `lib/shared/ui`: Reusable UI components and the thematic design system.
 - `lib/screens`: Composition layer where state and UI converge.
 
+### **Scoped Intelligence Policy**
+To ensure reliability and prevent "AI Hallucinations" typical of generic LLMs, Eggy implements a **Strict Domain Governance Policy**:
+- **Domain Focus**: The assistant is programmatically restricted to avian biology, molecular gastronomy, and food safety. 
+- **Safety Intercepts**: Off-topic inquiries are gracefully redirected, ensuring the model remains a high-precision culinary authority rather than a general-purpose chatbot.
+- **Safety Overrides**: Critical safety inquiries (e.g., spoilage detection) trigger hard-coded governance protocols to ensure user health is always prioritized over creative dialogue.
+
 ### **Intelligent Assistant: Dual-Persona Architecture**
 Eggy features a context-aware AI assistant utilizing dynamic persona switching to provide either practical or academic guidance:
 - **Chef Mode (Default)**: Optimized for usability and kitchen workflow. Focuses on technique, mise-en-place, and flavor profiles.
