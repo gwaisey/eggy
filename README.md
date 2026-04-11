@@ -26,6 +26,12 @@ Eggy follows a **Feature-First** directory structure to ensure high cohesion and
 - `lib/shared/ui`: Reusable UI components and the thematic design system.
 - `lib/screens`: Composition layer where state and UI converge.
 
+### **Intelligent Assistant: Dual-Persona Architecture**
+Eggy features a context-aware AI assistant utilizing dynamic persona switching to provide either practical or academic guidance:
+- **Chef Mode (Default)**: Optimized for usability and kitchen workflow. Focuses on technique, mise-en-place, and flavor profiles.
+- **Professor Mode**: Leverages the high-fidelity molecular research corpus. Focuses on protein denaturation, chemical safety (Salmonella governance), and exotic avian biology.
+- **Contextual Memory**: Built on a Circular Associative Memory architecture, the assistant maintains dialogue continuity over 6+ turns, resolving pronouns and state-specific inquiries accurately.
+
 ---
 
 ## 🔬 Thermodynamic Modeling
