@@ -63,7 +63,7 @@ The culinary and morphological data in Eggy is cited from peer-reviewed sources:
 - **Framework**: Flutter (Stable)
 - **Language**: Dart (Sound Null Safety)
 - **State Management**: Provider / ChangeNotifier
-- **Intelligence**: Google Gemini Pro (AI-driven culinary dialogue)
+- **Intelligence**: Llama 3.3-70B via OpenRouter (Multi-contextual AI logic)
 - **Persistence**: Shared Preferences
 
 ---
