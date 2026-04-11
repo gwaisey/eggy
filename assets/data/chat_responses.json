@@ -1,0 +1,345 @@
+{
+  "cracked shell": [
+    "**Use a larger piece of shell** or a wet finger to scoop out the fragment easily. Shell fragments sink; a larger piece of shell attracts the smaller one like a magnet.",
+    "If a tiny shard falls in, don't chase it with a fork! Use half an empty eggshell; it acts as a magnet for the fragment. Egg science at its finest."
+  ],
+  "broken yolk": [
+    "**Cook as scrambled eggs or an omelette.** Once a yolk is broken, it cannot be poached or fried with a liquid center. It is perfectly safe to eat but changes the technique required.",
+    "A broken yolk is just a scrambled egg in the making! Shift your technique and enjoy the richness; it's still 100% nutritious."
+  ],
+  "bad taste": [
+    "**Discard immediately.** Any sulfurous, soapy, or bitter taste indicates spoilage or storage issues. Do not consume any part of the egg."
+  ],
+  "off flavor": [
+    "**Discard immediately.** Off flavors are signs of bacterial growth or old age. When in doubt, safety comes first in the kitchen."
+  ],
+  "green yolk": [
+    "**The Ferrous Sulfide Reaction.** That green ring forms at exactly 77°C when iron in the yolk reacts with hydrogen sulfide from the whites. It is the hallmark of over-coagulation. Perfectly safe, but indicates the egg was pushed past its thermal limit.",
+    "That ring is Ferrous Sulfide! It's a harmless chemical reaction triggered at 77°C. Shorten your timer or move to a lower Yolk-o-Meter setting to keep your yolks golden and tender."
+  ],
+  "stuck to pan": [
+    "**Heat the pan fully** before adding butter, and let the butter foam. This creates a steam barrier that prevents the egg protein from bonding to the metal.",
+    "If it sticks, the pan wasn't hot enough. Let the butter 'bubble and subside' before adding eggs—that creates the non-stick steam cushion you need."
+  ],
+  "shell_in_pan": [
+    "**Scoop it out.** Use a wet finger or a larger piece of shell. It's much easier than using a spoon or fork."
+  ],
+  "rotten": [
+    "**Discard immediately.** A rotten egg has a strong, distinct sulfuric smell even through the shell. Do not attempt to cook or consume any part of it."
+  ],
+  "smell": [
+    "**Discard immediately.** Fresh eggs should have no odor. Any strong or 'off' smell is a sign of spoilage. Clean all surfaces the egg touched thoroughly."
+  ],
+  "float": [
+    "**Verify freshness.** If an egg floats completely, it is old. While not always spoiled, it's high risk. Crack it into a separate bowl and check for smell before using.",
+    "The 'Float Test' measures the air cell size. A floater is old and higher risk; always crack it into a separate bowl to check before committing to your recipe."
+  ],
+  "fridge": [
+    "Cold eggs straight from the fridge need about 60 extra seconds on the timer. Eggy auto-adjusts when you set your egg temperature to Fridge in the recipe setup.",
+    "Starting cold? Add 60 seconds. eggy's logic handles the thermal shift for you if you select 'Fridge' on the setup screen."
+  ],
+  "cold": [
+    "Cold eggs need about 60 extra seconds to reach your target yolk temperature. Set your starting temp to Fridge on the recipe screen and Eggy will dial in the time precisely."
+  ],
+  "altitude": [
+    "At higher altitudes water boils below 100C, so eggs take longer to cook. Open Settings, enable GPS, and Eggy will auto-correct your timer based on your real elevation."
+  ],
+  "high altitude": [
+    "Higher elevation means a lower boiling point. If you are above 1000m, your eggs need extra time. Enable GPS in Settings and Eggy will compensate automatically."
+  ],
+  "sticking": [
+    "Let your butter foam fully before pouring the eggs. The foam stage is around 120-130C, which is hot enough to prevent sticking without burning. A properly seasoned pan helps too."
+  ],
+  "hollandaise": [
+    "A broken hollandaise is an emulsion failure. Whisk a teaspoon of boiling water into a clean bowl, then slowly add your broken sauce back in, whisking constantly. Heat and acid help it re-emulsify safely.",
+    "If your sauce breaks, don't panic. Whisk a teaspoon of boiling water into a clean bowl, then slowly add your broken sauce back in, whisking constantly."
+  ],
+  "benedict": [
+    "The secret to Eggs Benedict is timing! Poach your eggs for exactly 3 minutes for Liquid Gold yolks, toast your muffin to a golden brown, and always warm your plates so the Hollandaise doesn't break on contact.",
+    "The secret to Eggs Benedict is the timing! Poach your eggs for exactly 3 minutes, toast your muffin to a golden brown, and always warm your plates so the Hollandaise doesn't break on contact."
+  ],
+  "runny": [
+    "For a runny, flowing yolk, set the Yolk-o-Meter to Liquid Gold. That targets around 61C inside the yolk, which keeps it fully liquid and glossy."
+  ],
+  "jammy": [
+    "A jammy yolk is achieved at around 64C internal temperature. Set the Yolk-o-Meter to Jammy on any boiled or poached recipe. The yolk will be thick and deeply golden.",
+    "Jammy yolks are the peak of egg art. Target 64C internal temp. Eggy's timer is tuned for this specific coagulation state."
+  ],
+  "hard": [
+    "For a firm, fully-set yolk, slide the Yolk-o-Meter to Firm. That targets 77C internally. This takes 11-13 minutes depending on egg size and starting temperature."
+  ],
+  "overcooked": [
+    "If your yolk was too firm, reduce your Yolk-o-Meter target by one notch next time. Transfer to ice water immediately when the timer ends to stop residual cooking."
+  ],
+  "undercooked": [
+    "If the white is still translucent, the water was not at a full boil when you started. Make sure the water is fully simmering before starting the Eggy timer."
+  ],
+  "crack": [
+    "A crack during boiling usually means temperature shock. Start eggs in cold water and bring them up to heat together. Add salt to the water to help it coagulate."
+  ],
+  "fresh": [
+    "Fresh eggs are harder to peel because the membrane bonds tightly to the shell. Use eggs that are 7-10 days old for easier peeling."
+  ],
+  "peel": [
+    "To peel easily, transfer eggs to ice water immediately after the timer ends. Let them sit for 2 full minutes. Tap the wide end first, roll gently, then peel under running water."
+  ],
+  "ice bath": [
+    "Use a 1:1 ratio of ice and water. Submerge eggs for at least 3 minutes. This stops **carryover cooking** by inducing thermal shock, and makes peeling significantly easier by shrinking the egg slightly away from the shell.",
+    "Cold water isn't enough; you need ice to keep the temp at 0°C for the perfect peel. indusing thermal shock stops the coagulation instantly."
+  ],
+  "size": [
+    "Egg size changes cooking time significantly. A jumbo egg needs 1-2 minutes more than a medium egg. Always set your egg size in the recipe setup."
+  ],
+  "season": [
+    "Season scrambled eggs and omelettes at the end, not the beginning. Salt added early draws out moisture and makes the texture watery."
+  ],
+  "butter": [
+    "Butter for scrambled eggs or omelettes should foam gently, not brown. Brown butter is too hot and will overcook the edges before the center sets."
+  ],
+  "water": [
+    "Use enough cold water to fully cover the eggs by at least 2cm. More water means a more stable temperature during cooking, providing better precision."
+  ],
+  "timer": [
+    "The Eggy timer starts counting your target cook time once you tap Start Timer on the prep step. Make sure your water is boiling before starting."
+  ],
+  "scrambled": [
+    "For creamy scrambled eggs, use low heat and fold every 20 seconds. Pull them off the heat while they still look slightly underdone.",
+    "Creamy scrambled eggs require patience and low heat. If the pan sizzles, it's too hot and you're over-tightening the protein bonds!"
+  ],
+  "omelette": [
+    "Pour the eggs into a foamed butter pan and swirl immediately. Let the edges set, then tilt and roll. The inside should be slightly soft when you fold.",
+    "Don't overmix! You'll overwork the egg proteins and end up with a rubbery omelette. Swirl for 10 seconds, then let it set."
+  ],
+  "poached": [
+    "Poach at a gentle simmer, not a rolling boil. Add a splash of white vinegar to help the white coagulate quickly. Slide the egg in from a small bowl.",
+    "Poaching is about flow. Use a gentle simmer (around 90C). Any hotter and the turbulence will shred the delicate egg whites."
+  ],
+  "fried": [
+    "Fry on medium-low in butter. Cover with a lid for the last 30 seconds to steam the top without flipping. This gives a glossy white and a runny yolk."
+  ],
+  "pancake": [
+    "While I focus on pure egg prep, in pancakes, eggs act as the binder and leavener. For extra fluffiness, whisk your egg whites separately to a soft peak before folding them in; this traps air bubbles for a lighter texture.",
+    "Egg proteins provide the scaffold that traps bubbles from your leavening agent. Don't overmix or you'll toughen the scaffold!",
+    "Pancakes rely on eggs for that 'rise.' The steam trapped by the egg's protein network is what makes them airy and golden."
+  ],
+  "french toast": [
+    "French toast is all about the **custard base**. Eggs emulsify with milk to create a rich liquid that penetrates the bread; during cooking, the proteins coagulate to create that classic custardy texture."
+  ],
+  "cookie": [
+    "Lecithin in the yolk acts as an emulsifier, binding water and fat into a smooth dough for that perfect chewy snap.",
+    "For a fudgier cookie, use an extra yolk. For more 'lift,' use the whole egg! It's all about the protein-to-fat balance.",
+    "In cookies, eggs provide **lecithin** (an emulsifier) and structure. The water in the egg works with the flour to create gluten, while the yolk adds richness."
+  ],
+  "shakshuka": [
+    "Shakshuka is a masterclass in **sauce poaching**. The eggs cook gently in the tomato base, protecting the whites from direct heat while allowing the yolks to reach a perfect jammy consistency."
+  ],
+  "calibration_logic": [
+    "If the results don't match the Yolk-o-Meter, check your **Altitude**. Water boils at lower temperatures at higher elevations, which slows down protein denaturation. Eggy can auto-correct this if you enable GPS in Settings!",
+    "Inaccuracy is usually a matter of 'Starting Thermal Mass.' Ensure your eggs are the correct size (Large) and starting temperature (Fridge vs Room) to keep the Yolk-o-Meter precise."
+  ],
+  "under_coagulation": [
+    "**At 60°C**, proteins are just beginning to denature. The egg is safe to eat but will remain liquid as the stable protein lattice hasn't formed yet. Ideal for liquid-silk sous-vide textures.",
+    "Below the 62°C threshold, the yolk is almost entirely liquid. This provides zero structural integrity—perfect for mixing into pasta, but physically impossible to slice."
+  ],
+  "thermal_gradient": [
+    "**Thermal Gradient (90°C+):** High heat creates a severe temperature gradient. The outer white becomes rubbery and over-tightened before the yolk center even warms through. Lower, steady heat is always superior.",
+    "Avoid the rolling boil! The turbulence at 100°C not only cracks shells but ruins the delicate coagulation curve. A steady 80-85°C produces a tender white and a perfectly centered yolk."
+  ],
+  "heat_physics": [
+    "Heat is the energy that drives **denaturation**. Too fast, and you force the moisture out of the protein bonds, leading to a 'weeping' or rubbery egg. Too slow, and the proteins won't cross-linked enough to set.",
+    "The physics of an egg is a race between the shell and the yolk. Managing the thermal input is the difference between a rubbery mess and culinary precision."
+  ],
+  "choline_science": [
+    "One large egg provides about **147mg of choline**—nearly 25% of your daily requirement. It is an essential nutrient for brain health, memory, and liver function. Eggs are one of the most concentrated dietary sources available.",
+    "Choline is the 'Brain Fuel' found in high density within the yolk. It supports neurotransmission and cellular structural integrity. High intake is even correlated with a lower risk of CVD and fatty liver disease."
+  ],
+  "dietary_staple": [
+    "Eggs are a high-quality protein staple in both the **Mediterranean and DASH diets**. They provide essential vitamins and minerals with a low calorie-to-nutrient ratio, especially when prepared using low-fat methods like poaching or boiling.",
+    "Research shows no correlation between egg consumption and CVD for most people. As a result, eggs are recommended as a heart-healthy protein source in the DASH and Mediterranean dietary models."
+  ],
+  "balut_science": [
+    "Balut is a **fertilized, incubated egg** (usually duck). The science here is about the transition from yolk to embryo; it is a rich source of calcium and protein, often steamed and eaten with salt. It is a masterclass in embryonic nutrient density.",
+    "Culinary embryo science! Balut is an 11-17 day old fertilized egg. During incubation, the proteins and fats transform to support the developing life, resulting in a savory, broth-like liquid inside the shell.",
+    "**Pros:** Nutrient bomb! High calcium and fermented-protein density. Iconic savory broth. **Cons:** Texture complexity can be overwhelming; ethical and cultural sensitivity required. High risk if not steamed fully.",
+    "**Scientist's Note:** The science of Balut is the science of transformation. The minerals from the shell are partially absorbed into the embryo during the 14-17 day incubation period."
+  ],
+  "salted_duck_egg": [
+    "To make a duck egg salty, we use **Osmosis**. Salt penetrates the shell, drawing out moisture and causing **Lipoprotein Denaturation**. This creates that signature gritty, oily, and intensely savory orange yolk.",
+    "Duck eggs are the gold standard for salting because their high lipid content reacts better to brine, creating a rich, savory emulsion that chicken eggs simply cannot match."
+  ],
+  "fried_duck": [
+    "Frying a duck egg requires **medium-low heat** because the whites are higher in protein and can become rubbery faster than chicken eggs. The high fat content in the yolk makes for an incredibly rich, buttery experience.",
+    "Pro-Chef tip for duck eggs: Use a lid to steam the top. The yolk is so large and high in fat that it needs extra time to warm through without the whites over-coagulating."
+  ],
+  "scrambled_ostrich": [
+    "Scrambling an ostrich egg is a **marathon of folding**. Because it equals 24 chicken eggs, you need a massive pan and low heat; otherwise, the bottom will turn to rubber before the top even begins to set.",
+    "Don't over-scramble! An ostrich egg has a lot of moisture. You want to cook it 'low and slow' to keep the protein matrix tender. One egg can serve an entire dinner party!"
+  ],
+  "reptile_egg": [
+    "Snake, turtle, and lizard eggs are fascinating but strictly non-culinary! They have **leathery, semi-permeable shells** instead of calcified ones, and their protein lattices don't 'set' or coagulate into a solid state the same way avian eggs do.",
+    "Reptile eggs lack the specific albumin structural proteins found in bird eggs. Even if you boil them for an hour, they often remain soft or rubbery; they are built for moisture exchange with the soil, not for the frying pan!"
+  ],
+  "snake": [
+    "**Cons/Risks of Snake Eggs:** Extremely high risk of **Salmonella** and parasitic tapeworms (like Spirometra). Their leathery shells are designed for soil moisture, not heat, so they don't 'boil' or 'fry' well—the proteins often stay translucent and rubbery.",
+    "**Pros?** While they are high in protein, the structural protein lattice is significantly harder for humans to digest than avian eggs. Many species are also protected, making consumption ecologically risky as well as culinary disappointing!"
+  ],
+  "reptile": [
+    "Reptile eggs (Snakes, Turtles, Lizards) are high-risk culinary targets. **Cons:** Dangerous Salmonella levels and rubbery textures. **Pros:** High protein density, but largely indigestible due to the lack of heat-sensitive albumin."
+  ],
+  "turtle": [
+    "Cons of Turtle eggs: High risk of **Cholera** and **Salmonella**. Many species are critically endangered. **Pros:** None that outweigh the ecological and health risks! Stick to the app's high-fidelity avian recipes."
+  ],
+  "lizard": [
+    "Lizard eggs are typically small and leathery. **Cons:** Parasite risk and 'weeping' protein lattices that don't set like chicken eggs. **Pros:** Interesting biologically, but a failure for the kitchen."
+  ],
+  "monotreme_egg": [
+    "Platypus and Echidna eggs are the only **mammalian eggs** in existence. They are tiny (about the size of a marble), leathery, and strictly protected. A scientific marvel, but definitely not for breakfast!",
+    "Monotremes represent a unique evolutionary bridge. Their eggs are small, leathery, and look more like reptile eggs than bird eggs, with a very different protein-to-fat ratio.",
+    "**Pros:** None for the kitchen. **Cons:** Strictly illegal and ecologically irresponsible. Leathery, marble-sized, and biologically indigestible for humans.",
+    "**Scientist's Note:** Platypus eggs are an evolutionary bridge. They lack the calcification of bird eggs, making them physically impossible to 'fry' or 'boil' in a traditional sense."
+  ],
+  "roe_science": [
+    "Fish eggs (Roe/Caviar) are technically eggs, but they are treated as a **delicate garnish**. No boiling or poaching is required! The high salt content is usually for preservation, and direct heat would destroy their delicate, poppy texture.",
+    "Roe is a masterclass in brining. Whether it's sturgeon caviar or salmon roe, the science is about preserving the 'snap' of the egg membrane while maintaining the liquid lipids inside.",
+    "**Pros:** Highest concentration of Omega-3 fatty acids (EPA/DHA). Iconic 'pop' texture and luxury flavor. **Cons:** Extremely high sodium content; temperature-sensitive lipids perish quickly if exposed to heat.",
+    "**Scientist's Note:** Caviar and roe are the 'Science of Preservation.' Salt and cold are the only tools; cooking them destroys the membrane-tension that provides the signature snap."
+  ],
+  "duck": [
+    "Duck eggs are larger and richer than chicken eggs, with a higher lipid content in the yolk. They excel in baking and custards due to their fat-to-protein ratio.",
+    "Duck eggs have thicker shells and a slightly different protein structure in the whites. They require gentle heat to avoid becoming rubbery."
+  ],
+  "duck_recipes": [
+    "Regarding duck egg recipes, they excel in anything that needs 'poof' or 'richness.' I'd highly recommend a **Duck Egg Sponge Cake** or a **Salt-Cured Yolk**. If you're feeling adventurous, try a traditional **Salted Duck Egg** brine—it transforms the yolk into a dense, oily delicacy!",
+    "If you have fresh duck eggs, try a simple **Low-Heat Scramble** with a dollop of cream. The high fat content makes the texture almost like a savory pudding. Just remember: duck whites have less water, so don't overcook them!"
+  ],
+  "ostrich": [
+    "Talking about Ostrich eggs? You're entering the world of giants! 🦕 One of these is roughly equivalent to 24 hen eggs and has a flavor intensity that is unmatched. It's a massive undertaking for any chef but worth it for the 'wow' factor.",
+    "Scientist's Note: An ostrich egg contains ~2000 calories and weighs up to 1.4kg. The shell is nearly 2mm thick and can withstand the weight of a human (200kg)."
+  ],
+  "ostrich_recipes": [
+    "For an ostrich egg recipe, I suggest the **'Party Scramble'**. You'll need a large bowl, a power drill (to open the shell!), and at least 10 hungry friends. Cook it 'low and slow' to prevent the massive protein mass from turning rubbery.",
+    "If you want to boil it, set aside roughly 90-120 minutes. Serve it as a **Giant Centerpiece** with toasted sourdough 'soldiers' for dipping. It's a communal dining experience like no other!"
+  ],
+  "quail": [
+    "Quail eggs are the 'High-Fidelity' gems of the kitchen! ✨ They have an incredible yolk-to-white ratio, giving you a burst of richness in a tiny package. They are perfect for sophisticated appetizers or ramen toppings.",
+    "Scientist's Note: Quail eggs are rich in Vitamin B1 and iron. Because they are so small, they reach coagulation temperatures almost instantly—precision is key!"
+  ],
+  "recipes": [
+    "You're looking for egg recipes? I can help guide you! Whether you're working with Hen, Duck, or Ostrich eggs, the key is understanding the **Protein Lattice**. Are you thinking of something sweet like a custard, or a savory classic like an omelette?",
+    "Building on your recipe quest: I highly recommend trying a **Jammy Yolk (64°C)** on avocado toast, or a traditional **French Omelette**. Which species are you using for your cook today?"
+  ],
+  "phase_separation": [
+    "Eggs are a living model of **Liquid-Liquid Phase Separation (LLPS)**. The cellular proteins and nucleic acids organize themselves into biomolecular condensates, which are critical for the subcellular biochemistry that produces the egg's unique structure.",
+    "Phase separation is the 'dark matter' of egg biology. It governs how membraneless organelles form within the yolk and white, allowing cells to organize complex chemistry without traditional internal membranes."
+  ],
+  "one_health": [
+    "Eggy supports the **One Health** initiative, advocating for the responsible use of antimicrobials in poultry. Overuse is a primary driver of Anti-Microbial Resistance (AMR). We recommend sourcing eggs from 'Zero Antimicrobial' backyard or high-hygiene systems.",
+    "AMR is a global crisis. The 'One Health' approach connects the health of people, animals, and the environment. Choosing high-quality, responsibly raised eggs is a direct contribution to global health security."
+  ],
+  "goose": [
+    "**Pros:** Massive protein boost (~20g per egg) and a savory, gamey flavor profile. **Cons:** Extremely high in cholesterol (over 1200mg!). Very thick shells require significant force to crack cleanly.",
+    "**Scientist's Note:** Looking for max density? The goose egg is roughly 3x the volume of a chicken egg but nearly 4x the richness due to its lipid concentration."
+  ],
+  "emu": [
+    "**Pros:** Visually stunning dark-green shell; yolk takes up ~45% of total volume (maximum richness). **Cons:** Extremely rare and expensive. The high lipid-to-protein ratio makes them very heavy for digestion.",
+    "**Scientist's Note:** Emu eggs are a culinary spectacle. The yolk is so thick it can almost be used as a spread without any additional thickening agents."
+  ],
+  "salted_duck": [
+    "**Pros:** Concentrated umami and long-term shelf life. Phenomenal for flavoring sauces and buns. **Cons:** Massive sodium levels; can cause dehydration if consumed in excess.",
+    "**Scientist's Note:** Through the power of Osmosis, salt draws moisture out of the yolk, concentrating the fats into a gritty, oily texture that is purely unique to this technique."
+  ],
+  "century egg": [
+    "**Pros:** Complex, earthy flavor and a completely unique gelatinous texture. **Cons:** Strong alkaline/sulfurous odor; high pH levels can be off-putting for many palates.",
+    "**Scientist's Note:** The 'Century' name is a myth. It's a 30-day curing process involving high pH clay and ash that denatures the proteins without any heat.",
+    "Century eggs are a masterclass in **alkaline curing**. By raising the pH of the egg, the proteins denature in a way that turns the white into a dark jelly and the yolk into a rich, creamy teal. No 100-year wait required—just chemistry!",
+    "The 'Pidan' or Century Egg is not about age, but about pH. The chemical reaction between the egg and an alkaline clay/ash mixture cures the proteins without any heat involved."
+  ],
+  "egg tofu": [
+    "Egg tofu is a beautiful display of **gentle steaming**. By mixing eggs with soy milk or water and steaming at a constant low temp, you create a silky, custard-like protein matrix that holds its shape.",
+    "The secret to egg tofu? It's all about the ratio! Too much heat and the proteins will 'scramble' and weep water; keep it low and slow for that iconic silky smooth texture."
+  ],
+  "egg tart": [
+    "Egg tarts rely on the **structural integrity of egg yolks**. The high fat content in the yolks creates a rich, stable custard that sets but stays creamy under the heat of the oven.",
+    "A perfect egg tart is a balance of sugar and protein. The eggs provide the 'lift' and the set, while the milk/cream provides the luxury."
+  ],
+  "carbonara": [
+    "True Carbonara is an **emulsion of pasta water, egg yolks, and cheese**. The residual heat of the pasta gently cooks the yolks into a creamy sauce—never use cream, that's an egg scientist's cardinal sin!",
+    "In Carbonara, timing is everything. You want the temperature around 65-70C; any hotter and the eggs will scramble, any cooler and the emulsion won't thicken."
+  ],
+  "mayo": [
+    "Mayonnaise is the ultimate **cold emulsion**. By slowly whisking oil into egg yolks, the lecithin in the yolk acts as a bridge, surrounding tiny oil droplets and holding them in suspension.",
+    "Making mayo? Ensure your yolks are at room temperature! Cold yolks are less flexible, making the emulsion significantly more likely to break."
+  ],
+  "egg drop soup": [
+    "The secret to those silky ribbons is the **vortex technique**. Constant, gentle stirring of the hot broth while pouring a thin stream of beaten egg creates the iconic thin, cooked strands.",
+    "Egg drop soup is a study in instantaneous coagulation. The high-surface-area ribbons cook in milliseconds, preserving the egg's delicate flavor."
+  ],
+  "quiche": [
+    "A quiche is essentially a **savory custard pie**. The ratio of eggs to dairy is what determines the 'set'; too many eggs make it rubbery, too few and it won't hold its slice.",
+    "For the perfect quiche, blind-bake your crust first. This prevents the moisture from the egg-custard from turning your base soggy."
+  ],
+  "souffle": [
+    "Soufflés are about **gas expansion**. The air you whip into the egg whites expands in the heat of the oven, while the protein scaffold of the yolks and flour provides the structure to hold that rise.",
+    "A soufflé is a race against time and temperature. Once removed from the heat, the air inside cools and the protein structure eventually yields—eat it while it's proud!"
+  ],
+  "haminados": [
+    "Boiling for 12 hours? You're entering the realm of **Haminados**. At sub-boiling temps, the Maillard reaction kicks in, turning the whites brown and the yolks creamy and nutty. If you boil vigorously for 12 hours, however, you'll just get rubber!",
+    "A 12-hour boil at high heat results in severe over-coagulation and a strong sulfuric odor. But 'Slow Eggs' (cooked overnight with onion skins) are a delicacy where the proteins break down into an almost creamy, roasted state.",
+    "Haminados are the peak of **slow-temp denaturation**. By cooking eggs for 6-12 hours in water with tea or onion skins, the proteins undergo a slow Maillard reaction, resulting in a complex, savory flavor profile.",
+    "The 12-hour egg is a lesson in patience. The long duration allows for deep pigment penetration and a transformation of the yolk from chalky to buttery."
+  ],
+  "fat": [
+    "Fat is the enemy of the **albumin foam**. Even a microscopic speck of yolk or oil will prevent egg whites from reaching stiff peaks, as the fat molecules interfere with the protein-air network.",
+    "Trying to whip whites? Ensure your bowl is squeaky clean! Fat molecules compete with the proteins for space at the surface of the air bubbles, causing the foam to collapse instantly."
+  ],
+  "plastic": [
+    "Avoid plastic bowls when whipping whites! Plastic is **lipophilic** (fat-loving) and often retains a thin film of oil even after washing, which will sabotage your foam's structural integrity.",
+    "Use stainless steel or copper for whipping. Cooper bowls actually react with the egg whites to create a more stable 'copper-conalbumin' complex, preventing over-whipping!"
+  ],
+  "molecular": [
+    "Molecular gastronomy treats eggs as **hydrocolloids**. You can 'fry' an egg in liquid nitrogen to create a frozen exterior with a warm liquid yolk, or use sodium alginate for yolk spherification.",
+    "Explore the physics of 'Egg Paper'—thin, transparent sheets made from dehydrated egg whites. It's about maximum surface area and moisture removal while preserving protein bonds."
+  ],
+  "pasteurize": [
+    "Home pasteurization is about the **thermal death curve**. Holding eggs at 57C for 75 minutes or 60C for 15 minutes kills Salmonella while keeping the whites and yolks liquid. Precision is key!",
+    "Want safe raw eggs for Caesar salad? Target the sweet spot: 60C for 3.5 minutes. This provides a 5-log reduction in bacteria without coagulating the proteins."
+  ],
+  "yolk": [
+    "The Yolk-o-Meter targets the sweet spot: **Liquid Gold (61°C)**, **Jammy (64°C)**, or **Firm (77°C)**. Beyond 77°C, the iron-sulfur reaction (green ring) becomes inevitable.",
+    "The Yolk-o-Meter in Eggy uses target internal temperature to calculate your cooking time precisely. Drag the slider to dial in the perfect Coagulation State."
+  ],
+  "expired": [
+    "Check the float test. If the egg sinks, it is likely safe. If it floats, discard it. When eggs are past their 'best by' date, bacteria risk increases."
+  ],
+  "unrefrigerated": [
+    "Discard if at room temperature for over 2 hours. Condensation on shells can pull bacteria through the porous surface, creating a contamination risk."
+  ],
+  "raw": [
+    "Salmonella risk is higher in raw or undercooked eggs. Eggy recommends cooking yolks to at least 61C (Liquid Gold) for a safe experience."
+  ],
+  "pregnant": [
+    "Eggs are highly nutritious during pregnancy, providing essential Choline for brain development. However, for safety, always ensure eggs are fully cooked (yolk and white set) to eliminate salmonella risk."
+  ],
+  "nutrition": [
+    "Eggs are a 'superfood' rich in high-quality protein, Vitamin D, and Choline. They are low in calories and contain healthy fats that help with nutrient absorption."
+  ],
+  "gym": [
+    "The ultimate gym meal? Try a 3-egg omelette with spinach and lean turkey, or Poached eggs on whole-grain toast. Eggs contain all 9 essential amino acids, making them the gold standard for muscle recovery and synthesis."
+  ],
+  "muscle": [
+    "For muscle growth, focus on high-quality protein. One large egg has ~6g of protein. A 'gym rat' favorite is a scrambled mix of 1 whole egg and 3 whites for maximum protein with controlled fats."
+  ],
+  "protein": [
+    "Eggs have a Biological Value of 100—higher than beef or whey. For the best protein absorption, always cook your eggs; denaturation through heat makes the protein significantly easier for your body to process."
+  ],
+  "bored": [
+    "Bored of the usual? Try the Omelette or Fried egg recipes! They are fast, hands-on, and a great way to master heat control and protein management.",
+    "Boredom is the enemy of the chef! Try the Poached egg recipe; it's a high-skill technique that feels amazing to master.",
+    "Feeling uninspired? I recommend the Fried egg. It's simple, but achieving the 'glossy top' is a mark of a true egg scientist."
+  ],
+  "default": [
+    "I specialize in the science and art of egg cooking. Ask about yolk doneness, denaturation times, ice baths, or any recipe in the app.",
+    "I'm all about the eggs! From Hollandaise to hard-boiled, I can help you dial in the perfect timing.",
+    "Every egg is an opportunity for precision. Ask me about temperature, curdling, or how to get the perfect peel!"
+  ]
+}

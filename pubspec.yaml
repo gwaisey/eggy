@@ -1,0 +1,64 @@
+name: eggy
+description: "Eggy — A cozy anti-gravity egg station app for the perfect egg every time."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # ── State Management ────────────────────────────────────────────────────────
+  provider: ^6.1.2               # Clean DI / ChangeNotifier (free)
+
+
+  # ── Mascot Animation ────────────────────────────────────────────────────────
+  rive: ^0.14.5                  # State-machine animations (free tier)
+
+  # ── Location / Altitude ─────────────────────────────────────────────────────
+  geolocator: ^13.0.4            # GPS for altitude correction (free)
+
+  # ── Local Storage ───────────────────────────────────────────────────────────
+  shared_preferences: ^2.3.3     # Cook history + settings (free)
+
+  # ── Notifications & Haptics ─────────────────────────────────────────────────
+  flutter_local_notifications: ^18.0.1  # Timer-done OS notification (free)
+  vibration: ^2.0.0              # Fine-grained haptic patterns (free)
+
+  # ── UI Utilities ────────────────────────────────────────────────────────────
+  google_fonts: ^6.2.1           # Quicksand + Inter fonts (free CDN)
+  flutter_animate: ^4.5.0        # Declarative spring animations (free)
+  lottie: ^3.2.0                 # Fallback for simple animations (free)
+
+  # ── Env / Config ────────────────────────────────────────────────────────────
+  flutter_dotenv: ^5.2.1         # Keep Gemini API key out of source
+
+  # ── Core Dart ───────────────────────────────────────────────────────────────
+  cupertino_icons: ^1.0.8
+  http: ^1.2.1
+  path_provider: ^2.1.5
+  intl: ^0.19.0
+  cached_network_image: ^3.4.1
+  visibility_detector: ^0.4.0+2
+  flutter_markdown: ^0.7.7+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/data/recipes.json
+    - assets/data/chat_responses.json
+    - assets/data/egg_science_corpus.md
+    - .env
+    - assets/images/
+    - assets/images/chat/
+    - assets/images/prep/
+    - assets/images/yolk_cross_sections/

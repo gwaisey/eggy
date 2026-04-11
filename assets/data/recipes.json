@@ -1,0 +1,112 @@
+{
+  "recipes": [
+    {
+      "id": "boiled_01",
+      "type": "boiled",
+      "title": "Perfect Boiled Egg",
+      "subtitle": "Classic & timeless",
+      "difficulty": "Easy",
+      "icon": "assets/images/recipe_boiled.png",
+      "bg_color": "#FFFDF5",
+      "mascot_state": 2,
+      "yolk_options": [
+        { "label": "Liquid Gold", "target_temp": 61.0, "seconds_offset": 0,   "color": "#FF8C00", "viscosity": 0.0 },
+        { "label": "Jammy",       "target_temp": 64.0, "seconds_offset": 90,  "color": "#FFAA00", "viscosity": 0.25 },
+        { "label": "Custardy",   "target_temp": 69.0, "seconds_offset": 180, "color": "#FFCC00", "viscosity": 0.5 },
+        { "label": "Soft Set",   "target_temp": 72.0, "seconds_offset": 270, "color": "#FFD966", "viscosity": 0.75 },
+        { "label": "Firm",       "target_temp": 77.0, "seconds_offset": 360, "color": "#C8860A", "viscosity": 1.0 }
+      ],
+      "step_instructions": [
+        "Bring a pot of water to a rolling boil 🫧",
+        "Gently lower your egg in — let Eggy drift in ✨",
+        "Start the Eggy timer and let the magic happen 🥚",
+        "When the timer ends, move to an ice bath to stop cooking ❄️"
+      ]
+    },
+    {
+      "id": "scrambled_01",
+      "type": "scrambled",
+      "title": "Fluffy Scrambled",
+      "subtitle": "Creamy & dreamy",
+      "difficulty": "Easy",
+      "icon": "assets/images/recipe_scrambled.png",
+      "bg_color": "#FFF8E1",
+      "mascot_state": 1,
+      "yolk_options": [
+        { "label": "Silky Soft",  "target_temp": 65.0, "seconds_offset": 0,  "color": "#FFCC44", "viscosity": 0.2 },
+        { "label": "Creamy",      "target_temp": 70.0, "seconds_offset": 30, "color": "#FFD966", "viscosity": 0.5 },
+        { "label": "Fluffy Set",  "target_temp": 75.0, "seconds_offset": 60, "color": "#E8A800", "viscosity": 0.8 }
+      ],
+      "step_instructions": [
+        "Whisk eggs with a pinch of salt and a splash of cream 🥛",
+        "Melt butter in a pan over low heat — wait for the foam 🧈",
+        "Pour eggs in, fold gently every 20 seconds 🌀",
+        "Pull off heat just before they look done — residual heat finishes it ✨"
+      ]
+    },
+    {
+      "id": "poached_01",
+      "type": "poached",
+      "title": "Silky Poached",
+      "subtitle": "Elegant & delicate",
+      "difficulty": "Medium",
+      "icon": "assets/images/recipe_poached.png",
+      "bg_color": "#F0F8FF",
+      "mascot_state": 2,
+      "yolk_options": [
+        { "label": "Runny",   "target_temp": 63.0, "seconds_offset": 0,  "color": "#FF8C00", "viscosity": 0.1 },
+        { "label": "Flowing", "target_temp": 67.0, "seconds_offset": 60, "color": "#FFAA00", "viscosity": 0.4 },
+        { "label": "Set",     "target_temp": 71.0, "seconds_offset": 90, "color": "#FFD966", "viscosity": 0.7 }
+      ],
+      "step_instructions": [
+        "Fill a wide pan with 3 inches of water, bring to a gentle simmer 💧",
+        "Add a splash of white vinegar — this helps the white set",
+        "Crack egg into a small bowl first, then slide it in gently 🥚",
+        "No stirring! Let it float peacefully for the timer duration ✨"
+      ]
+    },
+    {
+      "id": "omelette_01",
+      "type": "omelette",
+      "title": "Cozy Omelette",
+      "subtitle": "Golden & pillowy",
+      "difficulty": "Medium",
+      "icon": "assets/images/recipe_omelette.png",
+      "bg_color": "#FFFDE7",
+      "mascot_state": 1,
+      "yolk_options": [
+        { "label": "Tender",    "target_temp": 70.0, "seconds_offset": 0,  "color": "#FFD700", "viscosity": 0.3 },
+        { "label": "Golden",    "target_temp": 75.0, "seconds_offset": 30, "color": "#E8A800", "viscosity": 0.6 },
+        { "label": "Well Done", "target_temp": 80.0, "seconds_offset": 60, "color": "#C8860A", "viscosity": 0.9 }
+      ],
+      "step_instructions": [
+        "Whisk 2 eggs with a splash of cream until smooth 🥛",
+        "Melt butter until it foams — that's your cue 🧈",
+        "Pour in eggs, swirl the pan to spread them out 🌀",
+        "Let it drift to golden — fold gently at the end 🌅"
+      ]
+    },
+    {
+      "id": "fried_01",
+      "type": "fried",
+      "title": "Perfect Fried Egg",
+      "subtitle": "Crispy edges, cozy center",
+      "difficulty": "Easy",
+      "icon": "assets/images/recipe_fried.png",
+      "bg_color": "#FFFDF5",
+      "mascot_state": 2,
+      "yolk_options": [
+        { "label": "Sunny Side", "target_temp": 63.0, "seconds_offset": 0,  "color": "#FF8C00", "viscosity": 0.0 },
+        { "label": "Over Easy",  "target_temp": 67.0, "seconds_offset": 30, "color": "#FFAA00", "viscosity": 0.3 },
+        { "label": "Over Medium","target_temp": 71.0, "seconds_offset": 60, "color": "#FFD966", "viscosity": 0.6 },
+        { "label": "Over Hard",  "target_temp": 77.0, "seconds_offset": 90, "color": "#C8860A", "viscosity": 1.0 }
+      ],
+      "step_instructions": [
+        "Heat pan over medium-low — patience makes perfect edges ✨",
+        "Add butter or oil, wait for the shimmer 🧈",
+        "Crack egg in gently — don't break the yolk! ☀️",
+        "Cover with lid for last 30 seconds for a steamed finish 💨"
+      ]
+    }
+  ]
+}
