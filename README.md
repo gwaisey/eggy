@@ -63,14 +63,18 @@ To ensure maximum precision and reproducibility of core thermal dynamics, Eggy a
 
 ## 🎨 UI & UX Standards
 
-Eggy adheres to a **Minimalist Professional** aesthetic designed for clarity in high-pressure kitchen environments.
+Eggy adheres to a **Minimalist Professional** aesthetic, blending high-fidelity skeuomorphism with modern design clarity.
+
+### **The Mechanical Ritual**
+Traditional egg timers are tactile, mechanical devices. Eggy honors this heritage through a strict skeuomorphic simulation:
+- **Vintage Inspiration**: The UI is inspired by classic, heavy-duty laboratory and kitchen mechanical timers.
+- **Tactile Logic**: Features a physical clockwise "wind-up" ritual to set the mission time, mirroring the tactile tension of vintage hardware.
+- **Physics-Based Countdown**: Implements a strictly unidirectional clockwise countdown, ensuring the visual experience aligns with real-world mechanical physics.
 
 ### **Skeuomorphic Precision**
-- **Mechanical Ritual**: The egg timer features a high-fidelity 3D claymation aesthetic with strict physics-based clockwise countdown logic.
-- **Aesthetic Whitespace**: Recent UI refinements have maximized vertical spacing and eliminated text-crowding to ensure the central dial remains the "hero" of the interface.
-- **Responsive Layouts**: All core interaction layers (Chat, Timer, Prep Guide) utilize layout constraints to prevent `RenderFlex` overflows and ensure stability across all device form factors.
-
----
+- **Visual Excellence**: Uses depth-mapped gradients and cylindrical projections to create a "3D" feel that makes the mechanical timer the centerpiece of the interaction.
+- **Aesthetic Whitespace**: Recent architectural refinements have maximized vertical spacing and eliminated text-crowding to ensure the central dial remains the "hero" of the interface.
+- **Responsive Layouts**: Engineered with robust layout constraints to prevent `RenderFlex` overflows and ensure stability across all device resolutions.
 
 ---
 
