@@ -11,3 +11,8 @@ flutter config --no-analytics
 
 # 4. Build for Web
 flutter build web --release
+
+# 5. Prepare output for Vercel
+# Vercel needs the build output in a predictable directory like 'public'
+rm -rf public
+cp -r build/web public
