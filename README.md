@@ -28,7 +28,6 @@ See exactly what is happening inside your egg in real-time.
 Traditional egg timers are tactile and mechanical. Eggy honors this heritage with a realistic interface inspired by **vintage classic mechanical egg timers**:
 - **Tactile Logic**: Features a physical "wind-up" ritual to set the time, mirroring the tactile feel of vintage hardware.
 - **Real-World Physics**: The countdown follows a strict clockwise ritual, ensuring the visual experience feels like a real mechanical device.
-- **Aesthetic Whitespace**: A clean design ensures the central vintage timer remains the visual "hero" of the experience, free from distracting clutter.
 
 ---
 
