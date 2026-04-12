@@ -17,11 +17,13 @@ class UserEggPreferences {
   final EggSize size;
   final EggSpecies species;
   final StartTemp startTemp;
+  final int eggCount;
 
   const UserEggPreferences({
     this.size         = EggSize.large,
     this.species      = EggSpecies.henWhite,
     this.startTemp    = StartTemp.fridge,
+    this.eggCount     = 1,
   });
 
   /// Calculates mass based on species and size multiplier

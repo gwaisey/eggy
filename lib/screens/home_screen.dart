@@ -30,11 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _selectRecipe(IEggRecipe recipe) {
-    if (recipe.hasYolkCustomizer) {
-      Navigator.pushNamed(context, '/calibrate', arguments: recipe);
-    } else {
-      Navigator.pushNamed(context, '/prep', arguments: recipe);
-    }
+    Navigator.pushNamed(context, '/briefing', arguments: recipe);
   }
 
   @override
@@ -118,10 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         SizedBox(height: res.hp(30)),
 
-                        // Egg Cabinet
-                        const EggCabinet(),
-
-                        SizedBox(height: res.hp(40)),
+                        SizedBox(height: res.hp(30)),
 
                         // Recipe Grid
                         Padding(
@@ -230,12 +223,15 @@ class _RecipeBubble extends StatelessWidget {
                     Flexible(
                       child: ConstrainedBox(
                         constraints: BoxConstraints(maxHeight: res.hp(80)),
-                        child: Image.asset(recipe.icon, fit: BoxFit.contain)
-                            .animate()
-                            .scale(delay: 100.ms, curve: Curves.easeOutBack)
-                            .then()
-                            .animate(onPlay: (controller) => controller.repeat(reverse: true))
-                            .slideY(begin: -0.03, end: 0.03, duration: 2.seconds, curve: Curves.easeInOut),
+                        child: Hero(
+                          tag: 'recipe_${recipe.id}',
+                          child: Image.asset(recipe.icon, fit: BoxFit.contain)
+                              .animate()
+                              .scale(delay: 100.ms, curve: Curves.easeOutBack)
+                              .then()
+                              .animate(onPlay: (controller) => controller.repeat(reverse: true))
+                              .slideY(begin: -0.03, end: 0.03, duration: 2.seconds, curve: Curves.easeInOut),
+                        ),
                       ),
                     ),
                     SizedBox(height: res.hp(10)),

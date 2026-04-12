@@ -10,7 +10,7 @@ import 'features/recipes/recipe_factory.dart';
 import 'screens/eggy_chat_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/settings_screen.dart';
-import 'screens/yolk_customizer_screen.dart';
+import 'screens/prep_list_screen.dart';
 import 'screens/prep_guide_screen.dart';
 import 'screens/timer_screen.dart';
 import 'screens/hatch_screen.dart';
@@ -76,9 +76,10 @@ class EggyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => const EggyChatScreen());
             case '/settings':
               return MaterialPageRoute(builder: (_) => const SettingsScreen());
-            case '/calibrate':
+            // Integrated into PrepListScreen now
+            case '/briefing':
               final recipe = settings.arguments as IEggRecipe;
-              return MaterialPageRoute(builder: (_) => YolkCustomizerScreen(recipe: recipe));
+              return MaterialPageRoute(builder: (_) => PrepListScreen(recipe: recipe));
             case '/prep':
               final recipe = settings.arguments as IEggRecipe;
               return MaterialPageRoute(builder: (_) => PrepGuideScreen(recipe: recipe));

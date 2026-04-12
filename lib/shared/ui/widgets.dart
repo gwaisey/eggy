@@ -86,32 +86,51 @@ class AntiGravityWrapper extends StatefulWidget {
 }
 
 class _AntiGravityWrapperState extends State<AntiGravityWrapper>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _ctrl;
   late Animation<double>   _anim;
 
   @override
   void initState() {
     super.initState();
-    
-    // Time-Dilation Math:
-    // Duration = Total Distance (Amplitude * 4) / Speed (px/s)
+    _initController();
+  }
+
+  void _initController() {
+    // Guard against zero-duration animations which cause Flutter crashes
+    if (widget.amplitude <= 0) {
+      _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
+      _anim = const AlwaysStoppedAnimation(0.0);
+      return;
+    }
+
     final double totalDistance = widget.amplitude * 4;
     final int durationMs = ((totalDistance / widget.speed) * 1000).toInt();
 
     _ctrl = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: durationMs),
-    )..repeat(reverse: true);
-    
+      duration: Duration(milliseconds: durationMs.clamp(1, 10000)),
+    );
+
     _anim = Tween<double>(begin: -widget.amplitude, end: widget.amplitude)
         .animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut));
 
-    if (widget.delay != Duration.zero) {
-      _ctrl.stop();
+    if (widget.delay == Duration.zero) {
+      _ctrl.repeat(reverse: true);
+    } else {
       Future.delayed(widget.delay, () {
-        if (mounted) _ctrl.repeat(reverse: true);
+        if (mounted && widget.amplitude > 0) _ctrl.repeat(reverse: true);
       });
+    }
+  }
+
+  @override
+  void didUpdateWidget(AntiGravityWrapper oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.amplitude != widget.amplitude || oldWidget.speed != widget.speed) {
+      _ctrl.dispose();
+      _initController();
+      setState(() {});
     }
   }
 

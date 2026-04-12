@@ -513,44 +513,46 @@ class _TypingIndicator extends StatelessWidget {
               .scale(curve: Curves.easeOutBack)
               .fadeIn(),
           const SizedBox(width: 8),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.8),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-                bottomLeft: Radius.circular(4),
-              ),
-              border: isResearching ? Border.all(color: Colors.blueAccent.withValues(alpha: 0.3)) : null,
-              boxShadow: [
-                if (isResearching)
-                  BoxShadow(color: Colors.blueAccent.withValues(alpha: 0.1), blurRadius: 10, spreadRadius: 1),
-                BoxShadow(color: EggyColors.shadowSoft, blurRadius: 4, offset: const Offset(0, 2)),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  isResearching ? 'Eggy is investigating...' : 'Eggy is thinking...',
-                  style: AppTheme.caption.copyWith(
-                    fontWeight: isResearching ? FontWeight.bold : FontWeight.normal,
-                    color: isResearching ? Colors.blueAccent : EggyColors.softCharcoal,
-                  ),
+          Flexible(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.8),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(4),
                 ),
-                if (isResearching) ...[
-                  const SizedBox(height: 4),
-                  ...breadcrumbs.map((b) => 
-                    Text(
-                      '• $b', 
-                      style: AppTheme.caption.copyWith(fontSize: 10, color: Colors.blueAccent.withValues(alpha: 0.7)),
-                    ).animate().fadeIn(duration: 400.ms).slideX(begin: -0.1),
-                  ),
+                border: isResearching ? Border.all(color: Colors.blueAccent.withValues(alpha: 0.3)) : null,
+                boxShadow: [
+                  if (isResearching)
+                    BoxShadow(color: Colors.blueAccent.withValues(alpha: 0.1), blurRadius: 10, spreadRadius: 1),
+                  BoxShadow(color: EggyColors.shadowSoft, blurRadius: 4, offset: const Offset(0, 2)),
                 ],
-              ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    isResearching ? 'Eggy is investigating...' : 'Eggy is thinking...',
+                    style: AppTheme.caption.copyWith(
+                      fontWeight: isResearching ? FontWeight.bold : FontWeight.normal,
+                      color: isResearching ? Colors.blueAccent : EggyColors.softCharcoal,
+                    ),
+                  ),
+                  if (isResearching) ...[
+                    const SizedBox(height: 4),
+                    ...breadcrumbs.map((b) => 
+                      Text(
+                        '• $b', 
+                        style: AppTheme.caption.copyWith(fontSize: 10, color: Colors.blueAccent.withValues(alpha: 0.7)),
+                      ).animate().fadeIn(duration: 400.ms).slideX(begin: -0.1),
+                    ),
+                  ],
+                ],
+              ),
             ),
           ),
         ],

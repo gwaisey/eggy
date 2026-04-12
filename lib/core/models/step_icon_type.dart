@@ -11,4 +11,16 @@ enum StepIconType {
   fold,      // Folding omelette / eggs
   crack,     // Cracking egg into pan
   plate,     // Plating / done
+  salt,      // Salt / grains
+  vinegar,   // Vinegar bottle / drop
+  pan,       // Skillet
+  pot,       // Soup pot
+  bowl,      // Mixing bowl
+  saucepan,  // Smaller sauce pan
+  muffin,    // Bread/Muffin
+  bacon,     // Striped meat
+  spoon,     // Slotted spoon
+  spatula,   // Flat scraper
+  sauce,     // Thick liquid
+  knife,     // Paring knife
 }

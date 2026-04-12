@@ -45,6 +45,12 @@ class EggyColors {
   // Restored for Legacy/Backwards compatibility
   static const blushPink     = Color(0xFFF1E6E6); // A very soft, muted champagne-pink
   static const firmYolk      = bronze;
+
+  // ── New Sleek Kawaii Palette ────────────────────────────────────────────────
+  static const tastyTeal     = Color(0xFF00ADB5); // Punchy yet premium teal
+  static const eggyPink      = Color(0xFFFFB7B7); // Soft, sophisticated pink
+  static const vibrantYolk   = Color(0xFFFFCC33); // High-saturation glowing yolk
+  static const accentGold    = Color(0xFFFFE082); // For highlights
 }
 
 // ── Egg Physical Constants ────────────────────────────────────────────────────
@@ -120,13 +126,11 @@ class EggConstants {
 // ── Egg Visual Metadata ──────────────────────────────────────────────────────
 class EggSpeciesTheme {
   final String label;
-  final String assetPath;
   final Color shellColor;
   final double visualScale; // For UI comparisons
 
   const EggSpeciesTheme({
     required this.label,
-    required this.assetPath,
     required this.shellColor,
     this.visualScale = 1.0,
   });
@@ -134,43 +138,36 @@ class EggSpeciesTheme {
   static const Map<EggSpecies, EggSpeciesTheme> registry = {
     EggSpecies.quail: EggSpeciesTheme(
       label: 'Quail',
-      assetPath: 'assets/images/egg_quail.png',
       shellColor: Color(0xFFDED6C6), // Light speckled beige
       visualScale: 0.7,
     ),
     EggSpecies.henWhite: EggSpeciesTheme(
       label: 'White Hen',
-      assetPath: 'assets/images/egg_white.png',
       shellColor: Colors.white,
       visualScale: 1.0,
     ),
     EggSpecies.henBrown: EggSpeciesTheme(
       label: 'Brown Hen',
-      assetPath: 'assets/images/egg_brown.png',
       shellColor: Color(0xFFC08A64), // Warm Sienna/Brown
       visualScale: 1.0,
     ),
     EggSpecies.duck: EggSpeciesTheme(
       label: 'Duck',
-      assetPath: 'assets/images/egg_duck.png',
-      shellColor: Color(0xFFF1F8E9), // Pale eggshell green/white
+      shellColor: Color(0xFFE8F5E9), // Pale mint eggshell
       visualScale: 1.15,
     ),
     EggSpecies.goose: EggSpeciesTheme(
       label: 'Goose',
-      assetPath: 'assets/images/egg_goose.png',
       shellColor: Color(0xFFF5F5F5),
       visualScale: 1.3,
     ),
     EggSpecies.emu: EggSpeciesTheme(
       label: 'Emu',
-      assetPath: 'assets/images/egg_emu.png',
       shellColor: Color(0xFF003D33), // Deep Oceanic Teal
       visualScale: 1.5,
     ),
     EggSpecies.ostrich: EggSpeciesTheme(
       label: 'Ostrich',
-      assetPath: 'assets/images/egg_ostrich.png',
       shellColor: Color(0xFFFFF9E7), // Creamy/Ivory
       visualScale: 1.7,
     ),

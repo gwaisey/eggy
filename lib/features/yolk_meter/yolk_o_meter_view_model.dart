@@ -75,6 +75,17 @@ class YolkOMeterViewModel extends ChangeNotifier {
       size: size,
       species: _prefs.species,
       startTemp: _prefs.startTemp,
+      eggCount: _prefs.eggCount,
+    );
+    notifyListeners();
+  }
+
+  void updateSpecies(EggSpecies species) {
+    _prefs = UserEggPreferences(
+      size: _prefs.size,
+      species: species,
+      startTemp: _prefs.startTemp,
+      eggCount: _prefs.eggCount,
     );
     notifyListeners();
   }
@@ -84,7 +95,20 @@ class YolkOMeterViewModel extends ChangeNotifier {
       size: _prefs.size,
       species: _prefs.species,
       startTemp: temp,
+      eggCount: _prefs.eggCount,
     );
     notifyListeners();
+  }
+
+  void updateEggCount(int delta) {
+    final newCount = (_prefs.eggCount + delta).clamp(1, 12);
+    _prefs = UserEggPreferences(
+      size: _prefs.size,
+      species: _prefs.species,
+      startTemp: _prefs.startTemp,
+      eggCount: newCount,
+    );
+    notifyListeners();
+    HapticFeedback.selectionClick();
   }
 }

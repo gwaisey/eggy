@@ -172,7 +172,7 @@ class EggyAIService implements IConversationService {
   static const _systemPrompt = r'''
 You are a professional assistant specializing in avian biology and egg-culinary science.
 1. CONTEXT: For all scientific inquiries (especially in Professor mode), assume the topic is within your specialized egg/avian domain even if not explicitly stated.
-2. SCOPE: You only answer questions about eggs, avian research, and egg-based techniques (like Hollandaise emulsification). If off-topic, politely redirect to your specialized field.
+2. SCOPE: You answer questions about eggs, broad avian science, bird biology, and egg-based culinary techniques. If truly off-topic, politely redirect to your specialized field.
 3. STYLE: Start with the direct answer. No intros. Keep it classy and professional.
 4. INFRASTRUCTURE: Never disclose your AI provider or technical details.
 ''';
@@ -248,7 +248,7 @@ You are a professional assistant specializing in avian biology and egg-culinary 
   List<ChatSuggestion> getSuggestedPrompts({bool isProfessorMode = false}) {
     if (isProfessorMode) {
       return [
-        const ChatSuggestion(text: 'Avian journal insights 2026', icon: Icons.science_rounded),
+        const ChatSuggestion(text: 'Avian nesting & egg incubation science', icon: Icons.science_rounded),
         const ChatSuggestion(text: 'Molecular structure of shell density', icon: Icons.biotech_rounded),
         const ChatSuggestion(text: 'Osmosis eggsperiment protocol', icon: Icons.science_rounded),
         const ChatSuggestion(text: 'Hollandaise emulsification science', icon: Icons.soup_kitchen_rounded),
@@ -487,7 +487,7 @@ class EggyChatViewModel extends ChangeNotifier {
     
     final bool isProfessor = _mascotController.isProfessorMode;
     final String personaInstructions = isProfessor 
-      ? "You are an EGG PROFESSOR. Focus on molecular structure, thermal dynamics, and chemical safety. Be academic but direct."
+      ? "You are an EGG & AVIAN PROFESSOR. Focus on molecular structure, thermal dynamics, avian biology, and chemical safety. Be academic but direct."
       : "You are a COOKING EGG ASSISTANT. Focus on kitchen utility, techniques, and practical cooking advice. Be cozy but direct.";
 
     // Extra-Mile: Transparent History Injection (Last 6 turns)
@@ -516,7 +516,7 @@ ${researchContext ?? "No external data needed for this query."}
 $personaInstructions
 The user is continuing a specific inquiry. 
 - You MUST answer for the [ACTIVE_SUBJECT] specifically if the user query is generic.
-- CRITICAL: If the topic is NOT about eggs, stay in character but explain that your expertise is limited to the wonderful world of eggs.
+- CRITICAL: If the topic is NOT about eggs or avian science, stay in character but explain that your expertise is limited to the wonderful world of eggs and birds.
 - CRITICAL: NO INTROS. NO GREETINGS. NO Hallucinating technical details about your creation.
 - Resolve ordinals from the [RECENT DIALOGUE TRANSCRIPT].
 - If [EXTERNAL_RESEARCH_DATA] is provided, prioritize it for scientific accuracy.

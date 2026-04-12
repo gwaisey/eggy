@@ -28,14 +28,14 @@ Eggy follows a **Feature-First** directory structure to ensure high cohesion and
 
 ### **Scoped Intelligence Policy**
 To ensure reliability and prevent "AI Hallucinations" typical of generic LLMs, Eggy implements a **Strict Domain Governance Policy**:
-- **Domain Focus**: The assistant is programmatically restricted to avian biology, molecular gastronomy, and food safety. 
-- **Safety Intercepts**: Off-topic inquiries are gracefully redirected, ensuring the model remains a high-precision culinary authority rather than a general-purpose chatbot.
+- **Domain Focus**: The assistant is programmatically restricted to the wonderful world of eggs, broad avian science, and bird biology. 
+- **Safety Intercepts**: Off-topic inquiries are gracefully redirected, ensuring the model remains a high-precision culinary and ornithological authority.
 - **Safety Overrides**: Critical safety inquiries (e.g., spoilage detection) trigger hard-coded governance protocols to ensure user health is always prioritized over creative dialogue.
 
 ### **Intelligent Assistant: Dual-Persona Architecture**
 Eggy features a context-aware AI assistant utilizing dynamic persona switching to provide either practical or academic guidance:
 - **Chef Mode (Default)**: Optimized for usability and kitchen workflow. Focuses on technique, mise-en-place, and flavor profiles.
-- **Professor Mode**: Leverages the high-fidelity molecular research corpus. Focuses on protein denaturation, chemical safety (Salmonella governance), and exotic avian biology.
+- **Professor Mode**: Upgraded to an **Egg & Avian Professor** persona. Focuses on protein denaturation, avian nesting & incubation science, and molecular ornithology.
 - **Contextual Memory**: Built on a Circular Associative Memory architecture, the assistant maintains dialogue continuity over 6+ turns, resolving pronouns and state-specific inquiries accurately.
 
 ---
@@ -58,6 +58,19 @@ Where:
 
 ### **Laboratory Baseline (Zero-Noise Physics)**
 To ensure maximum precision and reproducibility of core thermal dynamics, Eggy assumes a standardized **100.0°C boiling point**. This "Zero-Noise" environment allows the physics engine to focus entirely on internal heat transfer and protein denaturation without atmospheric interference.
+
+---
+
+## 🎨 UI & UX Standards
+
+Eggy adheres to a **Minimalist Professional** aesthetic designed for clarity in high-pressure kitchen environments.
+
+### **Skeuomorphic Precision**
+- **Mechanical Ritual**: The egg timer features a high-fidelity 3D claymation aesthetic with strict physics-based clockwise countdown logic.
+- **Aesthetic Whitespace**: Recent UI refinements have maximized vertical spacing and eliminated text-crowding to ensure the central dial remains the "hero" of the interface.
+- **Responsive Layouts**: All core interaction layers (Chat, Timer, Prep Guide) utilize layout constraints to prevent `RenderFlex` overflows and ensure stability across all device form factors.
+
+---
 
 ---
 
