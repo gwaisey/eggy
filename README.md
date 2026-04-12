@@ -4,7 +4,7 @@
 [![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
 [![Architecture: Clean](https://img.shields.io/badge/Architecture-Clean-green?style=for-the-badge)](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
-Eggy is a sophisticated atmospheric-aware thermodynamic engine for molecular gastronomy. Built with **Flutter** and **Dart**, the application implements complex heat-transfer algorithms to predict the exact denaturation points of avian proteins. It is designed to demonstrate high-level engineering principles, including **SOLID** architecture, **Modular OOP**, and **Reactive State Management**.
+Eggy is a sophisticated precision-calibrated thermodynamic engine for molecular gastronomy. Built with **Flutter** and **Dart**, the application implements complex heat-transfer algorithms to predict the exact denaturation points of avian proteins. It is designed to demonstrate high-level engineering principles, including **SOLID** architecture, **Modular OOP**, and **Reactive State Management**.
 
 ---
 
@@ -59,6 +59,13 @@ Where:
 ### **Laboratory Baseline (Zero-Noise Physics)**
 To ensure maximum precision and reproducibility of core thermal dynamics, Eggy assumes a standardized **100.0°C boiling point**. This "Zero-Noise" environment allows the physics engine to focus entirely on internal heat transfer and protein denaturation without atmospheric interference.
 
+### **Molecular Lab: Volumetric Heatmaps**
+Eggy utilizes a custom-painted **Volumetric Thermal Heatmap** system to visualize the internal state of the egg in real-time. 
+- **Denaturation Tracking**: Dynamically maps the transition stages (Liquid → Jammy → Firm) within the yolk and albumen.
+- **Real-Time Synthesis**: The heatmap is procedurally generated using the Williams Formula outputs, providing a scientific "x-ray" view of the thermal cooking state.
+
+---
+
 ---
 
 ## 🎨 UI & UX Standards
@@ -73,6 +80,8 @@ Traditional egg timers are tactile, mechanical devices. Eggy honors this heritag
 
 ### **Realistic Precision**
 - **Visual Excellence**: Uses depth-mapped gradients and cylindrical projections to create a "3D" feel that makes the mechanical timer the centerpiece of the interaction.
+- **Mood & Animation Physics**: The mascot's movement is not static; it is driven by a procedural physics engine where wiggles, amplitude, and frequency are dynamically recalculated based on cooking progress and AI "celebration" states.
+- **Aesthetic Whitespace**: Recent architectural refinements have maximized vertical spacing and eliminated text-crowding to ensure the central dial remains the "hero" of the interface.
 - **Responsive Layouts**: Engineered with robust layout constraints to prevent `RenderFlex` overflows and ensure stability across all device resolutions.
 
 ---
