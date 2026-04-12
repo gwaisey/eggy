@@ -20,6 +20,7 @@ import '../physics/thermal_state.dart';
 import '../physics/thermal_heatmap.dart';
 import '../../core/interfaces/i_web_research_service.dart';
 import '../../core/models/data_context.dart';
+import '../preferences/preferences_view_model.dart';
 
 // â”€â”€ Exceptions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class QuotaExceededException implements Exception {
@@ -331,6 +332,13 @@ class EggyChatViewModel extends ChangeNotifier {
   List<ChatSuggestion> get suggestedPrompts => _aiService.getSuggestedPrompts(isProfessorMode: isProfessorMode);
   
   bool get isProfessorMode => _mascotController.isProfessorMode;
+
+  void toggleProfessorMode(PreferencesViewModel prefs) {
+    final newState = !isProfessorMode;
+    prefs.setProfessorMode(newState);
+    _mascotController.setProfessorMode(newState);
+    notifyListeners();
+  }
 
   void updateAppState(EggyAppState state) {
     _appState = state;

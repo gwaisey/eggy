@@ -122,12 +122,7 @@ class _EggyChatScreenState extends State<EggyChatScreen> {
                 tooltip: _vm.isProfessorMode ? 'Switch to Chef Mode' : 'Switch to Professor Mode',
                 onPressed: () {
                   final prefs = context.read<PreferencesViewModel>();
-                  final mascot = context.read<EggyMascotController>();
-                  
-                  // Toggle state atomically
-                  final newState = !prefs.isProfessorMode;
-                  prefs.setProfessorMode(newState);
-                  mascot.setProfessorMode(newState);
+                  _vm.toggleProfessorMode(prefs);
                 },
               ),
               const SizedBox(width: 8),
