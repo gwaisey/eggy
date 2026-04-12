@@ -18,8 +18,6 @@ dependencies:
   # ── Mascot Animation ────────────────────────────────────────────────────────
   rive: ^0.14.5                  # State-machine animations (free tier)
 
-  # ── Location / Altitude ─────────────────────────────────────────────────────
-  geolocator: ^13.0.4            # GPS for altitude correction (free)
 
   # ── Local Storage ───────────────────────────────────────────────────────────
   shared_preferences: ^2.3.3     # Cook history + settings (free)

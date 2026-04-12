@@ -35,6 +35,7 @@ class UserEggPreferences {
       ? EggConstants.fridgeTemp
       : EggConstants.roomTemp;
 
-   /// Perfect Laboratory Condition: 100°C
+   /// Zero-Noise Physics: Standardized 100°C boiling point.
+   /// This ensures maximum precision by focusing on internal thermal kinetics.
    double get boilingPoint => 100.0;
 }

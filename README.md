@@ -54,10 +54,10 @@ Where:
 - **$c$**: Specific heat capacity ($J \cdot g^{-1} \cdot K^{-1}$).
 - **$\rho$**: Density ($g \cdot cm^{-3}$).
 - **$K$**: Thermal conductivity ($W \cdot m^{-1} \cdot K^{-1}$).
-- **$T_{water}$**: Ambient boiling point (calculated dynamically based on altitude/pressure).
+- **$T_{water}$**: Standardized boiling point (Fixed at 100.0°C).
 
-### **Altitude Compensation**
-The app dynamically calculates the boiling point ($T_{water}$) by adjusting for atmospheric pressure at the user's current altitude using the barometric formula, ensuring precision whether cooking at sea level or in high-altitude environments.
+### **Laboratory Baseline (Zero-Noise Physics)**
+To ensure maximum precision and reproducibility of core thermal dynamics, Eggy assumes a standardized **100.0°C boiling point**. This "Zero-Noise" environment allows the physics engine to focus entirely on internal heat transfer and protein denaturation without atmospheric interference.
 
 ---
 

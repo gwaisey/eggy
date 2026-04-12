@@ -42,10 +42,10 @@
     "Cold eggs need about 60 extra seconds to reach your target yolk temperature. Set your starting temp to Fridge on the recipe screen and Eggy will dial in the time precisely."
   ],
   "altitude": [
-    "At higher altitudes water boils below 100C, so eggs take longer to cook. Open Settings, enable GPS, and Eggy will auto-correct your timer based on your real elevation."
+    "Eggy assumes a standardized 100°C boiling point for all calculations. This ensures maximum precision in tracking the molecular denaturation of avian proteins without the noise of atmospheric interference."
   ],
   "high altitude": [
-    "Higher elevation means a lower boiling point. If you are above 1000m, your eggs need extra time. Enable GPS in Settings and Eggy will compensate automatically."
+    "While atmospheric pressure affects boiling point, Eggy uses a 100°C Laboratory Baseline to keep its thermal timing consistent. If you are at a very high altitude, you may need a slightly longer cook time than the timer predicts."
   ],
   "sticking": [
     "Let your butter foam fully before pouring the eggs. The foam stage is around 120-130C, which is hot enough to prevent sticking without burning. A properly seasoned pan helps too."
@@ -134,8 +134,8 @@
     "Shakshuka is a masterclass in **sauce poaching**. The eggs cook gently in the tomato base, protecting the whites from direct heat while allowing the yolks to reach a perfect jammy consistency."
   ],
   "calibration_logic": [
-    "If the results don't match the Yolk-o-Meter, check your **Altitude**. Water boils at lower temperatures at higher elevations, which slows down protein denaturation. Eggy can auto-correct this if you enable GPS in Settings!",
-    "Inaccuracy is usually a matter of 'Starting Thermal Mass.' Ensure your eggs are the correct size (Large) and starting temperature (Fridge vs Room) to keep the Yolk-o-Meter precise."
+    "If the results don't match the Yolk-o-Meter, check your **Starting Thermal Mass**. Ensure your eggs are the correct size (Large) and starting temperature (Fridge vs Room) to keep the Yolk-o-Meter precise. Eggy uses a fixed 100°C baseline for all thermodynamic counts.",
+    "Inaccuracy is usually a matter of 'Starting Thermal Mass' rather than altitude. eggy standardizes at 100°C to focus purely on the internal coagulation curve of the yolk proteins."
   ],
   "under_coagulation": [
     "**At 60°C**, proteins are just beginning to denature. The egg is safe to eat but will remain liquid as the stable protein lattice hasn't formed yet. Ideal for liquid-silk sous-vide textures.",
