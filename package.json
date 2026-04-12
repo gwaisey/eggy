@@ -1,0 +1,10 @@
+{
+  "name": "eggy",
+  "version": "1.0.0",
+  "description": "Professional Egg Research and Cooking Tool",
+  "scripts": {
+    "build": "bash vercel_build.sh"
+  },
+  "author": "gwaisey",
+  "license": "MIT"
+}
