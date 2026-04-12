@@ -1,98 +1,49 @@
-# 🥚 Eggy: A Molecular Culinary Engine
+# 🥚 Eggy: The Professional Egg Research Tool
 
 [![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
 [![Architecture: Clean](https://img.shields.io/badge/Architecture-Clean-green?style=for-the-badge)](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
-Eggy is a sophisticated precision-calibrated thermodynamic engine for molecular gastronomy. Built with **Flutter** and **Dart**, the application implements complex heat-transfer algorithms to predict the exact denaturation points of avian proteins. It is designed to demonstrate high-level engineering principles, including **SOLID** architecture, **Modular OOP**, and **Reactive State Management**.
+Eggy is a precision-calibrated research tool and timer built for anyone who takes molecular egg science seriously. Built with **Flutter** and **Dart**, the app uses advanced heat-transfer physics to predict the exact cooking stage of an egg—from liquid-gold yolks to firm, jammy centers.
 
 ---
 
-## 🏗️ Software Engineering & Architecture
+## ✨ Key Features
 
-This project serves as a showcase for production-grade software engineering practices.
+### **Smart AI Assistant**
+Eggy features a context-aware AI assistant that remembers your conversation history to provide better, highly relevant advice:
+- **Chef Mode**: Your practical kitchen companion. Focuses on techniques, recipes, and flavor profiles.
+- **Professor Mode**: An updated **Egg & Avian Professor** persona for deep scientific inquiries about bird biology, nesting, and the molecular science of eggs.
 
-### **SOLID Principles in Practice**
-- **Single Responsibility (SRP)**: Each module is strictly decoupled. For instance, the `EggPhysicsEngine` manages exclusively thermodynamic calculations, entirely abstracted from the UI or state.
-- **Open-Closed (OCP)**: The system utilizes the `IEggRecipe` interface, allowing the easy addition of new culinary techniques (e.g., Soy Sauce Braising) without modifying the core calculation engine.
-- **Liskov Substitution (LSP)**: All recipe implementations are interchangeable and adhere to consistent contracts, ensuring the `RecipeFactory` remains robust and stable.
-- **Interface Segregation (ISP)**: UI components depend on specific, granular abstractions (e.g., `EggCalculator`, `MascotController`) rather than monolithic service classes.
-- **Dependency Inversion (DIP)**: High-level features depend on abstractions. Implementation details are injected via **Provider** and **ProxyProvider**, ensuring a testable and maintainable dependency tree.
-
-### **Modular OOP Design**
-Eggy follows a **Feature-First** directory structure to ensure high cohesion and low coupling:
-- `lib/core`: Immutable constants, foundational interfaces, and the core physics logic.
-- `lib/features`: Domain-specific business logic divided by feature (Chat, Timer, Yolk-o-Meter, Preferences).
-- `lib/shared/ui`: Reusable UI components and the thematic design system.
-- `lib/screens`: Composition layer where state and UI converge.
-
-### **Scoped Intelligence Policy**
-To ensure reliability and prevent "AI Hallucinations" typical of generic LLMs, Eggy implements a **Strict Domain Governance Policy**:
-- **Domain Focus**: The assistant is programmatically restricted to the wonderful world of eggs, broad avian science, and bird biology. 
-- **Safety Intercepts**: Off-topic inquiries are gracefully redirected, ensuring the model remains a high-precision culinary and ornithological authority.
-- **Safety Overrides**: Critical safety inquiries (e.g., spoilage detection) trigger hard-coded governance protocols to ensure user health is always prioritized over creative dialogue.
-
-### **Intelligent Assistant: Dual-Persona Architecture**
-Eggy features a context-aware AI assistant utilizing dynamic persona switching to provide either practical or academic guidance:
-- **Chef Mode (Default)**: Optimized for usability and kitchen workflow. Focuses on technique, mise-en-place, and flavor profiles.
-- **Professor Mode**: Upgraded to an **Egg & Avian Professor** persona. Focuses on protein denaturation, avian nesting & incubation science, and molecular ornithology.
-- **Contextual Memory**: Built on a Circular Associative Memory architecture, the assistant maintains dialogue continuity over 6+ turns, resolving pronouns and state-specific inquiries accurately.
-
----
-
-## 🔬 Thermodynamic Modeling
-
-The application's core logic is based on the **Charles Williams Formula** for calculating heat transfer and protein coagulation in avian eggs.
-
-### **The Williams Formula**
-The time ($t$) required to reach a specific target temperature ($T_{yolk}$) is calculated via:
-
-$$t = \frac{M^{2/3} \cdot c \cdot \rho^{1/3}}{K \cdot \pi^2 \cdot (\frac{4\pi}{3})^{2/3}} \cdot \ln\left(0.76 \cdot \frac{T_{start} - T_{water}}{T_{yolk} - T_{water}}\right)$$
-
-Where:
-- **$M$**: Mass of the egg (grams).
-- **$c$**: Specific heat capacity ($J \cdot g^{-1} \cdot K^{-1}$).
-- **$\rho$**: Density ($g \cdot cm^{-3}$).
-- **$K$**: Thermal conductivity ($W \cdot m^{-1} \cdot K^{-1}$).
-- **$T_{water}$**: Standardized boiling point (Fixed at 100.0°C).
-
-### **Laboratory Baseline (Zero-Noise Physics)**
-To ensure maximum precision and reproducibility of core thermal dynamics, Eggy assumes a standardized **100.0°C boiling point**. This "Zero-Noise" environment allows the physics engine to focus entirely on internal heat transfer and protein denaturation without atmospheric interference.
-
-### **Molecular Lab: Volumetric Heatmaps**
-Eggy utilizes a custom-painted **Volumetric Thermal Heatmap** system to visualize the internal state of the egg in real-time. 
-- **Denaturation Tracking**: Dynamically maps the transition stages (Liquid → Jammy → Firm) within the yolk and albumen.
-- **Real-Time Synthesis**: The heatmap is procedurally generated using the Williams Formula outputs, providing a scientific "x-ray" view of the thermal cooking state.
-
----
+### **Molecular Lab: Visual Heatmaps**
+See exactly what is happening inside your egg in real-time.
+- **Heat X-Ray**: Uses scientific data to visually track how the egg white and yolk are setting during the cook.
+- **Stage Tracking**: Monitors transition stages (Liquid → Jammy → Firm) with high-fidelity visual feedback.
 
 ---
 
 ## 🎨 UI & UX Standards
 
-Eggy adheres to a **Minimalist Professional** aesthetic, blending high-fidelity skeuomorphism with modern design clarity.
-
-### **The Mechanical Ritual**
-Traditional egg timers are tactile, mechanical devices. Eggy honors this heritage through a strict skeuomorphic simulation:
-- **Vintage Inspiration**: The UI is inspired by classic, heavy-duty laboratory and kitchen mechanical timers.
-- **Tactile Logic**: Features a physical clockwise "wind-up" ritual to set the mission time, mirroring the tactile tension of vintage hardware.
-- **Physics-Based Countdown**: Implements a strictly unidirectional clockwise countdown, ensuring the visual experience aligns with real-world mechanical physics.
-
-### **Realistic Precision**
-- **Visual Excellence**: Uses depth-mapped gradients and cylindrical projections to create a "3D" feel that makes the mechanical timer the centerpiece of the interaction.
-- **Mood & Animation Physics**: The mascot's movement is not static; it is driven by a procedural physics engine where wiggles, amplitude, and frequency are dynamically recalculated based on cooking progress and AI "celebration" states.
-- **Aesthetic Whitespace**: Recent architectural refinements have maximized vertical spacing and eliminated text-crowding to ensure the central dial remains the "hero" of the interface.
-- **Responsive Layouts**: Engineered with robust layout constraints to prevent `RenderFlex` overflows and ensure stability across all device resolutions.
+### **Vintage Classic Mechanical Egg Timer**
+Traditional egg timers are tactile and mechanical. Eggy honors this heritage with a realistic interface inspired by **vintage classic mechanical egg timers**:
+- **Tactile Logic**: Features a physical "wind-up" ritual to set the time, mirroring the tactile feel of vintage hardware.
+- **Real-World Physics**: The countdown follows a strict clockwise ritual, ensuring the visual experience feels like a real mechanical device.
+- **Aesthetic Whitespace**: A clean design ensures the central vintage timer remains the visual "hero" of the experience, free from distracting clutter.
 
 ---
 
-## 📚 Academic References & Research
+## 🏗️ Software Engineering & Technical Standards
 
-The culinary and morphological data in Eggy is cited from peer-reviewed sources:
+This project serves as a showcase for production-grade software engineering and Clean Architecture.
 
-1. **Morphology & Scaling**: Data on avian egg ellipticity and scaling laws is based on *Church et al. (2019)*, "The shapes of 10,449 eggs," published in **Nature Scientific Data** ([doi:10.1038/s41597-019-0049-y](https://doi.org/10.1038/s41597-019-0049-y)).
-2. **Food Safety Protocols**: Salmonella safety logic for soft-set eggs follows the **British Lion Standard** (UK Food Standards Agency, 2017).
-3. **Heat Transfer**: Theoretical framework for the protein denaturation algorithms derived from **Charles D.H. Williams**, University of Exeter (Physics of Boiling an Egg).
+### **Clean Architecture & SOLID**
+- **Single Responsibility (SRP)**: Each module is strictly decoupled. For instance, the physics engine handles math independently of the user interface.
+- **Dependency Inversion (DIP)**: Features depend on stable abstractions, ensuring the app is maintainable, testable, and robust.
+- **Feature-First Structure**: The project is organized by domain (Chat, Timer, Physics) to ensure high clarity and low code complexity.
+
+### **Scientific Accuracy**
+- **Williams Formula**: Uses a standardized **100.0°C laboratory baseline** to calculate cooking times with scientific precision.
+- **Peer-Reviewed Data**: Biological and morphological data is cited from research published in **Nature Scientific Data** and other academic journals.
 
 ---
 
