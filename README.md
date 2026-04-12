@@ -71,9 +71,8 @@ Traditional egg timers are tactile, mechanical devices. Eggy honors this heritag
 - **Tactile Logic**: Features a physical clockwise "wind-up" ritual to set the mission time, mirroring the tactile tension of vintage hardware.
 - **Physics-Based Countdown**: Implements a strictly unidirectional clockwise countdown, ensuring the visual experience aligns with real-world mechanical physics.
 
-### **Skeuomorphic Precision**
+### **Realistic Precision**
 - **Visual Excellence**: Uses depth-mapped gradients and cylindrical projections to create a "3D" feel that makes the mechanical timer the centerpiece of the interaction.
-- **Aesthetic Whitespace**: Recent architectural refinements have maximized vertical spacing and eliminated text-crowding to ensure the central dial remains the "hero" of the interface.
 - **Responsive Layouts**: Engineered with robust layout constraints to prevent `RenderFlex` overflows and ensure stability across all device resolutions.
 
 ---
