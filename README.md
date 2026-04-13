@@ -41,8 +41,27 @@ This project serves as a showcase for production-grade software engineering and 
 - **Feature-First Structure**: The project is organized by domain (Chat, Timer, Physics) to ensure high clarity and low code complexity.
 
 ### **Scientific Accuracy**
-- **Williams Formula**: Uses a standardized **100.0°C laboratory baseline** to calculate cooking times with scientific precision.
-- **Peer-Reviewed Data**: Biological and morphological data is cited from research published in **Nature Scientific Data** and other academic journals.
+
+#### **The Williams Formula**
+Eggy implements the **Williams Formula**, a rigorous heat-transfer model for predicting egg doneness. This model accounts for the internal thermal kinetics of an egg's multi-layered structure:
+
+$$t = \frac{M^{2/3} \cdot c \cdot \rho^{1/3}}{K \cdot \pi^2 \cdot (\frac{4\pi}{3})^{2/3}} \cdot \ln\left(0.76 \cdot \frac{T_{initial} - T_{water}}{T_{yolk} - T_{water}}\right)$$
+
+Where:
+- **$M$**: Egg mass (species and size-adjusted).
+- **$c$ and $\rho$**: Species-specific heat capacity and density.
+- **$K$**: Thermal conductivity (adjusted for shell thickness and species).
+- **$T_{water}$**: The boiling water temperature.
+- **$T_{initial}$**: Initial internal temperature (Fridge 4°C or Room 21°C).
+- **$T_{yolk}$**: The targeted molecular coagulation temperature.
+
+#### **Zero-Noise Physics (Altitude)**
+Eggy employs a **Zero-Noise Physics** policy. Unlike traditional tools that attempt unreliable GPS-based altitude compensation, Eggy uses a standardized **100.0°C laboratory baseline** for boiling water. This ensures:
+- **Consistency**: Eliminates environmental variance for maximum repeatability.
+- **Scientific Truth**: In high-fidelity molecular cooking, a fixed boiling point is the gold standard for laboratory-grade precision.
+
+#### **Peer-Reviewed Data**
+Biological and morphological data—including thermal conductivity and specific heat of various avian eggs—is cited from research published in **Nature Scientific Data** and other academic journals.
 
 ---
 

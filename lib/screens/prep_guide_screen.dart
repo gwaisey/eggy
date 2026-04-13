@@ -297,7 +297,7 @@ class _PrepGuideScreenState extends State<PrepGuideScreen> {
                     children: [
                       if (_currentIndex > 0)
                         _HudTextButton(
-                          label: 'ABORT',
+                          label: 'BACK',
                           onTap: _prevStep,
                         ),
                       const Spacer(),
