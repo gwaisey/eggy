@@ -16,6 +16,9 @@ abstract class EggBase implements IEggRecipe {
   bool get hasYolkCustomizer => true;
 
   @override
+  double get initialSliderValue => 0.25;
+
+  @override
   String get difficulty => 'Easy';
 
   @override
@@ -128,7 +131,8 @@ class ScrambledEgg extends EggBase {
   @override String get difficulty => 'Intermediate';
   @override CookingMethod get cookingMethod => CookingMethod.scrambled;
   @override MascotState getMascotState() => MascotState.preparing;
-  @override bool get hasYolkCustomizer => false;
+  @override bool get hasYolkCustomizer => true;
+  @override double get initialSliderValue => 0.5; // Recommended: Creamy
 
   @override
   NutritionFacts getBaseNutrition() => const NutritionFacts(
@@ -300,7 +304,8 @@ class Omelette extends EggBase {
   @override String get icon     => 'assets/images/recipe_omelette.png';
   @override CookingMethod get cookingMethod => CookingMethod.omelette;
   @override MascotState getMascotState() => MascotState.preparing;
-  @override bool get hasYolkCustomizer => false;
+  @override bool get hasYolkCustomizer => true;
+  @override double get initialSliderValue => 0.5; // Recommended: Golden
 
   @override
   NutritionFacts getBaseNutrition() => const NutritionFacts(
@@ -380,6 +385,7 @@ class FriedEgg extends EggBase {
   @override String get difficulty => 'Easy';
   @override CookingMethod get cookingMethod => CookingMethod.fried;
   @override MascotState getMascotState() => MascotState.cooking;
+  @override double get initialSliderValue => 0.0; // Recommended: Sunny Side
 
   @override
   NutritionFacts getBaseNutrition() => const NutritionFacts(
@@ -458,7 +464,7 @@ class EggsBenedict extends EggBase {
 
   @override String get id       => 'benedict_01';
   @override String get title    => 'Egg Benedict';
-  @override String get subtitle => 'The brunch classic';
+  @override String get subtitle => 'The Brunch Classic';
   @override String get description => 'Classic brunch elegance. Toasted muffins, seared ham, and precision-poached eggs draped in a silky, citrus-butter emulsion.';
   @override String get icon     => 'assets/images/recipe_benedict.png';
   @override String get difficulty => 'Advanced';
@@ -560,7 +566,8 @@ class SoySauceEgg extends EggBase {
   @override String get icon     => 'assets/images/recipe_soy_sauce.png';
   @override String get difficulty => 'Intermediate';
   @override CookingMethod get cookingMethod => CookingMethod.soySauceEgg;
-  @override MascotState getMascotState() => MascotState.cooking;
+  @override MascotState getMascotState() => MascotState.preparing;
+  @override double get initialSliderValue => 0.5; // Recommended: Jammy
 
   @override
   NutritionFacts getBaseNutrition() => const NutritionFacts(
@@ -634,6 +641,336 @@ class SoySauceEgg extends EggBase {
       instruction: 'Gently braise the peeled eggs in the glaze until they stained a deep mahogany',
       actionCommand: 'Simmer in glaze',
       iconType: StepIconType.heat,
+    ),
+  ];
+}
+
+class Omurice extends EggBase {
+  Omurice(super.calculator);
+
+  @override String get id       => 'omurice_01';
+  @override String get title    => 'Omurice';
+  @override String get subtitle => 'Tokyo Street Classic';
+  @override String get description => 'A masterclass in texture. Savory ketchup fried rice topped with a soft-scrambled omelette that splits open to reveal a creamy, semi-liquid core.';
+  @override String get icon     => 'assets/images/recipe_omurice.png';
+  @override String get difficulty => 'Advanced';
+  @override CookingMethod get cookingMethod => CookingMethod.omurice;
+  @override MascotState getMascotState() => MascotState.preparing;
+  @override bool get hasYolkCustomizer => true;
+  @override double get initialSliderValue => 0.5; // Recommended: Creamy
+
+  @override
+  NutritionFacts getBaseNutrition() => const NutritionFacts(
+    calories: 170, protein: 9, fatTotal: 8, fatSaturated: 3.2,
+    carbs: 22.0, cholesterol: 180, sodium: 450, potassium: 160,
+  );
+
+  @override
+  List<PrepItem> get ingredients => const [
+    PrepItem(name: 'Large Eggs', iconType: StepIconType.egg, quantity: '3'),
+    PrepItem(name: 'Pre-cooked Rice', iconType: StepIconType.muffin, quantity: '1 bowl'),
+    PrepItem(name: 'Chicken/Onion', iconType: StepIconType.bacon, quantity: 'Diced'),
+    PrepItem(name: 'Ketchup', iconType: StepIconType.sauce, quantity: 'For rice & topping'),
+  ];
+
+  @override
+  List<PrepItem> get tools => const [
+    PrepItem(name: 'Wok / Heavy Pan', iconType: StepIconType.pan),
+    PrepItem(name: 'Small Non-stick', iconType: StepIconType.pan),
+    PrepItem(name: 'Silicone Spatula', iconType: StepIconType.spatula),
+  ];
+
+  @override
+  List<ProTip> get proTips => const [
+    ProTip(
+      id: 'omurice_tip_1',
+      title: 'High Heat Rice',
+      message: 'Fry the rice on high heat first. The ketchup should caramelize slightly (Maillard reaction) before you add the eggs on top!',
+      triggerStepIndex: 1,
+    ),
+  ];
+
+  @override
+  List<YolkState> get yolkOptions => const [
+    YolkState(temperature: 66.0, label: 'Running', hexColor: Color(0xFFFFCC33), viscosity: 0.1),
+    YolkState(temperature: 69.0, label: 'Creamy',  hexColor: Color(0xFFFFD966), viscosity: 0.4),
+    YolkState(temperature: 72.0, label: 'Set',     hexColor: Color(0xFFE8A800), viscosity: 0.7),
+  ];
+
+  @override
+  List<RecipeStep> getStepInstructions() => const [
+    RecipeStep(
+      title: 'Base Architecture',
+      instruction: 'Sauté chicken and onions, then stir-fry rice with ketchup until every grain is coated and savory.',
+      actionCommand: 'Fry the rice',
+      iconType: StepIconType.heat,
+    ),
+    RecipeStep(
+      title: 'The Omelette Matrix',
+      instruction: 'Whisk eggs with a splash of cream. Pour into a hot non-stick pan and scramble rapidly to create small curds.',
+      actionCommand: 'Scramble soft',
+      iconType: StepIconType.whisk,
+    ),
+    RecipeStep(
+      title: 'Core Encapsulation',
+      instruction: 'Start the timer. Shape the omelette into a cigar form while the center remains semi-liquid.',
+      actionCommand: 'Shape omelette',
+      iconType: StepIconType.timerGo,
+      isCookingStep: true,
+    ),
+    RecipeStep(
+      title: 'Culinary Reveal',
+      instruction: 'Place the omelette over the rice, slit the top with a knife, and watch it drape over the base.',
+      actionCommand: 'Slit and serve',
+      iconType: StepIconType.fold,
+    ),
+  ];
+}
+
+class Fuyunghai extends EggBase {
+  Fuyunghai(super.calculator);
+
+  @override String get id       => 'fuyunghai_01';
+  @override String get title    => 'Fu Yong Hai';
+  @override String get subtitle => 'Puffy & Crispy';
+  @override String get description => 'A Chinese-Indonesian celebratory omelette. Crispy, golden-furred edges meet a thick, fluffy interior packed with vegetables and shrimp.';
+  @override String get icon     => 'assets/images/recipe_fuyunghai.png';
+  @override String get difficulty => 'Intermediate';
+  @override CookingMethod get cookingMethod => CookingMethod.fuyunghai;
+  @override MascotState getMascotState() => MascotState.cooking;
+  @override bool get hasYolkCustomizer => true;
+  @override double get initialSliderValue => 1.0; // Recommended: Firm
+
+  @override
+  NutritionFacts getBaseNutrition() => const NutritionFacts(
+    calories: 250, protein: 11, fatTotal: 18, fatSaturated: 4.5,
+    carbs: 12.0, cholesterol: 220, sodium: 550, potassium: 210,
+  );
+
+  @override
+  List<PrepItem> get ingredients => const [
+    PrepItem(name: 'Large Eggs', iconType: StepIconType.egg, quantity: '4'),
+    PrepItem(name: 'Shredded Veg', iconType: StepIconType.muffin, quantity: 'Cabbage/Carrot'),
+    PrepItem(name: 'Shrimp/Crab', iconType: StepIconType.bacon, quantity: '100g'),
+    PrepItem(name: 'Sweet & Sour', iconType: StepIconType.sauce, quantity: 'Tomato based'),
+  ];
+
+  @override
+  List<PrepItem> get tools => const [
+    PrepItem(name: 'Deep Wok', iconType: StepIconType.pan),
+    PrepItem(name: 'Mixing Bowl', iconType: StepIconType.bowl),
+  ];
+
+  @override
+  List<ProTip> get proTips => const [
+    ProTip(
+      id: 'fuyunghai_tip_1',
+      title: 'The Flour Secret',
+      message: 'Add 1-2 tbsp of flour to the egg mix. It helps structural integrity and creates that signature thick, puffy height!',
+      triggerStepIndex: 0,
+    ),
+  ];
+
+  @override
+  List<YolkState> get yolkOptions => const [
+    YolkState(temperature: 75.0, label: 'Fluffy',   hexColor: Color(0xFFFFCC33), viscosity: 0.6),
+    YolkState(temperature: 82.0, label: 'Firm',     hexColor: Color(0xFFC8860A), viscosity: 1.0),
+  ];
+
+  @override
+  List<RecipeStep> getStepInstructions() => const [
+    RecipeStep(
+      title: 'Vegetable Bonding',
+      instruction: 'Mix the shredded vegetables and shrimp into the beaten eggs with a touch of flour and salt.',
+      actionCommand: 'Mix ingredients',
+      iconType: StepIconType.bowl,
+    ),
+    RecipeStep(
+      title: 'The Deep Fry',
+      instruction: 'Pour the mix into 2 inches of hot oil. The egg will puff up immediately. Start the Eggy timer.',
+      actionCommand: 'Fry until puffy',
+      iconType: StepIconType.timerGo,
+      isCookingStep: true,
+    ),
+    RecipeStep(
+      title: 'Sauce Glaze',
+      instruction: 'While the egg drains, warm the tomato-based pea sauce until it bubbles.',
+      actionCommand: 'Heat the sauce',
+      iconType: StepIconType.saucepan,
+    ),
+    RecipeStep(
+      title: 'Umami Cascade',
+      instruction: 'Plate the giant golden omelette and pour the sweet & sour sauce generously over the top.',
+      actionCommand: 'Pour sauce & serve',
+      iconType: StepIconType.plate,
+    ),
+  ];
+}
+
+class EggTofu extends EggBase {
+  EggTofu(super.calculator);
+
+  @override String get id       => 'tahutelor_01';
+  @override String get title    => 'Egg Tofu';
+  @override String get subtitle => 'Tahu Telor Classic';
+  @override String get description => 'A practical, savory masterpiece originating from East Java, known locally as Tahu Telor. Cubed tofu bonded by a golden egg pancake, served with a rich Petis peanut sauce and fresh bean sprouts.';
+  @override String get icon     => 'assets/images/recipe_egg_tofu.png';
+  @override String get difficulty => 'Easy';
+  @override CookingMethod get cookingMethod => CookingMethod.eggTofu;
+  @override MascotState getMascotState() => MascotState.success;
+  @override bool get hasYolkCustomizer => true;
+  @override double get initialSliderValue => 1.0; // Recommended: Firm
+
+  @override
+  NutritionFacts getBaseNutrition() => const NutritionFacts(
+    calories: 328, protein: 12.6, fatTotal: 19.9, fatSaturated: 5.2,
+    carbs: 24.6, cholesterol: 185, sodium: 410, potassium: 310,
+  );
+
+  @override
+  List<PrepItem> get ingredients => const [
+    PrepItem(name: 'Large Eggs', iconType: StepIconType.egg, quantity: '2-3'),
+    PrepItem(name: 'White Tofu', iconType: StepIconType.muffin, quantity: 'Cubic Diced'),
+    PrepItem(name: 'Petis Sauce', iconType: StepIconType.sauce, quantity: 'Peanut/Shrimp base'),
+    PrepItem(name: 'Bean Sprouts', iconType: StepIconType.water, quantity: 'Fresh garnish'),
+  ];
+
+  @override
+  List<PrepItem> get tools => const [
+    PrepItem(name: 'Frying Pan', iconType: StepIconType.pan),
+    PrepItem(name: 'Paring Knife', iconType: StepIconType.knife),
+  ];
+
+  @override
+  List<ProTip> get proTips => const [
+    ProTip(
+      id: 'tahutelor_tip_1',
+      title: 'Tofu Crisp',
+      message: 'Dry your tofu cubes with a paper towel before mixing with egg. This ensures the tofu stays firm inside while the egg gets crispy!',
+      triggerStepIndex: 0,
+    ),
+  ];
+
+  @override
+  List<YolkState> get yolkOptions => const [
+    YolkState(temperature: 72.0, label: 'Tender Set', hexColor: Color(0xFFFFCC33), viscosity: 0.7),
+    YolkState(temperature: 78.0, label: 'Firm Set',   hexColor: Color(0xFFC8860A), viscosity: 1.0),
+  ];
+
+  @override
+  List<RecipeStep> getStepInstructions() => const [
+    RecipeStep(
+      title: 'Cubic Integration',
+      instruction: 'Cut tofu into small cubes and whisk into the seasoned egg mixture.',
+      actionCommand: 'Dice & mix',
+      iconType: StepIconType.knife,
+    ),
+    RecipeStep(
+      title: 'The Golden Bond',
+      instruction: 'Pour into a hot pan. Fry until the bottom is deeply golden, then flip. Start the Eggy timer.',
+      actionCommand: 'Fry the cake',
+      iconType: StepIconType.timerGo,
+      isCookingStep: true,
+    ),
+    RecipeStep(
+      title: 'Structural Garnish',
+      instruction: 'Assemble the tall tofu-egg omelette with a handful of fresh bean sprouts and celery.',
+      actionCommand: 'Top with garnish',
+      iconType: StepIconType.water,
+    ),
+    RecipeStep(
+      title: 'Petis Saturation',
+      instruction: 'Drizzle the specialty black peanut-petis sauce over the top before serving hot.',
+      actionCommand: 'Add sauce & serve',
+      iconType: StepIconType.sauce,
+    ),
+  ];
+}
+
+class OnsenTamago extends EggBase {
+  OnsenTamago(super.calculator);
+
+  @override String get id       => 'onsentamago_01';
+  @override String get title    => 'Onsen Tamago';
+  @override String get subtitle => 'Hot Spring Silk';
+  @override String get description => 'Thermal perfection. Slow-cooked at low temperature to achieve a delicate, custard-like white and a rich, creamy yolk that flows like thick honey.';
+  @override String get icon     => 'assets/images/recipe_onsentamago.png';
+  @override String get difficulty => 'Intermediate';
+  @override CookingMethod get cookingMethod => CookingMethod.onsenTamago;
+  @override MascotState getMascotState() => MascotState.preparing;
+  @override bool get hasYolkCustomizer => true;
+  @override double get initialSliderValue => 0.5; // Recommended: Creamy Gel
+
+  @override
+  NutritionFacts getBaseNutrition() => const NutritionFacts(
+    calories: 155, protein: 13, fatTotal: 11, fatSaturated: 3.3,
+    carbs: 1.1, cholesterol: 372, sodium: 124, potassium: 126,
+  );
+
+  @override
+  List<PrepItem> get ingredients => const [
+    PrepItem(name: 'Fresh Egg', iconType: StepIconType.egg, quantity: '1-4'),
+    PrepItem(name: 'Cold Water', iconType: StepIconType.water, quantity: '200ml'),
+    PrepItem(name: 'Dashi Broth', iconType: StepIconType.sauce, quantity: 'For serving'),
+  ];
+
+  @override
+  List<PrepItem> get tools => const [
+    PrepItem(name: 'Insulated Pot', iconType: StepIconType.pot),
+    PrepItem(name: 'Kettle', iconType: StepIconType.timerGo),
+  ];
+
+  @override
+  List<ProTip> get proTips => const [
+    ProTip(
+      id: 'onsen_tip_1',
+      title: 'Thermal Buffer',
+      message: 'Adding the cold water to the boiling water is CRITICAL—it drops the temp to ~80°C, which is the perfect starting point for slow steeping!',
+      triggerStepIndex: 1,
+    ),
+  ];
+
+  @override
+  List<YolkState> get yolkOptions => const [
+    YolkState(temperature: 63.5, label: 'Silk Custard', hexColor: Color(0xFFFFAA00), viscosity: 0.3),
+    YolkState(temperature: 65.5, label: 'Creamy Gel',   hexColor: Color(0xFFFFCC33), viscosity: 0.5),
+  ];
+
+  @override
+  List<RecipeStep> getStepInstructions() => [
+    const RecipeStep(
+      title: 'Boiling Origin',
+      instruction: 'Bring 1 liter of water to a rolling boil in a pot with a lid.',
+      actionCommand: 'Boil water',
+      iconType: StepIconType.heat,
+    ),
+    const RecipeStep(
+      title: 'Thermal Calibration',
+      instruction: 'Turn off heat and add 200ml of room-temperature water to dial in the steep temperature.',
+      actionCommand: 'Add cold water',
+      iconType: StepIconType.water,
+    ),
+    RecipeStep(
+      title: 'Molecular Incubation',
+      instruction: 'Gently lower the eggs, cover the lid, and let the residual heat work its magic. Start the timer.',
+      actionCommand: 'Slow steep',
+      iconType: StepIconType.timerGo,
+      isCookingStep: true,
+      customDuration: const Duration(minutes: 17),
+      context: DataContext(
+        content: 'Low-temperature denaturation of ovomucin and vitellin takes significantly longer but prevents the "rubbery" texture of rapid high-heat coagulation.',
+        metadata: {'Domain': 'Thermal_Equilibrium', 'Target': '65°C'},
+        lineage: {'dc:creator': 'Tsuyoshi Mizutani', 'dc:date': '2015'},
+        trustScore: 1.0,
+        classification: 'Theory',
+        policy: 'Incubation Guide',
+      ),
+    ),
+    const RecipeStep(
+      title: 'The Disclosure',
+      instruction: 'Crack the shell gently over a small dish. The egg should slide out as a silky, uniform custard.',
+      actionCommand: 'Crack into bowl',
+      iconType: StepIconType.plate,
     ),
   ];
 }

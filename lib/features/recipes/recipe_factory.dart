@@ -19,6 +19,10 @@ class RecipeFactory {
       case CookingMethod.fried:     return FriedEgg(_engine);
       case CookingMethod.benedict:  return EggsBenedict(_engine);
       case CookingMethod.soySauceEgg: return SoySauceEgg(_engine);
+      case CookingMethod.omurice:     return Omurice(_engine);
+      case CookingMethod.fuyunghai:    return Fuyunghai(_engine);
+      case CookingMethod.eggTofu:     return EggTofu(_engine);
+      case CookingMethod.onsenTamago:  return OnsenTamago(_engine);
     }
   }
 
@@ -30,5 +34,9 @@ class RecipeFactory {
     Omelette(_engine),
     FriedEgg(_engine),
     EggsBenedict(_engine),
+    Omurice(_engine),
+    Fuyunghai(_engine),
+    EggTofu(_engine),
+    OnsenTamago(_engine),
   ];
 }

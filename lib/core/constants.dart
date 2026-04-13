@@ -178,5 +178,5 @@ class EggSpeciesTheme {
 enum EggSize      { small, medium, large, jumbo }
 enum EggSpecies   { quail, henWhite, henBrown, duck, goose, emu, ostrich }
 enum StartTemp    { fridge, roomTemp }
-enum CookingMethod{ boiled, scrambled, poached, omelette, fried, benedict, soySauceEgg }
+enum CookingMethod{ boiled, scrambled, poached, omelette, fried, benedict, soySauceEgg, omurice, fuyunghai, eggTofu, onsenTamago }
 enum MascotState  { idle, preparing, cooking, warning, success, sadRaw }

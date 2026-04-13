@@ -52,7 +52,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/data/recipes.json
     - assets/data/chat_responses.json
     - assets/data/egg_science_corpus.md
     - .env

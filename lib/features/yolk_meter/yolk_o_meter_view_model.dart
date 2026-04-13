@@ -11,11 +11,15 @@ class YolkOMeterViewModel extends ChangeNotifier {
   final EggPhysicsEngine _engine;
   UserEggPreferences _prefs;
 
-  double _sliderValue = 0.2; // Default: Jammy
+  double _sliderValue;
   final List<double> _boundaries = EggConstants.yolkBoundaries;
 
-  YolkOMeterViewModel(this._engine, {UserEggPreferences? prefs})
-      : _prefs = prefs ?? const UserEggPreferences(species: EggSpecies.henWhite);
+  YolkOMeterViewModel(
+    this._engine, {
+    UserEggPreferences? prefs,
+    double initialValue = 0.2, // Legacy default
+  })  : _sliderValue = initialValue,
+        _prefs = prefs ?? const UserEggPreferences(species: EggSpecies.henWhite);
 
   // ── Getters ──────────────────────────────────────────────────────────────────
 

@@ -32,7 +32,10 @@ abstract class IEggRecipe {
 
   /// Whether this recipe uses the Yolk-o-Meter slider.
   /// Scrambled & Omelette override to false — they go straight to a prep guide.
-  bool get hasYolkCustomizer => true;
+  bool get hasYolkCustomizer;
+
+  /// The recommended starting position for the Yolk-o-Meter [0.0 - 1.0]
+  double get initialSliderValue;
 
   /// Returns the baseline nutrition (per 100g) for this specific recipe.
   /// This takes into account added ingredients like butter, oil, or sauces.

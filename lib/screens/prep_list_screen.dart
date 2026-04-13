@@ -37,6 +37,7 @@ class _PrepListScreenState extends State<PrepListScreen> {
     return ChangeNotifierProvider(
       create: (_) => YolkOMeterViewModel(
         context.read<EggPhysicsEngine>(),
+        initialValue: widget.recipe.initialSliderValue,
         prefs: UserEggPreferences(
           size: globalPrefs.eggSize,
           species: globalPrefs.eggSpecies,
@@ -368,7 +369,7 @@ class _PrepListScaffold extends StatelessWidget {
                   _QuantitySelector(
                     count: vm.prefs.eggCount,
                     onChanged: vm.updateEggCount,
-                    activeColor: vm.yolkColor,
+                    activeColor: EggyColors.vibrantYolk,
                   ),
                   const SizedBox(width: 12),
                   // Size Toggle
@@ -376,7 +377,7 @@ class _PrepListScaffold extends StatelessWidget {
                     child: _EggyToggle(
                       labels: const ['Small', 'Large'],
                       selectedIndex: vm.prefs.size == EggSize.large ? 1 : 0,
-                      activeColor: vm.yolkColor,
+                      activeColor: EggyColors.vibrantYolk,
                       onChanged: (idx) => vm.updateSize(idx == 0 ? EggSize.small : EggSize.large),
                     ),
                   ),
@@ -387,7 +388,7 @@ class _PrepListScaffold extends StatelessWidget {
               _EggyToggle(
                 labels: const ['Fridge Cold', 'Room Temperature'],
                 selectedIndex: vm.prefs.startTemp == StartTemp.roomTemp ? 1 : 0,
-                activeColor: vm.yolkColor,
+                activeColor: EggyColors.vibrantYolk,
                 onChanged: (idx) => vm.updateStartTemp(idx == 0 ? StartTemp.fridge : StartTemp.roomTemp),
               ),
             ],
@@ -504,9 +505,9 @@ class _MetricsRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _MetricItem(icon: Icons.speed_rounded, label: recipe.difficulty, title: 'Difficulty'),
-          _MetricItem(icon: Icons.timer_outlined, label: vm?.formattedCookingTime ?? '5 min', title: 'Prep Time'),
-          _MetricItem(icon: Icons.egg_alt_outlined, label: vm?.yolkLabel ?? 'Cooked', title: 'Goal'),
+          Flexible(child: _MetricItem(icon: Icons.speed_rounded, label: recipe.difficulty, title: 'Difficulty')),
+          Flexible(child: _MetricItem(icon: Icons.timer_outlined, label: vm?.formattedCookingTime ?? '5 min', title: 'Prep Time')),
+          Flexible(child: _MetricItem(icon: Icons.egg_alt_outlined, label: vm?.yolkLabel ?? 'Cooked', title: 'Goal')),
         ],
       ),
     );
