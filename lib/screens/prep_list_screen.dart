@@ -286,88 +286,109 @@ class _PrepListScaffold extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const _SectionHeader(title: 'Target result'),
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
         AnimatedContainer(
           duration: const Duration(milliseconds: 300),
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 28),
           decoration: BoxDecoration(
-            color: vm.yolkColor.withValues(alpha: 0.1),
-            borderRadius: BorderRadius.circular(24),
-            border: Border.all(color: vm.yolkColor.withValues(alpha: 0.2)),
+            color: vm.yolkColor.withValues(alpha: 0.08),
+            borderRadius: BorderRadius.circular(32),
+            border: Border.all(color: vm.yolkColor.withValues(alpha: 0.15), width: 1.5),
           ),
-          child: Row(
+          child: Column(
             children: [
-              // Egg Cross-Section Visual
-              SizedBox(
-                width: 80,
-                height: 100,
-                child: _EggCrossSection(color: vm.yolkColor),
+              // 1. Mission Outcome Header (Visual + Metrics)
+              Row(
+                children: [
+                  // Egg Cross-Section Visual
+                  SizedBox(
+                    width: 70,
+                    height: 90,
+                    child: _EggCrossSection(color: vm.yolkColor),
+                  ),
+                  const SizedBox(width: 20),
+                  // Metrics
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          vm.yolkLabel.toUpperCase(), 
+                          style: AppTheme.caption.copyWith(
+                            fontWeight: FontWeight.w900, 
+                            letterSpacing: 1.2,
+                            color: vm.yolkColor.withValues(alpha: 0.8),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          vm.formattedCookingTime, 
+                          style: AppTheme.display.copyWith(fontSize: 36, height: 1.0),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 24),
-              // Controls
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(vm.yolkLabel, style: AppTheme.bodyMedium.copyWith(fontWeight: FontWeight.bold)),
-                        Text(vm.formattedCookingTime, style: AppTheme.display.copyWith(fontSize: 24)),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    SliderTheme(
-                      data: SliderTheme.of(context).copyWith(
-                        activeTrackColor: vm.yolkColor,
-                        inactiveTrackColor: vm.yolkColor.withValues(alpha: 0.1),
-                        thumbColor: Colors.white,
-                        overlayColor: vm.yolkColor.withValues(alpha: 0.1),
-                        trackHeight: 6,
-                      ),
-                      child: Slider(
-                        value: vm.sliderValue,
-                        onChanged: vm.updateSlider,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    const SizedBox(height: 16),
-                    // New Species Carousel
-                    _SpeciesCarousel(
-                      selected: vm.prefs.species,
-                      onChanged: vm.updateSpecies,
-                      activeColor: vm.yolkColor,
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
-                      children: [
-                        // Quantity (+/-)
-                        _QuantitySelector(
-                          count: vm.prefs.eggCount,
-                          onChanged: vm.updateEggCount,
-                          activeColor: vm.yolkColor,
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: _EggyToggle(
-                            labels: const ['Small', 'Large'],
-                            selectedIndex: vm.prefs.size == EggSize.large ? 1 : 0,
-                            activeColor: vm.yolkColor,
-                            onChanged: (idx) => vm.updateSize(idx == 0 ? EggSize.small : EggSize.large),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: _EggyToggle(
-                            labels: const ['Fridge', 'Room'],
-                            selectedIndex: vm.prefs.startTemp == StartTemp.roomTemp ? 1 : 0,
-                            activeColor: vm.yolkColor,
-                            onChanged: (idx) => vm.updateStartTemp(idx == 0 ? StartTemp.fridge : StartTemp.roomTemp),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+              
+              const SizedBox(height: 24),
+              
+              // 2. The Doneness Slider
+              SliderTheme(
+                data: SliderTheme.of(context).copyWith(
+                  activeTrackColor: vm.yolkColor,
+                  inactiveTrackColor: vm.yolkColor.withValues(alpha: 0.1),
+                  thumbColor: Colors.white,
+                  overlayColor: vm.yolkColor.withValues(alpha: 0.1),
+                  trackHeight: 10, // Thicker, more tactile track
+                  thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12, elevation: 4),
                 ),
+                child: Slider(
+                  value: vm.sliderValue,
+                  onChanged: vm.updateSlider,
+                ),
+              ),
+
+              const SizedBox(height: 32),
+              
+              // 3. Species Selection (Full Width Integrated)
+              _SpeciesCarousel(
+                selected: vm.prefs.species,
+                onChanged: vm.updateSpecies,
+                activeColor: vm.yolkColor,
+              ),
+
+              const SizedBox(height: 32),
+
+              // 4. Physical Attributes (The "Normal Size" Controls)
+              // We split these into two rows to ensure "Normal Size" buttons on mobile
+              Row(
+                children: [
+                  // Quantity
+                  _QuantitySelector(
+                    count: vm.prefs.eggCount,
+                    onChanged: vm.updateEggCount,
+                    activeColor: vm.yolkColor,
+                  ),
+                  const SizedBox(width: 12),
+                  // Size Toggle
+                  Expanded(
+                    child: _EggyToggle(
+                      labels: const ['Small', 'Large'],
+                      selectedIndex: vm.prefs.size == EggSize.large ? 1 : 0,
+                      activeColor: vm.yolkColor,
+                      onChanged: (idx) => vm.updateSize(idx == 0 ? EggSize.small : EggSize.large),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              // Temperature Toggle (Full Width for clarity)
+              _EggyToggle(
+                labels: const ['Fridge Cold', 'Room Temperature'],
+                selectedIndex: vm.prefs.startTemp == StartTemp.roomTemp ? 1 : 0,
+                activeColor: vm.yolkColor,
+                onChanged: (idx) => vm.updateStartTemp(idx == 0 ? StartTemp.fridge : StartTemp.roomTemp),
               ),
             ],
           ),
@@ -618,8 +639,8 @@ class _EggyToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 38,
-      padding: const EdgeInsets.all(4),
+      height: 50, // Increased to "Normal" height
+      padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -637,7 +658,7 @@ class _EggyToggle extends StatelessWidget {
                 left: selectedIndex * width,
                 child: Container(
                   width: width,
-                  height: 30,
+                  height: 40, // Match inner height
                   decoration: BoxDecoration(
                     color: activeColor,
                     borderRadius: BorderRadius.circular(8),
@@ -695,7 +716,7 @@ class _QuantitySelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 44,
+      height: 50, // Normal height
       padding: const EdgeInsets.symmetric(horizontal: 4),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -837,10 +858,10 @@ class _SpeciesCarousel extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12.0),
                     child: Text(
-                      theme.label.split(' ').last.toUpperCase(),
+                      theme.label.toUpperCase(),
                       style: AppTheme.caption.copyWith(
-                        fontSize: 9,
-                        letterSpacing: 1.0,
+                        fontSize: 8, // Slightly smaller to fit "WHITE HEN"
+                        letterSpacing: 0.8,
                         fontWeight: isSelected ? FontWeight.w900 : FontWeight.bold,
                         color: isSelected ? EggyColors.onyx : EggyColors.onyx.withValues(alpha: 0.3),
                       ),
