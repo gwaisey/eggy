@@ -174,19 +174,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: FloatingButton(
                     onTap: () => Navigator.pushNamed(context, '/chat'),
                     backgroundColor: EggyColors.onyx,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.auto_awesome_outlined, size: 16, color: EggyColors.champagne),
-                        const SizedBox(width: 10),
-                        Text('Assistant', 
-                          style: AppTheme.bodyMedium.copyWith(
-                            fontSize: res.spClamped(15), 
-                            color: Colors.white,
-                            letterSpacing: 1.0,
-                          )
-                        ),
-                      ],
+                    padding: EdgeInsets.symmetric(horizontal: res.spClamped(20), vertical: res.hp(12)),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.auto_awesome_outlined, size: 16, color: EggyColors.vibrantYolk),
+                          const SizedBox(width: 8),
+                          Text('Assistant', 
+                            style: AppTheme.bodyMedium.copyWith(
+                              fontSize: res.spClamped(15), 
+                              color: Colors.white,
+                              letterSpacing: 0.5,
+                            )
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
