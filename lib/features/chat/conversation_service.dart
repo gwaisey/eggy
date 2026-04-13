@@ -179,11 +179,18 @@ You are a professional assistant specializing in avian biology and egg-culinary 
 
   @override
   Future<String> getResponse(String userMessage) async {
-    final apiKey = dotenv.env['OPENROUTER_API_KEY'] ?? '';
-    final modelToUse = dotenv.env['OPENROUTER_MODEL'] ?? 'meta-llama/llama-3.3-70b-instruct:free';
+    // 1. Check dart-define first (Standard for Vercel/Production)
+    // 2. Fallback to .env (Standard for Local Development)
+    final apiKey = const String.fromEnvironment('OPENROUTER_API_KEY').isNotEmpty 
+        ? const String.fromEnvironment('OPENROUTER_API_KEY')
+        : (dotenv.env['OPENROUTER_API_KEY'] ?? '');
+        
+    final modelToUse = const String.fromEnvironment('OPENROUTER_MODEL').isNotEmpty
+        ? const String.fromEnvironment('OPENROUTER_MODEL')
+        : (dotenv.env['OPENROUTER_MODEL'] ?? 'meta-llama/llama-3.3-70b-instruct:free');
     
     if (apiKey.isEmpty || apiKey == 'your_openrouter_key_here') {
-      throw Exception('AI API key not set in .env');
+      throw Exception('AI API key not set (checked --dart-define and .env)');
     }
 
     // We try two paths to handle potential rate limits:

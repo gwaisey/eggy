@@ -41,7 +41,7 @@ dependencies:
   intl: ^0.19.0
   cached_network_image: ^3.4.1
   visibility_detector: ^0.4.0+2
-  flutter_markdown: ^0.7.7+1
+  flutter_markdown_plus: ^1.0.1+1 # Community-maintained successor
 
 dev_dependencies:
   flutter_test:
@@ -54,7 +54,6 @@ flutter:
   assets:
     - assets/data/chat_responses.json
     - assets/data/egg_science_corpus.md
-    - .env
     - assets/images/
     - assets/images/chat/
     - assets/images/prep/

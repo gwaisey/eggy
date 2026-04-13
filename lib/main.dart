@@ -20,16 +20,20 @@ import 'features/mascot/eggy_mascot_controller.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Load .env for Gemini API key
+  // Load .env for local development fallback
   try {
     await dotenv.load(fileName: '.env');
-    // Security Guardrail: Check for placeholder or missing keys
-    final apiKey = dotenv.env['OPENROUTER_API_KEY'];
-    if (apiKey == null || apiKey.isEmpty || apiKey == 'your_openrouter_key_here') {
-      debugPrint('âš ï¸ SECURITY ALERT: OpenRouter API key is missing or set to placeholder in .env.');
-    }
   } catch (e) {
-    debugPrint('âš ï¸ CONFIG ERROR: .env file not found. Ensure it exists and is ignored by Git.');
+    debugPrint('ℹ️ .env not found. Using system environment defines if available.');
+  }
+
+  // Security & Connectivity Check
+  final apiKey = const String.fromEnvironment('OPENROUTER_API_KEY').isNotEmpty
+      ? const String.fromEnvironment('OPENROUTER_API_KEY')
+      : dotenv.env['OPENROUTER_API_KEY'];
+
+  if (apiKey == null || apiKey.isEmpty || apiKey == 'your_openrouter_key_here') {
+    debugPrint('⚠️ SECURITY/CONFIG ALERT: AI API key is missing. Ensure --dart-define or .env is configured.');
   }
 
   // Load persisted preferences

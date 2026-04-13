@@ -7,7 +7,9 @@ import '../../core/interfaces/i_web_research_service.dart';
 class WebResearchService implements IWebResearchService {
   @override
   Future<WebResearchResult> investigate(String query, List<String> localContextFacts) async {
-    final apiKey = dotenv.env['SERPER_API_KEY'] ?? '';
+    final apiKey = const String.fromEnvironment('SERPER_API_KEY').isNotEmpty
+        ? const String.fromEnvironment('SERPER_API_KEY')
+        : (dotenv.env['SERPER_API_KEY'] ?? '');
     
     if (apiKey.isEmpty || apiKey == 'your_serper_key_here') {
       return WebResearchResult(

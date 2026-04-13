@@ -18,16 +18,13 @@ export PATH="$PATH:`pwd`/flutter/bin"
 echo "Configuring Flutter..."
 flutter config --no-analytics
 
-# 4. Inject Environment Variables for Production
+# 4. Build for Web with Secure Injected Environments
 # These are retrieved from the Vercel Dashboard Settings
-echo "Injecting Secure Environment Variables..."
-echo "OPENROUTER_API_KEY=$OPENROUTER_API_KEY" > .env
-echo "OPENROUTER_MODEL=$OPENROUTER_MODEL" >> .env
-echo "SERPER_API_KEY=$SERPER_API_KEY" >> .env
-
-# 5. Build for Web
-echo "Building Flutter Web application (Release)..."
-flutter build web --release
+echo "Building Flutter Web application (Release) with secure defines..."
+flutter build web --release \
+  --dart-define=OPENROUTER_API_KEY=$OPENROUTER_API_KEY \
+  --dart-define=OPENROUTER_MODEL=$OPENROUTER_MODEL \
+  --dart-define=SERPER_API_KEY=$SERPER_API_KEY
 
 # 5. Prepare output for Vercel
 echo "Preparing output directory..."
