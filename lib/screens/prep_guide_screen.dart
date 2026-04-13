@@ -139,7 +139,7 @@ class _PrepGuideScreenState extends State<PrepGuideScreen> {
     }
 
     return Scaffold(
-      backgroundColor: EggyColors.warmWhite,
+      backgroundColor: EggyColors.alabaster,
       body: Stack(
         children: [
           _HeatPulseBackground(progress: _currentIndex / (steps.length - 1)),
@@ -249,12 +249,12 @@ class _PrepGuideScreenState extends State<PrepGuideScreen> {
                           child: Container(
                             padding: const EdgeInsets.all(24),
                             decoration: BoxDecoration(
-                              color: Colors.white.withValues(alpha: 0.4),
+                              color: EggyColors.white.withValues(alpha: 0.4),
                               borderRadius: BorderRadius.circular(32),
-                              border: Border.all(color: Colors.white.withValues(alpha: 0.8)),
+                              border: Border.all(color: EggyColors.white.withValues(alpha: 0.8)),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.03),
+                                  color: EggyColors.onyx.withValues(alpha: 0.03),
                                   blurRadius: 20,
                                   offset: const Offset(0, 10),
                                 ),
@@ -331,7 +331,7 @@ class _HudIconButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.5),
+          color: EggyColors.white.withValues(alpha: 0.5),
           shape: BoxShape.circle,
           border: Border.all(color: EggyColors.onyx.withValues(alpha: 0.05)),
         ),
@@ -380,7 +380,7 @@ class _HudActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = isStart 
         ? EggyColors.vibrantYolk 
-        : (isFinish ? const Color(0xFF2E7D32) : EggyColors.onyx);
+        : (isFinish ? EggyColors.slate : EggyColors.onyx);
     
     return FloatingButton(
       onTap: onTap,
@@ -391,7 +391,7 @@ class _HudActionButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             if (isStart) ...[
-              const Icon(Icons.timer_outlined, color: Colors.white, size: 18),
+              const Icon(Icons.timer_outlined, color: EggyColors.white, size: 18),
               const SizedBox(width: 12),
             ],
             Text(
@@ -464,8 +464,8 @@ class _HeatPulseBackgroundState extends State<_HeatPulseBackground> with SingleT
       builder: (context, _) {
         final heatIntensity = widget.progress;
         // More vibrant "Sleek Kawaii" gradient
-        final baseColor = Color.lerp(EggyColors.warmWhite, EggyColors.accentGold.withValues(alpha: 0.1), heatIntensity)!;
-        final pulseColor = Color.lerp(EggyColors.eggyPink.withValues(alpha: 0.05), EggyColors.tastyTeal.withValues(alpha: 0.05), heatIntensity)!;
+        final baseColor = Color.lerp(EggyColors.alabaster, EggyColors.vibrantYolk.withValues(alpha: 0.1), heatIntensity)!;
+        final pulseColor = Color.lerp(EggyColors.vibrantYolk.withValues(alpha: 0.05), EggyColors.slate.withValues(alpha: 0.05), heatIntensity)!;
         
         return Container(
           decoration: BoxDecoration(
@@ -524,7 +524,7 @@ class _ProfessorTipOverlay extends StatelessWidget {
                       fontWeight: FontWeight.w900,
                       fontSize: 8,
                       letterSpacing: 1.2,
-                      color: EggyColors.tastyTeal,
+                      color: EggyColors.slate,
                     ),
                   ),
                   const SizedBox(height: 2),

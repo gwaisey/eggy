@@ -27,7 +27,7 @@ class RecipeStepMediaView extends StatelessWidget {
   Widget build(BuildContext context) {
     // Determine badge color based on classification
     final isSafety = this.context?.classification == 'Safety';
-    final badgeColor = isSafety ? const Color(0xFFF5222D) : EggyColors.vibrantYolk;
+    final badgeColor = isSafety ? EggyColors.vibrantYolk : EggyColors.vibrantYolk;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -180,7 +180,7 @@ class _LabCardSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isSafety = data.classification == 'Safety';
-    final accentColor = isSafety ? const Color(0xFFF5222D) : EggyColors.liquidGold;
+    final accentColor = isSafety ? EggyColors.vibrantYolk : EggyColors.vibrantYolk;
 
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 48, 16, 32),

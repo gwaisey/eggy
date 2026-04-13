@@ -44,5 +44,18 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Security
+# Security & Secrets
 .env
+.env.*
+!.env.example
+secrets.json
+secrets.yaml
+*.key
+*.pem
+*.jks
+*.p12
+
+# Experimental / Junk
+scratch/
+test/secrets/
+migrate_working_dir/

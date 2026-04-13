@@ -21,7 +21,16 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Load .env for Gemini API key
-  await dotenv.load(fileName: '.env');
+  try {
+    await dotenv.load(fileName: '.env');
+    // Security Guardrail: Check for placeholder or missing keys
+    final apiKey = dotenv.env['OPENROUTER_API_KEY'];
+    if (apiKey == null || apiKey.isEmpty || apiKey == 'your_openrouter_key_here') {
+      debugPrint('âš ï¸ SECURITY ALERT: OpenRouter API key is missing or set to placeholder in .env.');
+    }
+  } catch (e) {
+    debugPrint('âš ï¸ CONFIG ERROR: .env file not found. Ensure it exists and is ignored by Git.');
+  }
 
   // Load persisted preferences
   final prefs = PreferencesViewModel();

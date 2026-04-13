@@ -43,7 +43,7 @@ class GlassCard extends StatelessWidget {
             borderRadius: radius,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.03),
+                color: EggyColors.onyx.withValues(alpha: 0.03),
                 blurRadius: 30,
                 offset: const Offset(0, 10),
               ),

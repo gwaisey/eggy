@@ -123,11 +123,11 @@ class _PrepListScaffold extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Container(
                   decoration: const BoxDecoration(
-                    color: Colors.white,
+                    color: EggyColors.white,
                     borderRadius: BorderRadius.vertical(top: Radius.circular(36)),
                     boxShadow: [
                       BoxShadow(
-                        color: Color(0x0A000000),
+                        color: EggyColors.shadowSoft, // onyx with 4% alpha
                         blurRadius: 20,
                         offset: Offset(0, -10),
                       ),
@@ -602,7 +602,7 @@ class _CrossSectionPainter extends CustomPainter {
     
     // Subtle shadow for depth
     canvas.drawPath(shellPath, Paint()
-      ..color = Colors.black.withValues(alpha: 0.05)
+      ..color = EggyColors.onyx.withValues(alpha: 0.05)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2);
 
@@ -645,7 +645,7 @@ class _EggyToggle extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.black.withValues(alpha: 0.05)),
+        border: Border.all(color: EggyColors.onyx.withValues(alpha: 0.05)),
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -722,7 +722,7 @@ class _QuantitySelector extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.black.withValues(alpha: 0.05)),
+        border: Border.all(color: EggyColors.onyx.withValues(alpha: 0.05)),
       ),
       child: Row(
         children: [
@@ -986,10 +986,10 @@ class _NutritionSection extends StatelessWidget {
                       label: 'FATS',
                       value: facts.fatTotal,
                       unit: 'g',
-                      gradient: [EggyColors.liquidGold.withValues(alpha: 0.2), EggyColors.liquidGold.withValues(alpha: 0.05)],
+                      gradient: [EggyColors.vibrantYolk.withValues(alpha: 0.2), EggyColors.vibrantYolk.withValues(alpha: 0.05)],
                       icon: Icons.opacity_rounded,
                       color: EggyColors.onyx,
-                      accentColor: EggyColors.bronze,
+                      accentColor: EggyColors.vibrantYolk,
                     ),
                     const SizedBox(width: 12),
                     _MacroCard(

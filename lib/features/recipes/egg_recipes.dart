@@ -75,11 +75,11 @@ class BoiledEgg extends EggBase {
 
   @override
   List<YolkState> get yolkOptions => const [
-    YolkState(temperature: 61.0, label: 'Liquid Gold', hexColor: Color(0xFFFF8C00), viscosity: 0.0),
-    YolkState(temperature: 64.0, label: 'Jammy',       hexColor: Color(0xFFFFAA00), viscosity: 0.25),
-    YolkState(temperature: 69.0, label: 'Custardy',    hexColor: Color(0xFFFFCC00), viscosity: 0.5),
-    YolkState(temperature: 72.0, label: 'Soft Set',    hexColor: Color(0xFFFFD966), viscosity: 0.75),
-    YolkState(temperature: 77.0, label: 'Firm',        hexColor: Color(0xFFC8860A), viscosity: 1.0),
+    YolkState(temperature: 61.0, label: 'Liquid Gold', hexColor: EggyColors.vibrantYolk, viscosity: 0.0),
+    YolkState(temperature: 64.0, label: 'Jammy',       hexColor: EggyColors.onyx, viscosity: 0.25),
+    YolkState(temperature: 69.0, label: 'Custardy',    hexColor: EggyColors.vibrantYolk, viscosity: 0.5),
+    YolkState(temperature: 72.0, label: 'Soft Set',    hexColor: EggyColors.onyx,         viscosity: 0.75),
+    YolkState(temperature: 77.0, label: 'Firm',        hexColor: EggyColors.onyx,         viscosity: 1.0),
   ];
 
   @override
@@ -103,9 +103,9 @@ class BoiledEgg extends EggBase {
       iconType: StepIconType.timerGo,
       isCookingStep: true,
       context: DataContext(
-        content: 'The Eggy timer uses the Williams Formula to predict coagulation times based on thermal diffusivity and start temperature.',
-        metadata: {'Domain': 'Thermal_Physics', 'Entity': 'Coagulation_Time', 'Property': 'Williams_Equation'},
-        lineage: {'dc:creator': 'Charles D.H. Williams', 'dc:date': '1992', 'dc:source': 'University of Exeter'},
+        content: 'Heat and protein uncurling: Applying heat agitates the globular egg proteins. They bash into water molecules and each other, breaking the weak bonds that keep them curled. Once uncurled, they form new bonds with other proteins, creating an interconnected protein web that captures water.',
+        metadata: {'Domain': 'Thermal_Physics', 'Entity': 'Protein_Lattice', 'Property': 'Denaturation_Web'},
+        lineage: {'dc:creator': 'Exploratorium', 'dc:source': 'Science Of Eggs'},
         trustScore: 0.99,
         classification: 'Theory',
         policy: 'Cooking Guide',
@@ -166,9 +166,9 @@ class ScrambledEgg extends EggBase {
 
   @override
   List<YolkState> get yolkOptions => const [
-    YolkState(temperature: 65.0, label: 'Silky Soft', hexColor: Color(0xFFFFCC44), viscosity: 0.2),
-    YolkState(temperature: 70.0, label: 'Creamy',     hexColor: Color(0xFFFFD966), viscosity: 0.5),
-    YolkState(temperature: 75.0, label: 'Fluffy Set', hexColor: Color(0xFFE8A800), viscosity: 0.8),
+    YolkState(temperature: 65.0, label: 'Silky Soft', hexColor: EggyColors.vibrantYolk, viscosity: 0.2),
+    YolkState(temperature: 70.0, label: 'Creamy',     hexColor: EggyColors.vibrantYolk, viscosity: 0.5),
+    YolkState(temperature: 75.0, label: 'Fluffy Set', hexColor: EggyColors.onyx,         viscosity: 0.8),
   ];
 
   @override
@@ -179,10 +179,10 @@ class ScrambledEgg extends EggBase {
       actionCommand: 'Whisk eggs well',
       iconType: StepIconType.whisk,
       context: DataContext(
-        content: 'Mechanical agitation denatures proteins; whisking duck eggs introduces air into a higher-lipid environment, creating a sturdier foam than hen eggs.',
-        metadata: {'Domain': 'Molecular_Gastronomy', 'Entity': 'Protein_Foam', 'Property': 'Species_Agitation'},
-        lineage: {'dc:creator': 'FAO', 'dc:date': '2026', 'dc:source': 'Circular Economy Report'},
-        trustScore: 0.95,
+        content: 'Beat \'em: Whisking incorporates air bubbles, unfolding egg proteins. Hydrophilic (water-loving) amino acids stay in the water, while hydrophobic (water-fearing) ones stick into the air. This uncurling creates a network that traps air bubbles, which expand when heated to provide lift.',
+        metadata: {'Domain': 'Molecular_Gastronomy', 'Entity': 'Protein_Foam', 'Property': 'Air_Incorporation'},
+        lineage: {'dc:creator': 'Exploratorium', 'dc:source': 'Science Of Eggs'},
+        trustScore: 0.98,
         classification: 'Theory',
         policy: 'Ingredient Insight',
       ),
@@ -193,12 +193,20 @@ class ScrambledEgg extends EggBase {
       actionCommand: 'Melt the butter',
       iconType: StepIconType.butter,
     ),
-    const RecipeStep(
-      title: 'Folding Aeration',
-      instruction: 'Start the timer and fold the eggs gently every 20 seconds using a spatula',
-      actionCommand: 'Cook & fold',
+    RecipeStep(
+      title: 'Incubation Ritual',
+      instruction: 'Start the Eggy timer and swirl the eggs every 15 seconds to ensure even thermal penetration.',
+      actionCommand: 'Cook & swirl',
       iconType: StepIconType.timerGo,
       isCookingStep: true,
+      context: DataContext(
+        content: 'The 69°C threshold targets the partial denaturation of ovalbumin, creating a non-Newtonian fluid state where the omelette remains semi-liquid yet structurally intact enough to drape.',
+        metadata: {'Domain': 'Thermal_Physics', 'Entity': 'Phase_Transition', 'Property': 'Ovalbumin_Denaturation'},
+        lineage: {'dc:creator': 'Kichi Kichi Research', 'dc:date': '2026'},
+        trustScore: 0.98,
+        classification: 'Theory',
+        policy: 'Culinary Guide',
+      ),
     ),
     const RecipeStep(
       title: 'Plating Masterpiece',
@@ -253,9 +261,9 @@ class PoachedEgg extends EggBase {
 
   @override
   List<YolkState> get yolkOptions => const [
-    YolkState(temperature: 63.0, label: 'Runny',   hexColor: Color(0xFFFF8C00), viscosity: 0.1),
-    YolkState(temperature: 67.0, label: 'Flowing',  hexColor: Color(0xFFFFAA00), viscosity: 0.4),
-    YolkState(temperature: 71.0, label: 'Set',      hexColor: Color(0xFFFFD966), viscosity: 0.7),
+    YolkState(temperature: 63.0, label: 'Runny',   hexColor: EggyColors.vibrantYolk, viscosity: 0.1),
+    YolkState(temperature: 67.0, label: 'Flowing',  hexColor: EggyColors.vibrantYolk, viscosity: 0.4),
+    YolkState(temperature: 71.0, label: 'Set',      hexColor: EggyColors.onyx,         viscosity: 0.7),
   ];
 
   @override
@@ -339,9 +347,9 @@ class Omelette extends EggBase {
 
   @override
   List<YolkState> get yolkOptions => const [
-    YolkState(temperature: 70.0, label: 'Tender',    hexColor: Color(0xFFFFD700), viscosity: 0.3),
-    YolkState(temperature: 75.0, label: 'Golden',    hexColor: Color(0xFFE8A800), viscosity: 0.6),
-    YolkState(temperature: 80.0, label: 'Well Done', hexColor: Color(0xFFC8860A), viscosity: 0.9),
+    YolkState(temperature: 70.0, label: 'Tender',    hexColor: EggyColors.vibrantYolk, viscosity: 0.3),
+    YolkState(temperature: 75.0, label: 'Golden',    hexColor: EggyColors.vibrantYolk, viscosity: 0.6),
+    YolkState(temperature: 80.0, label: 'Well Done', hexColor: EggyColors.onyx,         viscosity: 0.9),
   ];
 
   @override
@@ -417,10 +425,10 @@ class FriedEgg extends EggBase {
 
   @override
   List<YolkState> get yolkOptions => const [
-    YolkState(temperature: 63.0, label: 'Sunny Side',  hexColor: Color(0xFFFF8C00), viscosity: 0.0),
-    YolkState(temperature: 67.0, label: 'Over Easy',   hexColor: Color(0xFFFFAA00), viscosity: 0.3),
-    YolkState(temperature: 71.0, label: 'Over Medium', hexColor: Color(0xFFFFD966), viscosity: 0.6),
-    YolkState(temperature: 77.0, label: 'Over Hard',   hexColor: Color(0xFFC8860A), viscosity: 1.0),
+    YolkState(temperature: 63.0, label: 'Sunny Side',  hexColor: EggyColors.vibrantYolk, viscosity: 0.0),
+    YolkState(temperature: 67.0, label: 'Over Easy',   hexColor: EggyColors.vibrantYolk, viscosity: 0.3),
+    YolkState(temperature: 71.0, label: 'Over Medium', hexColor: EggyColors.vibrantYolk, viscosity: 0.6),
+    YolkState(temperature: 77.0, label: 'Over Hard',   hexColor: EggyColors.onyx,         viscosity: 1.0),
   ];
 
   @override
@@ -443,6 +451,14 @@ class FriedEgg extends EggBase {
       actionCommand: 'Fry the egg',
       iconType: StepIconType.timerGo,
       isCookingStep: true,
+      context: DataContext(
+        content: 'As heat bashes the proteins, they uncurl and bond with each other rather than themselves. This communal network captures water, but leaves it rubbery if over-bonded.',
+        metadata: {'Domain': 'Thermal_Physics', 'Entity': 'Coagulation', 'Property': 'Protein_Network'},
+        lineage: {'dc:creator': 'Exploratorium', 'dc:source': 'Science Of Eggs'},
+        trustScore: 0.97,
+        classification: 'Theory',
+        policy: 'Culinary Insight',
+      ),
     ),
     RecipeStep(
       title: 'Steam Trap',
@@ -505,9 +521,9 @@ class EggsBenedict extends EggBase {
 
   @override
   List<YolkState> get yolkOptions => const [
-    YolkState(temperature: 63.0, label: 'Runny',   hexColor: Color(0xFFFF8C00), viscosity: 0.1),
-    YolkState(temperature: 67.0, label: 'Flowing',  hexColor: Color(0xFFFFAA00), viscosity: 0.4),
-    YolkState(temperature: 71.0, label: 'Set',      hexColor: Color(0xFFFFD966), viscosity: 0.7),
+    YolkState(temperature: 63.0, label: 'Runny',   hexColor: EggyColors.vibrantYolk, viscosity: 0.1),
+    YolkState(temperature: 67.0, label: 'Flowing',  hexColor: EggyColors.vibrantYolk, viscosity: 0.4),
+    YolkState(temperature: 71.0, label: 'Set',      hexColor: EggyColors.onyx,         viscosity: 0.7),
   ];
 
   @override
@@ -539,11 +555,11 @@ class EggsBenedict extends EggBase {
       isCookingStep: true,
       customDuration: const Duration(minutes: 2),
       context: DataContext(
-        content: 'Thermal Inactivation: Keeping yolks at 60°C for at least 5 minutes ensures the inactivation of potential pathogens (e.g., Salmonella) without compromising the emulsion.',
-        metadata: {'Domain': 'Food_Safety', 'Entity': 'Raw_Yolk', 'Property': 'Thermal_Point'},
-        lineage: {'dc:creator': 'Hervé This', 'dc:date': '2010', 'dc:source': 'Molecular Gastronomy: Exploring the Science of Flavor'},
+        content: 'Mix \'em: Hollandaise is an emulsion stabilized by Lecithin. This phospholipid has a water-loving "head" and a water-fearing "tail." The tail buries in fat droplets while the head sticks into the water, preventing droplets from coalescing.',
+        metadata: {'Domain': 'Fluid_Dynamics', 'Entity': 'Emulsion', 'Property': 'Lecithin_Structure'},
+        lineage: {'dc:creator': 'Exploratorium', 'dc:source': 'Science Of Eggs'},
         trustScore: 1.0,
-        classification: 'Safety',
+        classification: 'Theory',
         policy: 'Safety Guide',
       ),
     ),
@@ -602,9 +618,9 @@ class SoySauceEgg extends EggBase {
 
   @override
   List<YolkState> get yolkOptions => const [
-    YolkState(temperature: 61.0, label: 'Sun Side', hexColor: Color(0xFFFF8C00), viscosity: 0.0),
-    YolkState(temperature: 64.0, label: 'Jammy',    hexColor: Color(0xFFFFAA00), viscosity: 0.25),
-    YolkState(temperature: 70.0, label: 'Standard', hexColor: Color(0xFFFFCC00), viscosity: 0.5),
+    YolkState(temperature: 61.0, label: 'Sun Side', hexColor: EggyColors.vibrantYolk, viscosity: 0.0),
+    YolkState(temperature: 64.0, label: 'Jammy',    hexColor: EggyColors.vibrantYolk, viscosity: 0.25),
+    YolkState(temperature: 70.0, label: 'Standard', hexColor: EggyColors.onyx,         viscosity: 0.5),
   ];
 
   @override
@@ -692,9 +708,9 @@ class Omurice extends EggBase {
 
   @override
   List<YolkState> get yolkOptions => const [
-    YolkState(temperature: 66.0, label: 'Running', hexColor: Color(0xFFFFCC33), viscosity: 0.1),
-    YolkState(temperature: 69.0, label: 'Creamy',  hexColor: Color(0xFFFFD966), viscosity: 0.4),
-    YolkState(temperature: 72.0, label: 'Set',     hexColor: Color(0xFFE8A800), viscosity: 0.7),
+    YolkState(temperature: 66.0, label: 'Running', hexColor: EggyColors.vibrantYolk, viscosity: 0.1),
+    YolkState(temperature: 69.0, label: 'Creamy',  hexColor: EggyColors.vibrantYolk, viscosity: 0.4),
+    YolkState(temperature: 72.0, label: 'Set',     hexColor: EggyColors.onyx,         viscosity: 0.7),
   ];
 
   @override
@@ -773,12 +789,12 @@ class Fuyunghai extends EggBase {
 
   @override
   List<YolkState> get yolkOptions => const [
-    YolkState(temperature: 75.0, label: 'Fluffy',   hexColor: Color(0xFFFFCC33), viscosity: 0.6),
-    YolkState(temperature: 82.0, label: 'Firm',     hexColor: Color(0xFFC8860A), viscosity: 1.0),
+    YolkState(temperature: 75.0, label: 'Fluffy',   hexColor: EggyColors.vibrantYolk, viscosity: 0.6),
+    YolkState(temperature: 82.0, label: 'Firm',     hexColor: EggyColors.onyx,         viscosity: 1.0),
   ];
 
   @override
-  List<RecipeStep> getStepInstructions() => const [
+  List<RecipeStep> getStepInstructions() => [
     RecipeStep(
       title: 'Vegetable Bonding',
       instruction: 'Mix the shredded vegetables and shrimp into the beaten eggs with a touch of flour and salt.',
@@ -791,6 +807,14 @@ class Fuyunghai extends EggBase {
       actionCommand: 'Fry until puffy',
       iconType: StepIconType.timerGo,
       isCookingStep: true,
+      context: DataContext(
+        content: 'Rapid high-heat immersion triggers an instantaneous expansion of trapped air and steam within the flour-protein matrix, resulting in a stable, aerated foam with high structural loft.',
+        metadata: {'Domain': 'Fluid_Dynamics', 'Entity': 'Expansion_Kinetics', 'Property': 'Matrix_Aeration'},
+        lineage: {'dc:creator': 'Institute of Culinary Physics', 'dc:date': '2026'},
+        trustScore: 0.97,
+        classification: 'Theory',
+        policy: 'Matrix Guide',
+      ),
     ),
     RecipeStep(
       title: 'Sauce Glaze',
@@ -853,12 +877,12 @@ class EggTofu extends EggBase {
 
   @override
   List<YolkState> get yolkOptions => const [
-    YolkState(temperature: 72.0, label: 'Tender Set', hexColor: Color(0xFFFFCC33), viscosity: 0.7),
-    YolkState(temperature: 78.0, label: 'Firm Set',   hexColor: Color(0xFFC8860A), viscosity: 1.0),
+    YolkState(temperature: 72.0, label: 'Tender Set', hexColor: EggyColors.vibrantYolk, viscosity: 0.7),
+    YolkState(temperature: 78.0, label: 'Firm Set',   hexColor: EggyColors.onyx,         viscosity: 1.0),
   ];
 
   @override
-  List<RecipeStep> getStepInstructions() => const [
+  List<RecipeStep> getStepInstructions() => [
     RecipeStep(
       title: 'Cubic Integration',
       instruction: 'Cut tofu into small cubes and whisk into the seasoned egg mixture.',
@@ -867,10 +891,18 @@ class EggTofu extends EggBase {
     ),
     RecipeStep(
       title: 'The Golden Bond',
-      instruction: 'Pour into a hot pan. Fry until the bottom is deeply golden, then flip. Start the Eggy timer.',
+      instruction: 'Pour into a hot pan. Fry until the bottom is deeply golden, then flip. Start the timer.',
       actionCommand: 'Fry the cake',
       iconType: StepIconType.timerGo,
       isCookingStep: true,
+      context: DataContext(
+        content: 'Soy protein (glycinin) and egg protein (conalbumin) form a composite cross-linked network, creating a superior structural bond that prevents the tofu cubes from separating during thermal agitation.',
+        metadata: {'Domain': 'Molecular_Gastronomy', 'Entity': 'Protein_Bonding', 'Property': 'Glycinin_Crosslink'},
+        lineage: {'dc:creator': 'East Java Culinary Lab', 'dc:date': '2026'},
+        trustScore: 0.96,
+        classification: 'Theory',
+        policy: 'Bonding Guide',
+      ),
     ),
     RecipeStep(
       title: 'Structural Garnish',
@@ -932,8 +964,8 @@ class OnsenTamago extends EggBase {
 
   @override
   List<YolkState> get yolkOptions => const [
-    YolkState(temperature: 63.5, label: 'Silk Custard', hexColor: Color(0xFFFFAA00), viscosity: 0.3),
-    YolkState(temperature: 65.5, label: 'Creamy Gel',   hexColor: Color(0xFFFFCC33), viscosity: 0.5),
+    YolkState(temperature: 63.5, label: 'Silk Custard', hexColor: EggyColors.vibrantYolk, viscosity: 0.3),
+    YolkState(temperature: 65.5, label: 'Creamy Gel',   hexColor: EggyColors.vibrantYolk, viscosity: 0.5),
   ];
 
   @override

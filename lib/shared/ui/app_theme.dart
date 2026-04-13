@@ -5,46 +5,46 @@ import '../../core/constants.dart';
 /// Eggy's complete design system — all tokens, text styles, and theme.
 class AppTheme {
   // ── Text Styles ─────────────────────────────────────────────────────────────
-  static TextStyle get display => GoogleFonts.playfairDisplay(
-    fontSize: 34, fontWeight: FontWeight.w700,
-    color: EggyColors.onyx, letterSpacing: -0.5,
+  static TextStyle get display => GoogleFonts.merriweather(
+    fontSize: 28, fontWeight: FontWeight.w900,
+    color: EggyColors.onyx, letterSpacing: -0.2,
   );
 
-  static TextStyle get headline => GoogleFonts.playfairDisplay(
-    fontSize: 24, fontWeight: FontWeight.w600,
+  static TextStyle get headline => GoogleFonts.merriweather(
+    fontSize: 22, fontWeight: FontWeight.w700,
     color: EggyColors.onyx,
   );
 
-  static TextStyle get title => GoogleFonts.playfairDisplay(
-    fontSize: 20, fontWeight: FontWeight.w600,
+  static TextStyle get title => GoogleFonts.merriweather(
+    fontSize: 18, fontWeight: FontWeight.w700,
     color: EggyColors.onyx,
   );
 
-  static TextStyle get body => GoogleFonts.outfit(
-    fontSize: 16, fontWeight: FontWeight.w400,
+  static TextStyle get body => GoogleFonts.inter(
+    fontSize: 15, fontWeight: FontWeight.w400,
     color: EggyColors.onyx,
     letterSpacing: 0.1,
   );
 
-  static TextStyle get bodyMedium => GoogleFonts.outfit(
-    fontSize: 16, fontWeight: FontWeight.w500,
+  static TextStyle get bodyMedium => GoogleFonts.inter(
+    fontSize: 15, fontWeight: FontWeight.w500,
     color: EggyColors.onyx,
   );
 
-  static TextStyle get caption => GoogleFonts.outfit(
-    fontSize: 13, fontWeight: FontWeight.w400,
+  static TextStyle get caption => GoogleFonts.inter(
+    fontSize: 12, fontWeight: FontWeight.w400,
     color: EggyColors.onyx.withValues(alpha: 0.5),
     letterSpacing: 0.2,
   );
 
-  static TextStyle get timerDisplay => GoogleFonts.outfit(
-    fontSize: 64, fontWeight: FontWeight.w200, // Ultra light
-    color: EggyColors.onyx, letterSpacing: -3,
+  static TextStyle get timerDisplay => GoogleFonts.inter(
+    fontSize: 64, fontWeight: FontWeight.w200, // Slightly more visible than w100
+    color: EggyColors.onyx, letterSpacing: -2,
   );
 
-  static TextStyle get yolkLabel => GoogleFonts.playfairDisplay(
-    fontSize: 22, fontWeight: FontWeight.w700,
-    color: EggyColors.champagne,
+  static TextStyle get yolkLabel => GoogleFonts.merriweather(
+    fontSize: 18, fontWeight: FontWeight.w900,
+    color: EggyColors.onyx,
   );
 
   // ── ThemeData ────────────────────────────────────────────────────────────────
@@ -52,13 +52,13 @@ class AppTheme {
     useMaterial3: true,
     scaffoldBackgroundColor: EggyColors.alabaster,
     colorScheme: ColorScheme.light(
-      primary:    EggyColors.champagne,
+      primary:    EggyColors.vibrantYolk,
       secondary:  EggyColors.slate,
-      surface:    EggyColors.alabaster,
-      onPrimary:  Colors.white,
+      surface:    EggyColors.white,
+      onPrimary:  EggyColors.onyx,
       onSurface:  EggyColors.onyx,
     ),
-    textTheme: GoogleFonts.outfitTextTheme(),
+    textTheme: GoogleFonts.interTextTheme(),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,

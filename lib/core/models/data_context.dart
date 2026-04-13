@@ -10,7 +10,7 @@ class DataContext {
   final String classification;
   final String policy;
 
-  DataContext({
+  const DataContext({
     required this.content,
     required this.metadata,
     required this.lineage,

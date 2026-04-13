@@ -19,36 +19,37 @@ class ThermalState {
 
   /// Volumetric Yolk Color Mapping
   Color get yolkColor {
-    if (threshold < 0.4) return const Color(0xFFFFD700); // Liquid Gold
+    // Strictly derived from EggyColors.vibrantYolk
+    if (threshold < 0.4) return EggyColors.vibrantYolk;
     if (threshold < 0.7) {
-      // Transition to Jammy
       final t = (threshold - 0.4) / 0.3;
-      return Color.lerp(const Color(0xFFFFD700), const Color(0xFFFFA500), t)!;
+      return Color.lerp(EggyColors.vibrantYolk, EggyColors.vibrantYolk.withValues(alpha: 0.8), t)!;
     }
     if (threshold < 0.98) {
-      // Transition to Hard Set (Appetizing Bright Sulfur Yellow)
       final t = (threshold - 0.7) / 0.28;
-      // Fade from Jammy Orange to a creamy, firm Pale Yellow
-      return Color.lerp(const Color(0xFFFFA500), const Color(0xFFFFF176), t)!;
+      // Transition to a more technical, set color (Onyx)
+      return Color.lerp(EggyColors.vibrantYolk, EggyColors.onyx.withValues(alpha: 0.4), t)!;
     }
-    return const Color(0xFFFFF59D); // Firm, vibrant solar yellow
+    return EggyColors.onyx.withValues(alpha: 0.2); // Fully set/Technical look
   }
 
   /// Molecular Albumen Color Mapping
   Color get albumenColor {
-    if (threshold < 0.3) return const Color(0x22B2EBF2); // Transparent Bluish
+    // Strictly derived from White and Alabaster
+    if (threshold < 0.3) return EggyColors.white.withValues(alpha: 0.1); 
     if (threshold < 0.6) {
       final t = (threshold - 0.3) / 0.3;
-      return Color.lerp(const Color(0x22FFFFFF), const Color(0xBBFFFFFF), t)!;
+      return Color.lerp(EggyColors.white.withValues(alpha: 0.2), EggyColors.white.withValues(alpha: 0.7), t)!;
     }
-    return const Color(0xFFFFFFFF); // Opaque White
+    return EggyColors.white; 
   }
 
   /// Ambient Shell Heat Mapping
   Color get shellColor {
-    if (threshold < 0.2) return const Color(0xFFF5F5F5);
-    if (threshold < 0.8) return const Color(0xFFFFF3E0);
-    return const Color(0xFFFFE0B2); // Warm
+    // Strictly derived from Alabaster and Slate
+    if (threshold < 0.2) return EggyColors.alabaster;
+    if (threshold < 0.8) return EggyColors.alabaster.withValues(alpha: 0.6);
+    return EggyColors.slate.withValues(alpha: 0.1); // Warm technical glow
   }
 
   String get label {

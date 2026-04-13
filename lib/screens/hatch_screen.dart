@@ -34,7 +34,7 @@ class _HatchScreenState extends State<HatchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: EggyColors.warmWhite,
+      backgroundColor: EggyColors.alabaster,
       body: Stack(
         children: [
           _BioParticleField(),
@@ -126,7 +126,7 @@ class _HatchScreenState extends State<HatchScreen> {
                                     child: Text(
                                       'COOK ANOTHER EGG', 
                                       style: AppTheme.caption.copyWith(
-                                        color: Colors.white,
+                                        color: EggyColors.white,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w900,
                                         letterSpacing: 2.0,
@@ -173,7 +173,7 @@ class _BioParticleField extends StatelessWidget {
                   width: 4 + (i % 3) * 2.0,
                   height: 4 + (i % 3) * 2.0,
                   decoration: BoxDecoration(
-                    color: i % 2 == 0 ? EggyColors.liquidGold : Colors.white,
+                    color: i % 2 == 0 ? EggyColors.vibrantYolk : EggyColors.white,
                     shape: i % 3 == 0 ? BoxShape.circle : BoxShape.rectangle,
                     borderRadius: i % 3 != 0 ? BorderRadius.circular(2) : null,
                   ),

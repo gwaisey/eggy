@@ -46,7 +46,7 @@ class _EggCabinetState extends State<EggCabinet> {
                     letterSpacing: 1.0,
                     fontWeight: FontWeight.bold,
                     fontSize: 10,
-                    color: EggyColors.champagne,
+                    color: EggyColors.vibrantYolk,
                   ),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
@@ -155,13 +155,13 @@ class _EggSpeciesCardState extends State<_EggSpeciesCard> with SingleTickerProvi
         clipBehavior: Clip.antiAlias, // Recommended by user to prevent overflows
         decoration: BoxDecoration(
           color: widget.isSelected 
-            ? Colors.white 
-            : Colors.white.withValues(alpha: 0.3),
+            ? EggyColors.white 
+            : EggyColors.white.withValues(alpha: 0.3),
           borderRadius: BorderRadius.circular(22),
           border: Border.all(
             color: widget.isSelected 
-              ? EggyColors.champagne.withValues(alpha: 0.5) 
-              : Colors.white.withValues(alpha: 0.5),
+              ? EggyColors.vibrantYolk.withValues(alpha: 0.5) 
+              : EggyColors.white.withValues(alpha: 0.5),
             width: 1.5,
           ),
           boxShadow: [
@@ -203,7 +203,7 @@ class _EggSpeciesCardState extends State<_EggSpeciesCard> with SingleTickerProvi
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.15),
+                      color: EggyColors.onyx.withValues(alpha: 0.15),
                       blurRadius: 8,
                       offset: const Offset(2, 4),
                     ),
@@ -213,14 +213,16 @@ class _EggSpeciesCardState extends State<_EggSpeciesCard> with SingleTickerProvi
                       offset: const Offset(-1, -1),
                     ),
                   ],
-                  gradient: RadialGradient(
-                    center: const Alignment(-0.2, -0.4),
-                    radius: 1.0,
-                    colors: [
-                      Colors.white.withValues(alpha: 0.3),
-                      Colors.transparent,
-                    ],
-                  ),
+                  gradient: widget.species == EggSpecies.henBrown 
+                    ? null // Matte Brown Exception
+                    : RadialGradient(
+                        center: const Alignment(-0.2, -0.4),
+                        radius: 1.0,
+                        colors: [
+                          EggyColors.white.withValues(alpha: 0.3),
+                          Colors.transparent,
+                        ],
+                      ),
                 ),
                 // Quail mottling effect
                 child: widget.species == EggSpecies.quail 
@@ -247,7 +249,7 @@ class _EggSpeciesCardState extends State<_EggSpeciesCard> with SingleTickerProvi
 class _QuailMottlingPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = const Color(0xFF5D4037).withValues(alpha: 0.4);
+    final paint = Paint()..color = EggyColors.onyx.withValues(alpha: 0.3);
     final random = math.Random(42);
     for (int i = 0; i < 15; i++) {
       final x = random.nextDouble() * size.width;

@@ -91,18 +91,18 @@ class _KawaiiPopItemState extends State<KawaiiPopItem> with TickerProviderStateM
       child: Container(
         decoration: BoxDecoration(
           color: widget.isSelected 
-              ? const Color(0xFFFFF8E1) 
-              : Colors.white.withValues(alpha: 0.15),
+              ? EggyColors.vibrantYolk.withValues(alpha: 0.1) 
+              : EggyColors.white.withValues(alpha: 0.15),
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
             color: widget.isSelected 
-                ? const Color(0xFFFFD54F) 
-                : Colors.white.withValues(alpha: 0.2),
+                ? EggyColors.vibrantYolk 
+                : EggyColors.white.withValues(alpha: 0.2),
             width: 2,
           ),
           boxShadow: widget.isSelected ? [
             BoxShadow(
-              color: const Color(0xFFFFD54F).withValues(alpha: 0.2),
+              color: EggyColors.vibrantYolk.withValues(alpha: 0.2),
               blurRadius: 15,
               spreadRadius: 2,
             )

@@ -21,19 +21,19 @@ class MascotThemeFactory {
     if (mood == MascotMood.alert) {
       return MascotTheme(
         assetPath: 'assets/images/eggy_cooking.png', // Placeholder for Wide Eyes
-        glowColor: const Color(0xFFD32F2F), // Reserved Red
+        glowColor: EggyColors.vibrantYolk.withValues(alpha: 0.8), // Standardized Action Glow
       );
     }
     if (mood == MascotMood.pensive) {
       return MascotTheme(
         assetPath: 'assets/images/eggy_idle.png', // Placeholder for Tilted Head
-        glowColor: EggyColors.champagne.withValues(alpha: 0.5),
+        glowColor: EggyColors.vibrantYolk.withValues(alpha: 0.5),
       );
     }
     if (mood == MascotMood.excited) {
       return MascotTheme(
         assetPath: 'assets/images/eggy_excited.png',
-        glowColor: const Color(0xFF2E7D32), // Sage/Dark Green
+        glowColor: EggyColors.vibrantYolk.withValues(alpha: 0.8), // Vibrant Yolk for success!
       );
     }
     if (mood == MascotMood.researching) {
@@ -48,22 +48,22 @@ class MascotThemeFactory {
       case MascotState.preparing:
         return MascotTheme(
           assetPath: 'assets/images/eggy_cooking.png',
-          glowColor: EggyColors.champagne.withValues(alpha: 0.15), // Softer, classier glow
+          glowColor: EggyColors.vibrantYolk.withValues(alpha: 0.15), // Softer, classier glow
         );
       case MascotState.success:
         return MascotTheme(
           assetPath: 'assets/images/eggy_excited.png',
-          glowColor: const Color(0xFF2E7D32),
+          glowColor: EggyColors.vibrantYolk.withValues(alpha: 0.8),
         );
       case MascotState.warning:
         return MascotTheme(
           assetPath: 'assets/images/eggy_cooking.png',
-          glowColor: const Color(0xFFD32F2F),
+          glowColor: EggyColors.slate.withValues(alpha: 0.4), // Slate for technical warnings
         );
       default:
         return MascotTheme(
           assetPath: 'assets/images/eggy_idle.png',
-          glowColor: EggyColors.champagne.withValues(alpha: 0.3),
+          glowColor: EggyColors.vibrantYolk.withValues(alpha: 0.3),
         );
     }
   }

@@ -22,7 +22,29 @@ See exactly what is happening inside your egg in real-time.
 
 ---
 
-## 🎨 UI & UX Standards
+## 🎨 Design System: The Integrity Law
+
+Eggy operates under a strict design system designed to minimize visual noise and maximize technical clarity. 
+
+### **Color Palette (The 5-Color Law)**
+Every visual element is derived from exactly five canonical tokens:
+
+| Token | Hex | Usage |
+| :--- | :--- | :--- |
+| **Alabaster** | `#FBFBF8` | Primary background and laboratory surfaces. |
+| **Vibrant Yolk** | `#FFCC33` | Brand accent, primary action buttons, and coagulation states. |
+| **Onyx** | `#1A1A1A` | High-contrast typography and technical borders. |
+| **White** | `#FFFFFF` | Layer foundations and card surfaces. |
+| **Slate** | `#334756` | Technical secondary color for inactive states and metadata. |
+
+### **Typography (High-Fidelity Duo)**
+To maintain scientific readability, the app uses a strict two-font system:
+- **Instrument Serif (Editorial Serif)**: Used for high-level branding, identity, and primary headers.
+- **Inter (Precision Sans)**: Used for all technical data, body instructions, and molecular metadata.
+
+---
+
+## 🏗️ UI & UX Standards
 
 ### **Vintage Classic Mechanical Egg Timer**
 Traditional egg timers are tactile and mechanical. Eggy honors this heritage with a realistic interface inspired by **vintage classic mechanical egg timers**:

@@ -146,7 +146,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
           }
 
           return Scaffold(
-            backgroundColor: EggyColors.warmWhite,
+            backgroundColor: EggyColors.alabaster,
             body: Stack(
               children: [
                 // Warm heat-blur background with breathing animation
@@ -326,7 +326,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        backgroundColor: EggyColors.warmWhite,
+        backgroundColor: EggyColors.alabaster,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         title: Text('Cancel Timer?', style: AppTheme.title),
         content: Text('Eggy will stop watching your egg',
@@ -340,7 +340,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
               Navigator.pop(context);
               Navigator.pop(context);
             },
-            child: Text('Cancel', style: AppTheme.body.copyWith(color: Colors.red)),
+            child: Text('Cancel', style: AppTheme.body.copyWith(color: EggyColors.slate)),
           ),
         ],
       ),
@@ -401,14 +401,14 @@ class _ClassicMechanicalTimer extends StatelessWidget {
                   center: const Alignment(0, 0.4),
                   radius: 1.0,
                   colors: [
-                    Colors.white,
-                    EggyColors.warmWhite,
-                    EggyColors.champagne.withValues(alpha: 0.15),
+                    EggyColors.white,
+                    EggyColors.alabaster,
+                    EggyColors.vibrantYolk.withValues(alpha: 0.1),
                   ],
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.12),
+                    color: EggyColors.onyx.withValues(alpha: 0.12),
                     blurRadius: 35,
                     offset: const Offset(0, 20),
                   ),
@@ -442,9 +442,9 @@ class _ClassicMechanicalTimer extends StatelessWidget {
                   center: const Alignment(-0.3, -0.4),
                   radius: 1.2,
                   colors: [
-                    Colors.white,
-                    EggyColors.warmWhite,
-                    EggyColors.champagne.withValues(alpha: 0.15),
+                    EggyColors.white,
+                    EggyColors.alabaster,
+                    EggyColors.vibrantYolk.withValues(alpha: 0.1),
                   ],
                 ),
               ),
@@ -453,7 +453,7 @@ class _ClassicMechanicalTimer extends StatelessWidget {
                 child: CustomPaint(
                   painter: _CylindricalDialPainter(
                     rotation: rotationAngle,
-                    color: Colors.black,
+                    color: EggyColors.onyx,
                   ),
                 ),
               ),
@@ -467,10 +467,10 @@ class _ClassicMechanicalTimer extends StatelessWidget {
               width: size * 0.905,
               height: 1.5,
               decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.25),
+                color: EggyColors.onyx.withValues(alpha: 0.2),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.1),
+                    color: EggyColors.onyx.withValues(alpha: 0.08),
                     blurRadius: 4,
                   ),
                 ],
@@ -514,7 +514,7 @@ class _DeltaPointerPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = const Color(0xFFD32F2F) // Industrial Red
+      ..color = EggyColors.vibrantYolk // High-Integrity Pointer
       ..style = PaintingStyle.fill;
     
     final path = Path()
@@ -579,7 +579,7 @@ class _CylindricalDialPainter extends CustomPainter {
               color: color.withValues(alpha: alpha),
               fontSize: 14 * thicknessMultiplier,
               fontWeight: FontWeight.w900,
-              fontFamily: 'Montserrat',
+              fontFamily: 'Inter', // Secondary Brand Font
               letterSpacing: -0.5,
             ),
           );
@@ -630,9 +630,9 @@ class _HeatBackgroundState extends State<_HeatBackground> with SingleTickerProvi
             center: Alignment.center,
             radius: 1.1 + (_ctrl.value * (widget.isCaution ? 0.6 : 0.4)),
             colors: [
-              (widget.isCaution ? Colors.orange : EggyColors.vibrantYolk)
+              EggyColors.vibrantYolk
                   .withValues(alpha: 0.05 + (_ctrl.value * (widget.isCaution ? 0.15 : 0.08))),
-              EggyColors.warmWhite,
+              EggyColors.alabaster,
             ],
           ),
         ),

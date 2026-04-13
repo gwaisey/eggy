@@ -49,8 +49,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildEgg() => _iconStack(
     icon: Icons.egg_rounded,
-    iconColor: EggyColors.butterYellow,
-    bgColor: const Color(0xFFFFECB3),
+    iconColor: EggyColors.vibrantYolk,
+    bgColor: EggyColors.vibrantYolk.withValues(alpha: 0.1),
     extraAnimation: (w) => w
         .animate(onPlay: (c) => c.repeat(reverse: true))
         .rotate(begin: -0.05, end: 0.05, duration: 2800.ms, curve: Curves.easeInOutSine),
@@ -58,8 +58,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildWater() => _iconStack(
     icon: Icons.water_drop_rounded,
-    iconColor: const Color(0xFF64B5F6),
-    bgColor: const Color(0xFFE3F2FD),
+    iconColor: EggyColors.slate.withValues(alpha: 0.6),
+    bgColor: EggyColors.slate.withValues(alpha: 0.1),
     extraAnimation: (w) => w
         .animate(onPlay: (c) => c.repeat(reverse: true))
         .scaleXY(begin: 0.92, end: 1.08, duration: 1800.ms, curve: Curves.easeInOutSine),
@@ -67,8 +67,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildHeat() => _iconStack(
     icon: Icons.local_fire_department_rounded,
-    iconColor: const Color(0xFFFF7043),
-    bgColor: const Color(0xFFFBE9E7),
+    iconColor: EggyColors.vibrantYolk,
+    bgColor: EggyColors.vibrantYolk.withValues(alpha: 0.05),
     extraAnimation: (w) => w
         .animate(onPlay: (c) => c.repeat(reverse: true))
         .scaleXY(begin: 0.9, end: 1.1, duration: 1200.ms, curve: Curves.easeInOutSine),
@@ -76,8 +76,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildButter() => _iconStack(
     icon: Icons.kitchen_rounded,
-    iconColor: EggyColors.butterYellow,
-    bgColor: const Color(0xFFFFFDE7),
+    iconColor: EggyColors.vibrantYolk,
+    bgColor: EggyColors.vibrantYolk.withValues(alpha: 0.1),
     extraAnimation: (w) => w
         .animate(onPlay: (c) => c.repeat(reverse: true))
         .shimmer(delay: 400.ms, duration: 2400.ms, color: Colors.white.withValues(alpha: 0.6)),
@@ -85,8 +85,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildTimer() => _iconStack(
     icon: Icons.timer_rounded,
-    iconColor: EggyColors.softCharcoal,
-    bgColor: EggyColors.butterYellow,
+    iconColor: EggyColors.onyx,
+    bgColor: EggyColors.vibrantYolk,
     extraAnimation: (w) => w
         .animate(onPlay: (c) => c.repeat())
         .rotate(begin: 0, end: 1, duration: 8000.ms, curve: Curves.linear),
@@ -94,8 +94,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildIceBath() => _iconStack(
     icon: Icons.ac_unit_rounded,
-    iconColor: const Color(0xFF4DD0E1),
-    bgColor: const Color(0xFFE0F7FA),
+    iconColor: EggyColors.slate.withValues(alpha: 0.5),
+    bgColor: EggyColors.slate.withValues(alpha: 0.05),
     foregroundElements: [
       ...List.generate(3, (i) => Positioned(
         top: 10 + (i * 15.0),
@@ -113,8 +113,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildWhisk() => _iconStack(
     icon: Icons.auto_fix_high_rounded, 
-    iconColor: const Color(0xFFAB79E8),
-    bgColor: const Color(0xFFF3E5F5),
+    iconColor: EggyColors.slate,
+    bgColor: EggyColors.slate.withValues(alpha: 0.05),
     extraAnimation: (w) => w
         .animate(onPlay: (c) => c.repeat(reverse: true))
         .rotate(begin: -0.15, end: 0.15, duration: 300.ms, curve: Curves.easeInOut)
@@ -123,8 +123,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildFold() => _iconStack(
     icon: Icons.layers_rounded,
-    iconColor: EggyColors.butterYellow,
-    bgColor: const Color(0xFFFFF9C4),
+    iconColor: EggyColors.vibrantYolk,
+    bgColor: EggyColors.vibrantYolk.withValues(alpha: 0.1),
     extraAnimation: (w) => w
         .animate(onPlay: (c) => c.repeat(reverse: true))
         .flipV(begin: 0, end: 0.05, duration: 2000.ms, curve: Curves.easeInOutSine),
@@ -132,8 +132,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildCrack() => _iconStack(
     icon: Icons.egg_alt_rounded,
-    iconColor: const Color(0xFFFFCC80),
-    bgColor: const Color(0xFFFFF3E0),
+    iconColor: EggyColors.vibrantYolk,
+    bgColor: EggyColors.vibrantYolk.withValues(alpha: 0.05),
     extraAnimation: (w) => w
         .animate(onPlay: (c) => c.repeat(reverse: true))
         .rotate(begin: -0.04, end: 0.04, duration: 2600.ms, curve: Curves.easeInOutSine),
@@ -141,8 +141,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildPlate() => _iconStack(
     icon: Icons.restaurant_rounded,
-    iconColor: const Color(0xFF66BB6A),
-    bgColor: const Color(0xFFE8F5E9),
+    iconColor: EggyColors.slate,
+    bgColor: EggyColors.slate.withValues(alpha: 0.05),
     extraAnimation: (w) => w
         .animate()
         .scale(begin: const Offset(0.7, 0.7), end: const Offset(1.0, 1.0),
@@ -153,7 +153,7 @@ class StepIcon extends StatelessWidget {
   Widget _buildSalt() => _iconStack(
     icon: Icons.grain_rounded,
     iconColor: Colors.white,
-    bgColor: const Color(0xFFEEEEEE),
+    bgColor: EggyColors.alabaster,
     extraAnimation: (w) => w
         .animate(onPlay: (c) => c.repeat(reverse: true))
         .moveY(begin: -2, end: 2, duration: 1000.ms, curve: Curves.easeInOutSine),
@@ -161,8 +161,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildVinegar() => _iconStack(
     icon: Icons.opacity_rounded,
-    iconColor: const Color(0xFFBCAAA4),
-    bgColor: const Color(0xFFF7F2F1),
+    iconColor: EggyColors.onyx.withValues(alpha: 0.4),
+    bgColor: EggyColors.alabaster,
     extraAnimation: (w) => w
         .animate(onPlay: (c) => c.repeat())
         .moveY(begin: 0, end: 8, duration: 2000.ms, curve: Curves.easeInQuad)
@@ -172,7 +172,7 @@ class StepIcon extends StatelessWidget {
   Widget _buildPan() => _iconStack(
     icon: Icons.circle_rounded, 
     iconColor: Colors.transparent, // Background only
-    bgColor: const Color(0xFFF5F5F5),
+    bgColor: EggyColors.alabaster,
     foregroundElements: [
       // Pan body
       Center(
@@ -180,7 +180,7 @@ class StepIcon extends StatelessWidget {
           width: size * 0.55,
           height: size * 0.45,
           decoration: BoxDecoration(
-            color: EggyColors.softCharcoal,
+            color: EggyColors.onyx,
             borderRadius: BorderRadius.circular(size * 0.1),
           ),
         ),
@@ -195,9 +195,9 @@ class StepIcon extends StatelessWidget {
             width: size * 0.4,
             height: size * 0.1,
             decoration: BoxDecoration(
-              color: const Color(0xFFA1887F),
+              color: EggyColors.onyx.withValues(alpha: 0.6),
               borderRadius: BorderRadius.circular(size * 0.05),
-              border: Border.all(color: const Color(0xFF8D6E63), width: 1),
+              border: Border.all(color: EggyColors.onyx.withValues(alpha: 0.8), width: 1),
             ),
           ),
         ),
@@ -211,7 +211,7 @@ class StepIcon extends StatelessWidget {
   Widget _buildPot() => _iconStack(
     icon: Icons.soup_kitchen_rounded,
     iconColor: Colors.transparent,
-    bgColor: const Color(0xFFECEFF1),
+    bgColor: EggyColors.alabaster,
     foregroundElements: [
       // Pot body
       Center(
@@ -219,7 +219,7 @@ class StepIcon extends StatelessWidget {
           width: size * 0.6,
           height: size * 0.45,
           decoration: BoxDecoration(
-            color: const Color(0xFF90A4AE),
+            color: EggyColors.slate,
             borderRadius: BorderRadius.circular(size * 0.05),
           ),
         ),
@@ -233,7 +233,7 @@ class StepIcon extends StatelessWidget {
           height: size * 0.15,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(color: const Color(0xFF90A4AE).withValues(alpha: 0.8), width: 3),
+            border: Border.all(color: EggyColors.slate.withValues(alpha: 0.8), width: 3),
           ),
         ),
       ),
@@ -246,7 +246,7 @@ class StepIcon extends StatelessWidget {
           height: size * 0.15,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(color: const Color(0xFF90A4AE).withValues(alpha: 0.8), width: 3),
+            border: Border.all(color: EggyColors.slate.withValues(alpha: 0.8), width: 3),
           ),
         ),
       ),
@@ -268,7 +268,7 @@ class StepIcon extends StatelessWidget {
   Widget _buildBowl() => _iconStack(
     icon: Icons.circle_outlined,
     iconColor: Colors.transparent,
-    bgColor: const Color(0xFFE0F2F1),
+    bgColor: EggyColors.slate.withValues(alpha: 0.05),
     foregroundElements: [
       // Cozy Ceramic Bowl Shape
       Center(
@@ -283,7 +283,7 @@ class StepIcon extends StatelessWidget {
               topLeft: Radius.circular(size * 0.05),
               topRight: Radius.circular(size * 0.05),
             ),
-            border: Border.all(color: EggyColors.tastyTeal, width: 3),
+            border: Border.all(color: EggyColors.slate, width: 3),
             boxShadow: [
               BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 10, offset: const Offset(0, 4)),
             ],
@@ -298,7 +298,7 @@ class StepIcon extends StatelessWidget {
             width: size * 0.55,
             height: size * 0.3,
             decoration: BoxDecoration(
-              color: EggyColors.tastyTeal.withValues(alpha: 0.15),
+              color: EggyColors.slate.withValues(alpha: 0.15),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(size * 0.27),
                 bottomRight: Radius.circular(size * 0.27),
@@ -316,14 +316,14 @@ class StepIcon extends StatelessWidget {
   Widget _buildSaucepan() => _iconStack(
     icon: Icons.soup_kitchen_rounded,
     iconColor: Colors.transparent,
-    bgColor: const Color(0xFFEFEBE9),
+    bgColor: EggyColors.alabaster,
     foregroundElements: [
       Center(
         child: Container(
           width: size * 0.45,
           height: size * 0.35,
           decoration: BoxDecoration(
-            color: const Color(0xFF8D6E63),
+            color: EggyColors.onyx.withValues(alpha: 0.8),
             borderRadius: BorderRadius.circular(size * 0.05),
           ),
         ),
@@ -335,7 +335,7 @@ class StepIcon extends StatelessWidget {
           width: size * 0.4,
           height: size * 0.08,
           decoration: BoxDecoration(
-            color: const Color(0xFF8D6E63),
+            color: EggyColors.onyx.withValues(alpha: 0.8),
             borderRadius: BorderRadius.circular(size * 0.04),
           ),
         ),
@@ -346,8 +346,8 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildMuffin() => _iconStack(
     icon: Icons.bakery_dining_rounded,
-    iconColor: const Color(0xFF8D6E63),
-    bgColor: const Color(0xFFF5F5F5),
+    iconColor: EggyColors.onyx.withValues(alpha: 0.8),
+    bgColor: EggyColors.alabaster,
     extraAnimation: (w) => w
         .animate(onPlay: (c) => c.repeat(reverse: true))
         .scaleXY(begin: 0.96, end: 1.04, duration: 1500.ms),
@@ -356,7 +356,7 @@ class StepIcon extends StatelessWidget {
   Widget _buildBacon() => _iconStack(
     icon: Icons.restaurant_menu_rounded, // Fallback base
     iconColor: Colors.transparent,
-    bgColor: const Color(0xFFFFEBEE),
+    bgColor: EggyColors.vibrantYolk.withValues(alpha: 0.05),
     foregroundElements: [
       // Two wavy bacon strips
       ...List.generate(2, (i) => Positioned(
@@ -366,7 +366,7 @@ class StepIcon extends StatelessWidget {
           height: size * 0.12,
           decoration: BoxDecoration(
             gradient: const LinearGradient(
-              colors: [Color(0xFFEF5350), Colors.white, Color(0xFFEF5350)],
+              colors: [EggyColors.vibrantYolk, EggyColors.white, EggyColors.vibrantYolk],
               stops: [0.3, 0.5, 0.7],
             ),
             borderRadius: BorderRadius.circular(size * 0.06),
@@ -380,29 +380,29 @@ class StepIcon extends StatelessWidget {
 
   Widget _buildSpoon() => _iconStack(
     icon: Icons.restaurant_rounded,
-    iconColor: const Color(0xFF78909C),
-    bgColor: const Color(0xFFF5F5F5),
+    iconColor: EggyColors.slate,
+    bgColor: EggyColors.alabaster,
     extraAnimation: (w) => w.animate(onPlay: (c) => c.repeat(reverse: true)).moveY(begin: -3, end: 3),
   );
 
   Widget _buildSpatula() => _iconStack(
     icon: Icons.menu_open_rounded,
-    iconColor: const Color(0xFF90A4AE),
-    bgColor: const Color(0xFFECEFF1),
+    iconColor: EggyColors.slate,
+    bgColor: EggyColors.alabaster,
     extraAnimation: (w) => w.animate(onPlay: (c) => c.repeat(reverse: true)).rotate(begin: -0.1, end: 0.1),
   );
 
   Widget _buildSauce() => _iconStack(
     icon: Icons.opacity_rounded,
-    iconColor: const Color(0xFF795548),
-    bgColor: const Color(0xFFEFEBE9),
+    iconColor: EggyColors.onyx.withValues(alpha: 0.6),
+    bgColor: EggyColors.alabaster,
     extraAnimation: (w) => w.animate(onPlay: (c) => c.repeat(reverse: true)).scaleXY(begin: 0.9, end: 1.1),
   );
 
   Widget _buildKnife() => _iconStack(
     icon: Icons.colorize_rounded, 
     iconColor: Colors.transparent,
-    bgColor: const Color(0xFFF5F5F5),
+    bgColor: EggyColors.alabaster,
     foregroundElements: [
       // Blade
       Center(
@@ -412,7 +412,7 @@ class StepIcon extends StatelessWidget {
             width: size * 0.5,
             height: size * 0.1,
             decoration: BoxDecoration(
-              color: const Color(0xFFCFD8DC),
+              color: EggyColors.slate.withValues(alpha: 0.4),
               borderRadius: BorderRadius.only(topRight: Radius.circular(size * 0.05), bottomRight: Radius.circular(size * 0.05)),
             ),
           ),
@@ -428,7 +428,7 @@ class StepIcon extends StatelessWidget {
             width: size * 0.25,
             height: size * 0.1,
             decoration: BoxDecoration(
-              color: const Color(0xFF795548),
+              color: EggyColors.onyx.withValues(alpha: 0.6),
               borderRadius: BorderRadius.circular(size * 0.02),
             ),
           ),

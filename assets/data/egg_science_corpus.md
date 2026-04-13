@@ -49,3 +49,12 @@ Content: Quail eggs reach the target coagulation point (63°C) ~60% faster than 
 
 Content: If an egg exhibits a sulfur smell, it indicates the production of H2S by microbial spoilage (such as Salmonella or Pseudomonas). Safety Protocol: Do not consume. A sulfur smell is a terminal indicator of spoilage regardless of shelf-life dates.
 [BLOCK_END]
+
+[BLOCK_START]
+@Metadata: Domain: Nutritional_Science; Entity: ASPREE_ASPREE-XT_2025; Property: Mortality_Association
+@Lineage: dc:creator: Wild, H. et al.; dc:date: 2025; dc:source: Nutrients 2025, 17(2), 323; prov:wasDerivedFrom: https://doi.org/10.3390/nu17020323
+@Observability: Trust: 0.98; Status: High_Fidelity_Cohort_Study
+@Governance: Class: Scientific; Policy: Knowledge_Base
+
+Content: A 2025 prospective cohort study of 8,756 community-dwelling older adults (70+) found that egg consumption of 1-6 times per week was associated with a 17% lower risk of all-cause mortality and a 29% lower risk of CVD mortality compared to infrequent consumers (never/infrequently). No statistically significant association was observed for cancer mortality. The study suggests eggs are an economical, accessible, and nutrient-dense source for healthy ageing in the 70+ demographic, with dietary cholesterol showing no significant negative impact on CVD risk profiles across dyslipidemia subgroups in this age group.
+[BLOCK_END]

@@ -41,6 +41,10 @@
   "cold": [
     "Cold eggs need about 60 extra seconds to reach your target yolk temperature. Set your starting temp to Fridge on the recipe screen and Eggy will dial in the time precisely."
   ],
+  "daily consumption": [
+    "While eggs are nutrient-dense, the **2025 ASPREE study** note that for adults over 70, the mortality benefits peaked at **1-6 eggs per week**. Consumption of 7+ eggs per day (daily) did not show the same statistically significant reduction in mortality risk. Precision in frequency is as important as precision in timing!",
+    "Daily consumption (7+ per week) is perfectly safe and nutrient-rich, but for maximum longevity benefit in older cohorts, the clinical evidence strongest for the 'Weekly' cohort (1-6 eggs)."
+  ],
   "altitude": [
     "Eggy assumes a standardized 100°C boiling point for all calculations. This ensures maximum precision in tracking the molecular denaturation of avian proteins without the noise of atmospheric interference."
   ],
@@ -149,9 +153,33 @@
     "Heat is the energy that drives **denaturation**. Too fast, and you force the moisture out of the protein bonds, leading to a 'weeping' or rubbery egg. Too slow, and the proteins won't cross-linked enough to set.",
     "The physics of an egg is a race between the shell and the yolk. Managing the thermal input is the difference between a rubbery mess and culinary precision."
   ],
+  "protein_science": [
+    "**Heat 'em:** When you apply heat, you agitate egg-white proteins, causing them to bash into water molecules and each other. This breaks the weak bonds holding them curled. These proteins then uncurl and bond with each other, forming a network—or 'protein web'—that captures water. But beware: too much heat creates too many bonds, leading to a rubbery texture.",
+    "Egg proteins are like coiled springs. Heat provides the kinetic energy to release that tension. Once uncurled, they find new partners to bond with, transforming a liquid solution into a solid, interconnected matrix."
+  ],
+  "amino_acids": [
+    "Protein chains are made of amino acids. Some are **hydrophilic** (water-loving) and stay on the outside of a curled protein. Others are **hydrophobic** (water-fearing) and huddle in the center. Understanding this duality is the key to mastering foams and emulsions.",
+    "Think of amino acids as the binary code of the egg. Hydrophilic vs. Hydrophobic. That tension is what allows egg whites to trap air and yolks to bind oil and water."
+  ],
+  "beating_science": [
+    "**Beat 'em:** Beating incorporates air bubbles, forcing proteins to unfold. The water-loving parts stay in the water, while the water-fearing parts stick into the air bubbles. These uncurled proteins then bond together, creating a fortified network that holds the bubbles in place. When heated, these bubbles expand, and the network solidifies to hold the foam's structure.",
+    "Whipping is a mechanical way to uncurl proteins. By introducing air, you're asking the protein to choose sides: water or air. The resulting 'bridge' is what gives a soufflé its lift."
+  ],
+  "mixing_science": [
+    "**Mix 'em:** Egg yolks are powerful emulsifiers. They contain **Lecithin**, a phospholipid with a water-loving 'head' and a water-fearing 'tail.' The tail buries itself in fat droplets, while the head sticks out into the water, preventing the droplets from coalescing. This is the secret to a stable Hollandaise or Mayonnaise.",
+    "Emulsification is the art of compromise. Egg proteins and lecithin create a molecular barrier between oil and water, allowing them to coexist in a smooth, rich suspension."
+  ],
   "choline_science": [
     "One large egg provides about **147mg of choline**—nearly 25% of your daily requirement. It is an essential nutrient for brain health, memory, and liver function. Eggs are one of the most concentrated dietary sources available.",
-    "Choline is the 'Brain Fuel' found in high density within the yolk. It supports neurotransmission and cellular structural integrity. High intake is even correlated with a lower risk of CVD and fatty liver disease."
+    "Choline is the 'Brain Fuel' found in high density within the yolk. It supports neurotransmission and cellular structural integrity. Recent 2025 research (Wild et al.) reinforces that eggs are a critical nutrient-dense source for healthy ageing, providing minerals and vitamins without significant CVD risk for those over 70."
+  ],
+  "mortality": [
+    "**Recent Scientific Data (2025):** A massive study of 8,756 adults aged 70+ found that consuming **1-6 eggs per week** was associated with a **17% lower risk of all-cause mortality** and a **29% lower risk of CVD mortality**. Moderate egg intake is now scientifically linked to better survival outcomes in healthy ageing.",
+    "The 2025 ASPREE-XT study confirms that for community-dwelling older adults, weekly egg consumption (1–6 times) is a protective nutritional choice against both all-cause and cardiovascular mortality."
+  ],
+  "longevity": [
+    "**Eggs and Healthy Ageing:** For adults over 70, eggs are an economical and accessible protein source. 2025 clinical data shows that **weekly consumption (1-6 eggs)** significantly lowers mortality risk. It's not just about protein; it's about the fat-soluble vitamins and minerals that support physical performance in later life.",
+    "Want to live longer? If you're over 70, the data suggests 1-6 eggs per week is the sweet spot for longevity. This frequency correlates with reduced risk of cardiovascular events and all-cause mortality."
   ],
   "dietary_staple": [
     "Eggs are a high-quality protein staple in both the **Mediterranean and DASH diets**. They provide essential vitamins and minerals with a low calorie-to-nutrient ratio, especially when prepared using low-fat methods like poaching or boiling.",

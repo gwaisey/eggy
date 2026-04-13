@@ -15,7 +15,7 @@ class SettingsScreen extends StatelessWidget {
     final prefsVM = context.watch<PreferencesViewModel>();
 
     return Scaffold(
-      backgroundColor: EggyColors.warmWhite,
+      backgroundColor: EggyColors.alabaster,
       appBar: AppBar(
         title: Text('Settings', style: AppTheme.headline.copyWith(fontSize: 20)),
         centerTitle: true,
@@ -129,7 +129,7 @@ class SettingsScreen extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.egg_alt_rounded, size: 14, color: EggyColors.liquidGold),
+                    const Icon(Icons.egg_alt_rounded, size: 14, color: EggyColors.vibrantYolk),
                     const SizedBox(width: 4),
                     Text('eggy v1.0.0', style: AppTheme.caption),
                   ],
@@ -181,7 +181,7 @@ class _ToggleRow extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
-          Icon(icon, size: 22, color: EggyColors.liquidGold),
+          Icon(icon, size: 22, color: EggyColors.vibrantYolk),
           const SizedBox(width: 12),
           Expanded(
             child: Column(

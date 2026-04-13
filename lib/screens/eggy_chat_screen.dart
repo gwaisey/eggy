@@ -80,7 +80,7 @@ class _EggyChatScreenState extends State<EggyChatScreen> {
       builder: (context, _) {
         return Scaffold(
           extendBodyBehindAppBar: true,
-          backgroundColor: EggyColors.warmWhite,
+          backgroundColor: EggyColors.alabaster,
           appBar: AppBar(
             backgroundColor: Colors.white.withValues(alpha: 0.5),
             elevation: 0,
@@ -139,9 +139,9 @@ class _EggyChatScreenState extends State<EggyChatScreen> {
                     radius: 1.2,
                     colors: [
                       _vm.isTyping 
-                        ? (_vm.isProfessorMode ? Colors.blueAccent : Colors.orangeAccent).withValues(alpha: 0.05) 
-                        : EggyColors.warmWhite,
-                      _vm.isProfessorMode ? Colors.blue.withValues(alpha: 0.02) : EggyColors.warmWhite,
+                        ? (_vm.isProfessorMode ? EggyColors.slate : EggyColors.vibrantYolk).withValues(alpha: 0.05) 
+                        : EggyColors.alabaster,
+                      _vm.isProfessorMode ? EggyColors.slate.withValues(alpha: 0.02) : EggyColors.alabaster,
                     ],
                   ),
                 ),
@@ -205,7 +205,7 @@ class _EggyChatScreenState extends State<EggyChatScreen> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 if (p.icon != null) ...[
-                                  Icon(p.icon, size: 14, color: EggyColors.liquidGold.withValues(alpha: 0.7)),
+                                  Icon(p.icon, size: 14, color: EggyColors.vibrantYolk.withValues(alpha: 0.7)),
                                   const SizedBox(width: 8),
                                 ],
                                 Text(p.text, style: AppTheme.caption.copyWith(fontWeight: FontWeight.w500)),
@@ -270,7 +270,7 @@ class _EggyChatScreenState extends State<EggyChatScreen> {
                             boxShadow: [
                               if (_ctrl.text.isNotEmpty)
                                 BoxShadow(
-                                  color: EggyColors.liquidGold.withValues(alpha: 0.2),
+                                  color: EggyColors.vibrantYolk.withValues(alpha: 0.2),
                                   blurRadius: 10,
                                   offset: const Offset(0, 4),
                                 ),
@@ -350,7 +350,7 @@ class _ChatBubble extends StatelessWidget {
             Text(
               isCritical ? 'SAFETY ALERT' : 'KITCHEN TIP',
               style: AppTheme.caption.copyWith(
-                color: isCritical ? const Color(0xFFB71C1C) : const Color(0xFF856404),
+                color: isCritical ? EggyColors.onyx : EggyColors.slate,
                 fontWeight: FontWeight.bold,
                 fontSize: 10,
                 letterSpacing: 0.8,
@@ -446,12 +446,12 @@ class _ChatBubble extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.bolt_rounded, size: 14, color: Colors.blueAccent),
+                          const Icon(Icons.bolt_rounded, size: 14, color: EggyColors.slate),
                           const SizedBox(width: 8),
                           Text(
                             message.suggestion!,
                             style: AppTheme.caption.copyWith(
-                              color: Colors.blueAccent,
+                              color: EggyColors.slate,
                               fontWeight: FontWeight.bold,
                               fontSize: 11,
                             ),
@@ -524,10 +524,10 @@ class _TypingIndicator extends StatelessWidget {
                   bottomRight: Radius.circular(20),
                   bottomLeft: Radius.circular(4),
                 ),
-                border: isResearching ? Border.all(color: Colors.blueAccent.withValues(alpha: 0.3)) : null,
+                border: isResearching ? Border.all(color: EggyColors.slate.withValues(alpha: 0.3)) : null,
                 boxShadow: [
                   if (isResearching)
-                    BoxShadow(color: Colors.blueAccent.withValues(alpha: 0.1), blurRadius: 10, spreadRadius: 1),
+                    BoxShadow(color: EggyColors.slate.withValues(alpha: 0.1), blurRadius: 10, spreadRadius: 1),
                   BoxShadow(color: EggyColors.shadowSoft, blurRadius: 4, offset: const Offset(0, 2)),
                 ],
               ),
@@ -614,12 +614,12 @@ class _EmptyState extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [EggyColors.creamFoam, Colors.white.withValues(alpha: 0.9)],
+                  colors: [EggyColors.alabaster, Colors.white.withValues(alpha: 0.9)],
                 ),
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: EggyColors.liquidGold.withValues(alpha: 0.08),
+                    color: EggyColors.vibrantYolk.withValues(alpha: 0.08),
                     blurRadius: 16,
                     offset: const Offset(0, 6),
                   ),
@@ -631,7 +631,7 @@ class _EmptyState extends StatelessWidget {
               child: Row(
                 children: [
                   if (p.icon != null) ...[
-                    Icon(p.icon, size: 20, color: EggyColors.liquidGold),
+                    Icon(p.icon, size: 20, color: EggyColors.vibrantYolk),
                     const SizedBox(width: 12),
                   ],
                   Expanded(

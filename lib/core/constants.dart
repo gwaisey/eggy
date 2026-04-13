@@ -17,40 +17,35 @@ class YolkState {
 
 /// The five canonical yolk states — the "Golden Rules" of the PhysicsEngine.
 const List<YolkState> kYolkStates = [
-  YolkState(temperature: 61.0, label: 'Liquid Gold', hexColor: Color(0xFFFF8C00), viscosity: 0.0),
-  YolkState(temperature: 63.5, label: 'Jammy',       hexColor: Color(0xFFFFAA00), viscosity: 0.25),
-  YolkState(temperature: 69.0, label: 'Custardy',    hexColor: Color(0xFFFFCC00), viscosity: 0.5),
-  YolkState(temperature: 73.0, label: 'Soft Set',    hexColor: Color(0xFFFFD966), viscosity: 0.75),
-  YolkState(temperature: 77.0, label: 'Firm',        hexColor: Color(0xFFC8860A), viscosity: 1.0),
+  YolkState(temperature: 61.0, label: 'Liquid Gold', hexColor: Color(0xFFFFCC33), viscosity: 0.0), // vibrantYolk
+  YolkState(temperature: 63.5, label: 'Jammy',       hexColor: Color(0xFFFFCC33), viscosity: 0.25),
+  YolkState(temperature: 69.0, label: 'Custardy',    hexColor: Color(0xFFFFCC33), viscosity: 0.5),
+  YolkState(temperature: 73.0, label: 'Soft Set',    hexColor: Color(0xFF1A1A1A), viscosity: 0.75), // onyx for contrast
+  YolkState(temperature: 77.0, label: 'Firm',        hexColor: Color(0xFF1A1A1A), viscosity: 1.0),
 ];
 
 // ── Color Palette ─────────────────────────────────────────────────────────────
 class EggyColors {
-  static const alabaster     = Color(0xFFFBFBF8);
-  static const champagne     = Color(0xFFD4AF37);
-  static const onyx          = Color(0xFF1A1A1A);
-  static const ivory         = Color(0xFFF9F6EE);
-  static const slate         = Color(0xFF334756); // For Professor Mode
-  static const glassWhite    = Color(0xCCFBFBF8);
-  static const shadowSoft    = Color(0x0A1A1A1A);
-  static const liquidGold    = Color(0xFFC5A059);
-  static const bronze        = Color(0xFF8C7851);
-  
-  // Backwards compatibility for now
-  static const warmWhite     = alabaster;
-  static const butterYellow  = champagne;
+  // The 5 Canonical Tokens of Integrity
+  static const alabaster     = Color(0xFFFBFBF8); // Base Lab Surface
+  static const vibrantYolk   = Color(0xFFFFCC33); // Brand Core / Action
+  static const onyx          = Color(0xFF1A1A1A); // Typography / Delineation
+  static const white         = Color(0xFFFFFFFF); // Elevated Surface
+  static const slate         = Color(0xFF334756); // Technical / Professor Mode
+
+  // Semantic Aliases (Restricted to the 5 Above)
+  static const background    = alabaster;
+  static const primary       = vibrantYolk;
+  static const text          = onyx;
+  static const surface       = white;
+  static const accent        = slate;
+
+  // Cleanup Legacy Aliases (pointing to the new law)
+  static const champagne     = vibrantYolk;
+  static const butterYellow  = vibrantYolk;
   static const softCharcoal  = onyx;
-  static const creamFoam     = ivory;
-
-  // Restored for Legacy/Backwards compatibility
-  static const blushPink     = Color(0xFFF1E6E6); // A very soft, muted champagne-pink
-  static const firmYolk      = bronze;
-
-  // ── New Sleek Kawaii Palette ────────────────────────────────────────────────
-  static const tastyTeal     = Color(0xFF00ADB5); // Punchy yet premium teal
-  static const eggyPink      = Color(0xFFFFB7B7); // Soft, sophisticated pink
-  static const vibrantYolk   = Color(0xFFFFCC33); // High-saturation glowing yolk
-  static const accentGold    = Color(0xFFFFE082); // For highlights
+  static const glassWhite    = Color(0xCCFFFFFF);
+  static const shadowSoft    = Color(0x0A1A1A1A);
 }
 
 // ── Egg Physical Constants ────────────────────────────────────────────────────
@@ -148,7 +143,7 @@ class EggSpeciesTheme {
     ),
     EggSpecies.henBrown: EggSpeciesTheme(
       label: 'Brown Hen',
-      shellColor: Color(0xFFC08A64), // Warm Sienna/Brown
+      shellColor: Color(0xFFC08A64), // Matte light brown
       visualScale: 1.0,
     ),
     EggSpecies.duck: EggSpeciesTheme(
@@ -158,7 +153,7 @@ class EggSpeciesTheme {
     ),
     EggSpecies.goose: EggSpeciesTheme(
       label: 'Goose',
-      shellColor: Color(0xFFF5F5F5),
+      shellColor: Color(0xFFF5F5F5), // Chalky white
       visualScale: 1.3,
     ),
     EggSpecies.emu: EggSpeciesTheme(
