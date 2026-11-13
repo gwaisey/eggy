@@ -21,14 +21,20 @@ class ChatArchiveSession {
 /// Professor Eggy uses this to maintain "Real-World Memory" across app restarts.
 class PersistenceService {
   static const String _historyKey = 'eggy_professor_history';
+  static const String _historyConversationIdKey =
+      'eggy_professor_history_conversation_id';
   static const String _archiveKey = 'eggy_ai_chat_archive';
   static const int _maxWindowSize = 15;
   static const int _maxCharacterLimit = 10000;
   static const int _maxArchivedSessions = 30;
+  Future<void> _writeQueue = Future<void>.value();
 
   /// Saves the last 15 messages to persistent storage.
-  Future<void> saveHistory(List<ChatMessage> history) async {
-    try {
+  Future<void> saveHistory(
+    List<ChatMessage> history, {
+    String? conversationId,
+  }) {
+    return _enqueueWrite(() async {
       final prefs = await SharedPreferences.getInstance();
 
       // We only persist the last 15 messages to keep the window clean/fast.
@@ -48,54 +54,67 @@ class PersistenceService {
       }
 
       await prefs.setStringList(_historyKey, jsonList);
-    } catch (e) {
-      print('Eggy Error: History Persistence Failed: $e');
-    }
+      if (conversationId != null) {
+        await prefs.setString(_historyConversationIdKey, conversationId);
+      }
+    });
   }
 
   /// Loads the saved chat history from disk.
   Future<List<ChatMessage>> loadHistory() async {
     try {
+      await _writeQueue;
       final prefs = await SharedPreferences.getInstance();
       final jsonList = prefs.getStringList(_historyKey) ?? [];
 
       return jsonList.map(_decodeMessage).toList();
-    } catch (e) {
-      print('Eggy Error: History Load Failed: $e');
-      return [];
+    } catch (error) {
+      print('Eggy Error: History Load Failed: $error');
+      rethrow;
     }
   }
 
-  Future<void> archiveSession(List<ChatMessage> history) async {
-    final cleanHistory = history.where((msg) => msg.rawError == null).toList();
-    if (cleanHistory.isEmpty) return;
-
+  Future<String?> loadConversationId() async {
     try {
+      await _writeQueue;
       final prefs = await SharedPreferences.getInstance();
-      final sessions = prefs.getStringList(_archiveKey) ?? [];
-      final createdAt = DateTime.now();
-      final encodedMessages = cleanHistory.map(_encodeMessage).toList();
-
-      final archiveEntry = jsonEncode({
-        'id': createdAt.microsecondsSinceEpoch.toString(),
-        'title': _titleFor(cleanHistory),
-        'createdAt': createdAt.toIso8601String(),
-        'messages': encodedMessages,
-      });
-
-      final updated = [archiveEntry, ...sessions];
-      if (updated.length > _maxArchivedSessions) {
-        updated.removeRange(_maxArchivedSessions, updated.length);
-      }
-
-      await prefs.setStringList(_archiveKey, updated);
-    } catch (e) {
-      print('Eggy Error: Session Archive Failed: $e');
+      return prefs.getString(_historyConversationIdKey);
+    } catch (error) {
+      print('Eggy Error: Conversation Identity Load Failed: $error');
+      rethrow;
     }
+  }
+
+  Future<void> archiveSession(
+    List<ChatMessage> history, {
+    String? conversationId,
+  }) {
+    final cleanHistory = history.where((msg) => msg.rawError == null).toList();
+    if (cleanHistory.isEmpty) return Future<void>.value();
+    return _enqueueWrite(() async {
+      final prefs = await SharedPreferences.getInstance();
+      await _writeArchiveEntry(prefs, cleanHistory, conversationId);
+    });
+  }
+
+  Future<void> archiveAndClearHistory(
+    List<ChatMessage> history, {
+    String? conversationId,
+  }) {
+    final cleanHistory = history.where((msg) => msg.rawError == null).toList();
+    return _enqueueWrite(() async {
+      final prefs = await SharedPreferences.getInstance();
+      if (cleanHistory.isNotEmpty) {
+        await _writeArchiveEntry(prefs, cleanHistory, conversationId);
+      }
+      await prefs.remove(_historyKey);
+      await prefs.remove(_historyConversationIdKey);
+    });
   }
 
   Future<List<ChatArchiveSession>> loadArchivedSessions() async {
     try {
+      await _writeQueue;
       final prefs = await SharedPreferences.getInstance();
       final sessions = prefs.getStringList(_archiveKey) ?? [];
 
@@ -117,16 +136,55 @@ class PersistenceService {
           })
           .where((session) => session.messages.isNotEmpty)
           .toList();
-    } catch (e) {
-      print('Eggy Error: Archive Load Failed: $e');
-      return [];
+    } catch (error) {
+      print('Eggy Error: Archive Load Failed: $error');
+      rethrow;
     }
   }
 
   /// Clears the saved memory.
-  Future<void> clearHistory() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(_historyKey);
+  Future<void> clearHistory() {
+    return _enqueueWrite(() async {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(_historyKey);
+      await prefs.remove(_historyConversationIdKey);
+    });
+  }
+
+  Future<void> _writeArchiveEntry(
+    SharedPreferences prefs,
+    List<ChatMessage> history,
+    String? conversationId,
+  ) async {
+    final sessions = prefs.getStringList(_archiveKey) ?? [];
+    final createdAt = DateTime.now();
+    final id = conversationId ?? createdAt.microsecondsSinceEpoch.toString();
+    final updated = sessions.where((entry) {
+      final data = jsonDecode(entry) as Map<String, dynamic>;
+      return data['id'] != id;
+    }).toList();
+    final archiveEntry = jsonEncode({
+      'id': id,
+      'title': _titleFor(history),
+      'createdAt': createdAt.toIso8601String(),
+      'messages': history.map(_encodeMessage).toList(),
+    });
+    updated.insert(0, archiveEntry);
+    if (updated.length > _maxArchivedSessions) {
+      updated.removeRange(_maxArchivedSessions, updated.length);
+    }
+    await prefs.setStringList(_archiveKey, updated);
+  }
+
+  Future<void> _enqueueWrite(Future<void> Function() operation) {
+    final next = _writeQueue.then((_) => operation());
+    _writeQueue = next.then<void>(
+      (_) {},
+      onError: (Object error, StackTrace stackTrace) {
+        print('Eggy Error: Persistence Operation Failed: $error');
+      },
+    );
+    return next;
   }
 
   String _encodeMessage(ChatMessage msg) => jsonEncode({

@@ -352,44 +352,122 @@ class ChatMessage {
       contexts != null && contexts!.any((c) => c.trustScore >= 0.9);
 }
 
+enum ChatDraftStatus { empty, modified, persisted }
+
+class ChatSessionState {
+  final String? activeConversationId;
+  final String draftId;
+  final List<ChatMessage> messages;
+  final String composerText;
+  final ChatDraftStatus draftStatus;
+  final bool isPersisted;
+
+  ChatSessionState({
+    required this.activeConversationId,
+    required this.draftId,
+    required List<ChatMessage> messages,
+    required this.composerText,
+    required this.draftStatus,
+    required this.isPersisted,
+  }) : messages = List.unmodifiable(messages);
+
+  ChatSessionState copyWith({
+    String? activeConversationId,
+    bool clearActiveConversationId = false,
+    String? draftId,
+    List<ChatMessage>? messages,
+    String? composerText,
+    ChatDraftStatus? draftStatus,
+    bool? isPersisted,
+  }) {
+    return ChatSessionState(
+      activeConversationId: clearActiveConversationId
+          ? null
+          : activeConversationId ?? this.activeConversationId,
+      draftId: draftId ?? this.draftId,
+      messages: messages ?? this.messages,
+      composerText: composerText ?? this.composerText,
+      draftStatus: draftStatus ?? this.draftStatus,
+      isPersisted: isPersisted ?? this.isPersisted,
+    );
+  }
+}
+
 class EggyChatViewModel extends ChangeNotifier {
   final IConversationService _aiService;
   final ScriptedResponseService _localService;
   final EggyMascotController _mascotController;
   final ScientificContextService _contextService = ScientificContextService();
-  final PersistenceService _persistenceService = PersistenceService();
+  final PersistenceService _persistenceService;
   final CAMAService _cama = CAMAService();
   final IWebResearchService _webResearch = WebResearchService();
 
-  final List<ChatMessage> _messages = [];
+  static final math.Random _idRandom = math.Random.secure();
+  late ChatSessionState _chatState = _newDraftState();
   bool _isTyping = false;
   bool _isTumbling = false;
   List<String> _researchBreadcrumbs = [];
   bool _initialized = false;
+  Future<void>? _initializationFuture;
+  int _sessionEpoch = 0;
   String? _nextSuggestion;
   bool _disposed = false;
 
   EggyChatViewModel(
-      this._aiService, this._localService, this._mascotController);
+    this._aiService,
+    this._localService,
+    this._mascotController, {
+    PersistenceService? persistenceService,
+  }) : _persistenceService = persistenceService ?? PersistenceService();
 
-  Future<void> initialize() async {
-    if (_initialized) return;
-    await _contextService.init();
-    final savedHistory = await _persistenceService.loadHistory();
-    _messages.addAll(savedHistory);
+  Future<void> initialize() {
+    if (_initialized) return Future<void>.value();
+    return _initializationFuture ??= _initialize();
+  }
 
-    if (_aiService is EggyAIService) {
-      final ai = _aiService as EggyAIService;
-      // Note: Semantic and tool wiring will be simplified for this phase.
+  Future<void> _initialize() async {
+    try {
+      await _contextService.init();
+      final savedHistory = await _persistenceService.loadHistory();
+      if (savedHistory.isNotEmpty) {
+        var conversationId = await _persistenceService.loadConversationId();
+        if (conversationId == null || conversationId.isEmpty) {
+          conversationId = _newId();
+          await _persistenceService.saveHistory(
+            savedHistory,
+            conversationId: conversationId,
+          );
+        }
+        _chatState = ChatSessionState(
+          activeConversationId: conversationId,
+          draftId: _newId(),
+          messages: savedHistory,
+          composerText: '',
+          draftStatus: ChatDraftStatus.persisted,
+          isPersisted: true,
+        );
+        _cama.resetSession();
+        for (final message in savedHistory.where((message) => message.isUser)) {
+          _cama.updateConsole(message.text);
+        }
+      }
+
       _initialized = true;
+      if (!_disposed) notifyListeners();
+    } finally {
+      _initializationFuture = null;
     }
-    _initialized = true;
-    if (!_disposed) notifyListeners();
   }
 
   EggyAppState _appState = EggyAppState.unknown();
 
-  List<ChatMessage> get messages => List.unmodifiable(_messages);
+  ChatSessionState get chatState => _chatState;
+  List<ChatMessage> get messages => _chatState.messages;
+  String? get activeConversationId => _chatState.activeConversationId;
+  String get draftId => _chatState.draftId;
+  String get composerText => _chatState.composerText;
+  ChatDraftStatus get draftStatus => _chatState.draftStatus;
+  bool get isPersisted => _chatState.isPersisted;
   bool get isTyping => _isTyping;
   bool get isTumbling => _isTumbling;
   List<String> get researchBreadcrumbs => _researchBreadcrumbs;
@@ -398,6 +476,47 @@ class EggyChatViewModel extends ChangeNotifier {
       _aiService.getSuggestedPrompts(isProfessorMode: isProfessorMode);
 
   bool get isProfessorMode => _mascotController.isProfessorMode;
+
+  ChatSessionState _newDraftState() => ChatSessionState(
+        activeConversationId: null,
+        draftId: _newId(),
+        messages: const [],
+        composerText: '',
+        draftStatus: ChatDraftStatus.empty,
+        isPersisted: false,
+      );
+
+  String _newId() {
+    final bytes = List<int>.generate(16, (_) => _idRandom.nextInt(256));
+    bytes[6] = (bytes[6] & 0x0f) | 0x40;
+    bytes[8] = (bytes[8] & 0x3f) | 0x80;
+    final hex =
+        bytes.map((byte) => byte.toRadixString(16).padLeft(2, '0')).join();
+    return '${hex.substring(0, 8)}-${hex.substring(8, 12)}-'
+        '${hex.substring(12, 16)}-${hex.substring(16, 20)}-'
+        '${hex.substring(20)}';
+  }
+
+  bool _isCurrentSession(
+    int epoch,
+    String draftId,
+    String? conversationId,
+  ) {
+    return !_disposed &&
+        epoch == _sessionEpoch &&
+        draftId == _chatState.draftId &&
+        conversationId == _chatState.activeConversationId;
+  }
+
+  void updateComposerText(String text) {
+    _chatState = _chatState.copyWith(
+      composerText: text,
+      draftStatus: _chatState.messages.isEmpty &&
+              _chatState.activeConversationId == null
+          ? (text.isEmpty ? ChatDraftStatus.empty : ChatDraftStatus.modified)
+          : _chatState.draftStatus,
+    );
+  }
 
   void toggleProfessorMode(PreferencesViewModel prefs) {
     final newState = !isProfessorMode;
@@ -417,25 +536,65 @@ class EggyChatViewModel extends ChangeNotifier {
     return "Bored of the usual? The $suggestion recipe is calling your name!";
   }
 
-  String _processResponse(String rawAiOutput) {
+  String _processResponse(String rawAiOutput, int sessionEpoch) {
     if (rawAiOutput.toLowerCase().contains('outside my shell')) {
-      _triggerTumble();
+      _triggerTumble(sessionEpoch);
     }
     return rawAiOutput;
   }
 
-  void _triggerTumble() {
+  void _triggerTumble(int sessionEpoch) {
+    if (sessionEpoch != _sessionEpoch || _disposed) return;
     _isTumbling = true;
-    if (!_disposed) notifyListeners();
+    notifyListeners();
     Future.delayed(const Duration(milliseconds: 1500), () {
+      if (sessionEpoch != _sessionEpoch || _disposed) return;
       _isTumbling = false;
-      if (!_disposed) notifyListeners();
+      notifyListeners();
     });
   }
 
   Future<void> sendMessage(String text) async {
     if (text.trim().isEmpty) return;
-    if (!_initialized) await initialize();
+    if (_isTyping) return;
+    final requestedEpoch = _sessionEpoch;
+    await initialize();
+    if (_disposed || requestedEpoch != _sessionEpoch) return;
+
+    final sessionEpoch = _sessionEpoch;
+    final draftId = _chatState.draftId;
+    final conversationId = _chatState.activeConversationId ?? _newId();
+    final userMessage = ChatMessage(text: text, isUser: true);
+    final historySnapshot = [..._chatState.messages, userMessage];
+    _chatState = _chatState.copyWith(
+      activeConversationId: conversationId,
+      messages: historySnapshot,
+      composerText: '',
+      draftStatus: ChatDraftStatus.modified,
+      isPersisted: false,
+    );
+    _isTyping = true;
+    _researchBreadcrumbs = [];
+    if (!_disposed) notifyListeners();
+
+    try {
+      await _persistenceService.saveHistory(
+        historySnapshot,
+        conversationId: conversationId,
+      );
+    } catch (_) {
+      if (_isCurrentSession(sessionEpoch, draftId, conversationId)) {
+        _isTyping = false;
+        if (!_disposed) notifyListeners();
+      }
+      rethrow;
+    }
+
+    if (!_isCurrentSession(sessionEpoch, draftId, conversationId)) return;
+    _chatState = _chatState.copyWith(
+      draftStatus: ChatDraftStatus.persisted,
+      isPersisted: true,
+    );
     _mascotController.resetMood();
 
     final lower = text.toLowerCase();
@@ -444,22 +603,16 @@ class EggyChatViewModel extends ChangeNotifier {
         lower.contains('tired of');
 
     final alertLevel = AlertMatcher.getLevel(text);
-    _messages.add(ChatMessage(text: text, isUser: true));
-    _isTyping = true;
-    if (!_disposed) notifyListeners();
-
-    String responseText;
-    AlertLevel finalLevel = alertLevel;
+    var responseText = '';
     String? capturedRawError;
-    List<DataContext> activeContexts = [];
+    ThermalState? thermalState;
 
-    if (isBored) {
-      responseText = _handleBoredom();
-    } else {
-      try {
+    try {
+      if (isBored) {
+        responseText = _handleBoredom();
+      } else {
         _cama.updateConsole(text);
 
-        // --- PHASE 1: RESEARCH (The Librarian Pass) ---
         final bool isProfessor = _mascotController.isProfessorMode;
         final bool isScientific =
             _cama.activeIntent == CAMAIntent.scientific_research ||
@@ -474,6 +627,7 @@ class EggyChatViewModel extends ChangeNotifier {
           if (!_disposed) notifyListeners();
 
           final result = await _webResearch.investigate(text, []);
+          if (!_isCurrentSession(sessionEpoch, draftId, conversationId)) return;
           _researchBreadcrumbs = result.breadcrumbs;
           if (!_disposed) notifyListeners();
 
@@ -481,8 +635,8 @@ class EggyChatViewModel extends ChangeNotifier {
             researchContext =
                 "TRUSTED_RESEARCH (Source: ${result.source}): ${result.content}";
           }
-          await Future.delayed(
-              const Duration(milliseconds: 800)); // Aesthetic pause
+          await Future.delayed(const Duration(milliseconds: 800));
+          if (!_isCurrentSession(sessionEpoch, draftId, conversationId)) return;
         } else {
           _researchBreadcrumbs = [
             "Synthesizing precise response...",
@@ -491,17 +645,19 @@ class EggyChatViewModel extends ChangeNotifier {
           if (!_disposed) notifyListeners();
         }
 
-        // --- PHASE 2: SYNTHESIS (The AI Pass) ---
         final longitudinalSummary = await _cama.getLongitudinalSummary(text);
-        final contextualQuery = _buildContextualQuery(text,
-            longitudinalSummary: longitudinalSummary,
-            researchContext: researchContext,
-            history: _messages);
+        if (!_isCurrentSession(sessionEpoch, draftId, conversationId)) return;
+        final contextualQuery = _buildContextualQuery(
+          text,
+          longitudinalSummary: longitudinalSummary,
+          researchContext: researchContext,
+          history: historySnapshot,
+        );
 
         final rawResponse = await _aiService.getResponse(contextualQuery);
-        responseText = _processResponse(rawResponse);
+        if (!_isCurrentSession(sessionEpoch, draftId, conversationId)) return;
+        responseText = _processResponse(rawResponse, sessionEpoch);
 
-        // Success Recognition: Trigger Celebration if keywords detected
         if (responseText.contains('MASTERPIECE') ||
             responseText.contains('PROTOCOL_SUCCESS')) {
           _mascotController.celebrate();
@@ -511,15 +667,11 @@ class EggyChatViewModel extends ChangeNotifier {
               .trim();
         }
 
-        // Ingest the lesson for future semantic recall
-        await _cama.ingestCulinaryLesson("User: $text | Eggy: $responseText",
-            _cama.activeSubject ?? "Egg Science");
-
-        _isTyping = false;
-        _researchBreadcrumbs = [];
-
-        // Use the existing isProfessor variable declared earlier in the method
-        ThermalState? thermalState;
+        await _cama.ingestCulinaryLesson(
+          "User: $text | Eggy: $responseText",
+          _cama.activeSubject ?? "Egg Science",
+        );
+        if (!_isCurrentSession(sessionEpoch, draftId, conversationId)) return;
 
         if (isProfessor) {
           final threshold = _cama.getThermalThreshold(responseText) ??
@@ -527,39 +679,54 @@ class EggyChatViewModel extends ChangeNotifier {
           final speciesLabel =
               _cama.activeSubject?.split(' ').first.toLowerCase() ?? 'hen';
           final species = EggSpecies.values.firstWhere(
-              (e) => e.name.toLowerCase().contains(speciesLabel),
-              orElse: () => EggSpecies.henWhite);
+            (e) => e.name.toLowerCase().contains(speciesLabel),
+            orElse: () => EggSpecies.henWhite,
+          );
           thermalState = threshold != null
               ? ThermalState(threshold: threshold, species: species)
               : null;
         }
-
-        _addMessage(responseText, finalLevel,
-            contexts: [], // No local contexts in Pure AI mode
-            rawError: capturedRawError,
-            suggestion: _nextSuggestion,
-            thermalState: thermalState);
-        _nextSuggestion = null;
-        await _persistenceService.saveHistory(_messages);
-      } catch (e) {
-        _isTyping = false;
-        _researchBreadcrumbs = [];
-
-        capturedRawError = e.toString();
-        print("AI ERROR: $e");
-
-        responseText =
-            "Eggy's having a bit of a wobble connecting to the servers. Please check your internet or try again in a moment!";
-
-        _addMessage(responseText, finalLevel,
-            contexts: activeContexts,
-            rawError: capturedRawError,
-            suggestion: _nextSuggestion);
-        _nextSuggestion = null;
-        await _persistenceService.saveHistory(_messages);
-        if (!_disposed) notifyListeners();
       }
+    } catch (error) {
+      if (!_isCurrentSession(sessionEpoch, draftId, conversationId)) return;
+      capturedRawError = error.toString();
+      debugPrint("AI ERROR: $error");
+      responseText =
+          "Eggy's having a bit of a wobble connecting to the servers. Please check your internet or try again in a moment!";
     }
+
+    if (!_isCurrentSession(sessionEpoch, draftId, conversationId)) return;
+    _chatState = _chatState.copyWith(
+      messages: [
+        ..._chatState.messages,
+        ChatMessage(
+          text: responseText,
+          isUser: false,
+          alertLevel: alertLevel,
+          rawError: capturedRawError,
+          contexts: capturedRawError == null ? const [] : null,
+          suggestion: _nextSuggestion,
+          thermalState: thermalState,
+        ),
+      ],
+      draftStatus: ChatDraftStatus.modified,
+      isPersisted: false,
+    );
+    _nextSuggestion = null;
+    _isTyping = false;
+    _researchBreadcrumbs = [];
+    if (!_disposed) notifyListeners();
+
+    await _persistenceService.saveHistory(
+      _chatState.messages,
+      conversationId: conversationId,
+    );
+    if (!_isCurrentSession(sessionEpoch, draftId, conversationId)) return;
+    _chatState = _chatState.copyWith(
+      draftStatus: ChatDraftStatus.persisted,
+      isPersisted: true,
+    );
+    if (!_disposed) notifyListeners();
   }
 
   String _buildContextualQuery(
@@ -612,34 +779,22 @@ The user is continuing a specific inquiry.
 """;
   }
 
-  void _addMessage(
-    String text,
-    AlertLevel level, {
-    List<DataContext>? contexts,
-    String? rawError,
-    String? suggestion,
-    ThermalState? thermalState,
-  }) {
-    _messages.add(ChatMessage(
-      text: text,
-      isUser: false,
-      alertLevel: level,
-      rawError: rawError,
-      contexts: contexts,
-      suggestion: suggestion,
-      thermalState: thermalState,
-    ));
-    if (!_disposed) notifyListeners();
-  }
-
   Future<void> startNewSession() async {
-    if (!_initialized) await initialize();
-    await _persistenceService.archiveSession(_messages);
-    await _persistenceService.clearHistory();
-    _messages.clear();
+    _sessionEpoch++;
+    await initialize();
+    final previousState = _chatState;
+    _chatState = _newDraftState();
     _isTyping = false;
+    _isTumbling = false;
     _researchBreadcrumbs = [];
+    _nextSuggestion = null;
+    _cama.resetSession();
     if (!_disposed) notifyListeners();
+
+    await _persistenceService.archiveAndClearHistory(
+      previousState.messages,
+      conversationId: previousState.activeConversationId,
+    );
   }
 
   Future<List<ChatArchiveSession>> loadArchivedSessions() {
@@ -647,14 +802,29 @@ The user is continuing a specific inquiry.
   }
 
   Future<void> restoreArchivedSession(ChatArchiveSession session) async {
-    if (!_initialized) await initialize();
-    _messages
-      ..clear()
-      ..addAll(session.messages);
+    _sessionEpoch++;
+    await initialize();
+    _chatState = ChatSessionState(
+      activeConversationId: session.id,
+      draftId: _newId(),
+      messages: session.messages,
+      composerText: '',
+      draftStatus: ChatDraftStatus.persisted,
+      isPersisted: true,
+    );
     _isTyping = false;
+    _isTumbling = false;
     _researchBreadcrumbs = [];
-    await _persistenceService.saveHistory(_messages);
+    _nextSuggestion = null;
+    _cama.resetSession();
+    for (final message in session.messages.where((message) => message.isUser)) {
+      _cama.updateConsole(message.text);
+    }
     if (!_disposed) notifyListeners();
+    await _persistenceService.saveHistory(
+      session.messages,
+      conversationId: session.id,
+    );
   }
 
   Future<void> clearChat() async {

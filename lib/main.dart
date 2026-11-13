@@ -30,7 +30,7 @@ Future<void> main() async {
   // Security & Connectivity Check
   final apiKey = const String.fromEnvironment('OPENROUTER_API_KEY').isNotEmpty
       ? const String.fromEnvironment('OPENROUTER_API_KEY')
-      : dotenv.env['OPENROUTER_API_KEY'];
+      : (dotenv.isInitialized ? dotenv.env['OPENROUTER_API_KEY'] : null);
 
   if (apiKey == null || apiKey.isEmpty || apiKey == 'your_openrouter_key_here') {
     debugPrint('⚠️ SECURITY/CONFIG ALERT: AI API key is missing. Ensure --dart-define or .env is configured.');

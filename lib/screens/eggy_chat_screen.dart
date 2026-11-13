@@ -34,18 +34,28 @@ class _EggyChatScreenState extends State<EggyChatScreen> {
     _vm = context.read<EggyChatViewModel>();
 
     // Sync current app state safely after the first frame to avoid build-time rebuilds
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        final prefs = context.read<PreferencesViewModel>();
-        context
-            .read<EggyMascotController>()
-            .setProfessorMode(prefs.isProfessorMode);
-        _vm.updateAppState(EggyAppState(
-          activeRecipe: 'Browsing Egg Assistant',
-          eggSize: prefs.eggSize,
-          startTemp: prefs.startTemp,
-        ));
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!mounted) return;
+      try {
+        await _vm.initialize();
+      } catch (error) {
+        debugPrint('Eggy chat initialization failed: $error');
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Could not load saved chat history.')),
+          );
+        }
       }
+      if (!mounted) return;
+      final prefs = context.read<PreferencesViewModel>();
+      context
+          .read<EggyMascotController>()
+          .setProfessorMode(prefs.isProfessorMode);
+      _vm.updateAppState(EggyAppState(
+        activeRecipe: 'Browsing Egg Assistant',
+        eggSize: prefs.eggSize,
+        startTemp: prefs.startTemp,
+      ));
     });
   }
 
@@ -59,21 +69,44 @@ class _EggyChatScreenState extends State<EggyChatScreen> {
   Future<void> _send(String text) async {
     if (text.trim().isEmpty) return;
     _ctrl.clear();
-    await _vm.sendMessage(text);
-    _scrollToBottom();
+    _vm.updateComposerText('');
+    try {
+      await _vm.sendMessage(text);
+      _scrollToBottom();
+    } catch (error) {
+      debugPrint('Eggy message submission failed: $error');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text('Could not save your message. Please try again.')),
+        );
+      }
+    }
   }
 
   Future<void> _startNewSession() async {
-    await _vm.startNewSession();
     _ctrl.clear();
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text('Previous Eggy chat archived'),
-        backgroundColor: EggyColors.softCharcoal,
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
+    _vm.updateComposerText('');
+    try {
+      await _vm.startNewSession();
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('New chat started'),
+          backgroundColor: EggyColors.softCharcoal,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    } catch (error) {
+      debugPrint('Eggy chat archive failed: $error');
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+              'New chat is ready, but the previous chat could not be archived.'),
+        ),
+      );
+    }
   }
 
   Future<void> _showHistory() async {
@@ -85,8 +118,20 @@ class _EggyChatScreenState extends State<EggyChatScreen> {
         loadSessions: _vm.loadArchivedSessions,
         onRestore: (session) async {
           Navigator.pop(context);
-          await _vm.restoreArchivedSession(session);
-          _scrollToBottom();
+          _ctrl.clear();
+          try {
+            await _vm.restoreArchivedSession(session);
+            _scrollToBottom();
+          } catch (error) {
+            debugPrint('Eggy chat restore failed: $error');
+            if (mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Could not restore the selected chat.'),
+                ),
+              );
+            }
+          }
         },
       ),
     );
@@ -154,7 +199,7 @@ class _EggyChatScreenState extends State<EggyChatScreen> {
               IconButton(
                 icon: const Icon(Icons.add_comment_rounded),
                 tooltip: 'New chat session',
-                onPressed: _vm.messages.isEmpty ? null : _startNewSession,
+                onPressed: _startNewSession,
               ),
               IconButton(
                 icon: Icon(
@@ -322,6 +367,7 @@ class _EggyChatScreenState extends State<EggyChatScreen> {
                           Expanded(
                             child: TextField(
                               controller: _ctrl,
+                              onChanged: _vm.updateComposerText,
                               style: AppTheme.body,
                               decoration: InputDecoration(
                                 hintText: 'Ask Eggy about yolks, science...',
@@ -421,6 +467,18 @@ class _ChatHistorySheet extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.all(28),
                       child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                  );
+                }
+
+                if (snapshot.hasError) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 28),
+                    child: Text(
+                      'Could not load archived Eggy chats.',
+                      style: AppTheme.body.copyWith(
+                        color: EggyColors.onyx.withValues(alpha: 0.5),
+                      ),
                     ),
                   );
                 }
